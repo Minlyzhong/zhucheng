@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>珠城先锋网</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+
+  <script src="js/vue.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/index.js"></script>
+</head>
+<body>
+<div id="app" style="width: 100%; height: 100%;">
+  <nav class="flex-style row">
+    <div class="flex-style row">
+      <span>欢迎光临珠城先锋网, 今天是2016年04月20日</span>
+      <div class="search">
+        <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
+        <button><i>搜索</i></button>
+    </div>
+    </div>
+  
+    <div>
+      <a href="#">设为首页 |</a>
+      <a href="#">加入收藏 |</a>
+      <a href="#">意见反馈 |</a>
+      <a href="#">手机APP下载</a>
+      
+    </div>
+    
+  </nav>
+  
+  <div class="content clearfix">
+    <section class="content-top row flex-cstyle">
+      <div class="title-hold">
+        <div class="title-left">阳光</br>组工</div>
+        <div class="title-right">
+          <div >
+            <a href="#" @click.stop.prevent="goSecord()">机构职能 </a>|
+            <a href="#">工作动态 </a>|
+            <a href="#">党建工作 </a>
+            
+          </div>
+          <div>
+            <a href="#">干部工作 </a>|
+            <a href="#">人才工作 </a>|
+            <a href="#">领导讲话 </a>
+          </div>
+          
+        </div>
+      </div>
+  
+      <div class="title-hold">
+        <div class="title-left">党员</br>教育</div>
+        <div class="title-right">
+          <div>
+            <a href="#">远程教育  </a>|
+            <a href="#">政策法规  </a>|
+            <a href="#">党建期刊 </a>
+          </div>
+          <div>
+            <a href="#">党建视频  </a>|
+            <a href="#">党性教育基地网上展馆 </a>
+          </div>
+          
+        </div>
+      </div>
+  
+      <div class="title-hold">
+        <div class="title-left">互动</br>服务</div>
+        <div class="title-right">
+          <div>
+            <a href="#">资料下载  </a>|
+            <a href="#">党务问答 </a>
+          </div>
+          <div>
+            <a href="#">部长信箱  </a>|
+            <a href="#">12380举报 </a>
+          </div>
+          
+          
+        </div>
+      </div>
+  
+      <div class="title-hold">
+        <div class="title-left">阳光</br>组工</div>
+        <div class="title-right">
+          <div><a href="#">机构职能</a> </div>
+          <div><a href="#">工作动态</a> </div>
+          
+        </div>
+      </div>
+    </section>
+  
+  
+    <section class="hot-new">
+      <a href="" class="flex-style colum hot-content">
+        <div>我市在全区率先圆满完成乡镇党季换届工作</div>
+        <div class="flex-style row">
+          <span v-for="index in 5" :key="index">《党章》</span>
+          <!-- <span>《党政领导干部先拔任用工作条例》</span>
+          <span>《中国共产党员纪律处分条例》</span>
+          <span>《中国共产党党组工作条例》</span> -->
+        </div>
+      </a>
+        
+      
+    </section>
+  
+    <section class="new-content clearfix" >
+      
+        <div class="section flex-cstyle colum" >
+          <div class="hot-img">
+            <img :src="pic" alt="">
+          </div>
+  
+          <div class="flex-cstyle row ">
+            <div class="flex-cstyle row space scan">
+              <div>
+                <img src="./images/scan.png" alt="">
+                <div>北海先锋微信</div>
+              </div>
+              <div>
+                <img src="./images/phone.png" alt="">
+                <div>手机APP下载</div>
+              </div>
+              
+            </div>
+            <div class="flex-cstyle colum call">
+             <img src="./images/123.png" alt="" style="margin-bottom: 5px;">
+              <img src="./images/email.png" alt="">
+            </div>
+          </div>
+        </div>
+        <aside >
+          <div class="content-left">
+            <div class="flex-cstyle row left-title">
+              <span>组工动态</span>
+              <a href="#">查看更多>></a>
+            </div>
+            <div class="left-middle" >
+              <a href="">全市组织系统暨市县乡换届工作会议召开</a>
+              <div style="text-indent:2em;">2月3日上午, 全市组织系统系暨市县乡换届工作会议召开.市委书记可出席会议并做讲话</div>
+              <ul class="content-list">
+                <li v-for="(item,index) in 6" :key="index"><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+              </ul>
+    
+            </div>
+          </div>
+          
+  
+          <div class="left-bottom" >
+            <div class="flex-cstyle row ">
+              <div class="flex-cstyle row left-choice">
+                <span >通知公告</span>
+                <span>最新下载</span>
+              </div>
+              <a href="#" class="more">更多>></a>
+            </div>
+            <ul class="content-list" style="line-height: 20px;">
+              <li v-for="(item,index) in 4" :key="index"><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>        
+            </ul>
+  
+          </div>
+        </aside>
+  
+    </section>
+  
+    <section class="clearfix">
+      <div class="flex-cstyle row shine-group">
+        <div>阳光组工</div>
+        <div>
+          <span>机构职能</span>|
+          <span>工作动态</span>|
+          <span>党建工作</span>|
+          <span>干部工作</span>|
+          <span>人才工作</span>|
+          <span>领导讲话</span>
+        </div>
+        
+      </div>
+      <div class="bottom-line"></div>
+  
+      <div class="section" style="width:67%">
+        <div class=" flex-cstyle row shine-content">
+            <div class="shine-set">
+              <div class="flex-cstyle row shine-title" >
+                <div>党建工作</div>
+                <a href="#" class="more">更多>></a>
+              </div>
+              <div class="flex-cstyle row" style="padding: 15px 10px;">
+                <img :src="pic" alt="">
+                <div class="shine-detail">
+                  <h3>
+                    "两学一做"学习教育
+                  </h3>
+                  <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
+                  <a href="#">[详情]</a>
+                </div>
+                
+  
+              </div>
+              <ul class="content-list" style="line-height: 30px;" >
+                <li v-for="(item,index) in 4" :key="index"><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+               
+              </ul>
+              
+            </div>
+  
+            <div class="shine-set">
+              <div class="flex-cstyle row shine-title" style="background-image: url(./images/tool.png);">
+                <div>干部工作</div>
+                <a href="#" class="more">更多>></a>
+              </div>
+              <div class="flex-cstyle row" style="padding: 15px 10px;">
+                <img :src="pic" alt="">
+                <div class="shine-detail">
+                  <h3>
+                    "两学一做"学习教育
+                  </h3>
+                  <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
+                  <a href="#">[详情]</a>
+                </div>
+                
+  
+              </div>
+              <ul class="content-list" style="line-height: 30px;" >
+                <li v-for="(item,index) in 4" :key="index"><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+                
+              </ul>
+              
+            </div>
+        </div>
+        
+        <div class=" flex-cstyle row shine-content">
+          <div class="shine-set ">
+            <div class="flex-cstyle row shine-title " style="background-image: url(./images/people.png);">
+              <div>人才工作</div>
+              <a href="#" class="more">更多>></a>
+            </div>
+            <div class="flex-cstyle row" style="padding: 15px 10px;">
+              <img :src="pic" alt="">
+              <div class="shine-detail">
+                <h3>
+                  "两学一做"学习教育
+                </h3>
+                <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
+                <a href="#">[详情]</a>
+              </div>
+              
+  
+            </div>
+            <ul class="content-list" style="line-height: 30px;" >
+              <li v-for="(item,index) in 5" :key="index"><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+                
+            </ul>
+            
+          </div>
+  
+          <div class="shine-set">
+            <div class="flex-cstyle row shine-title" style="background-image: url(./images/mai.png);">
+              <div>领导对话</div>
+              <a href="#" class="more">更多>></a>
+            </div>
+            <div class="flex-cstyle row" style="padding: 15px 10px;">
+              <img :src="pic" alt="">
+              <div class="shine-detail">
+                <h3>
+                  "两学一做"学习教育
+                </h3>
+                <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
+                <a href="#">[详情]</a>
+              </div>
+              
+  
+            </div>
+            <ul class="content-list" style="line-height: 30px;" >
+              <li v-for="(item,index) in 5" :key="index"><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+                
+            </ul>
+            
+          </div>
+      </div>
+      </div>
+      <aside style="width:30%; margin-top: 25px;">
+        <div class="shine-set shine-left" >
+          <div class="flex-cstyle row" style="padding: 15px 10px; background-color: #F5F5F5;">
+            <img :src="pic" alt="">
+            <div class="shine-detail">
+              <h3>
+                北海先锋
+              </h3>
+              <button type="button">立即收听</button>
+            </div>
+            
+  
+          </div>
+          <div style="line-height: 23px; padding: 0px 10px;">
+            #先锋新闻# 专稿 : 近年来 , 北海以"四个推手" 为抓手, 通过推动全覆盖, 规范化, 三帮带, 示范引领等多措并举, 有效促进该区非公企业党建工作由被动为主动的转变, 实现非公党建水平的整体提升.
+          </div>
+          <img :src="pic" alt="" style="width:100%; height: 175px;padding: 0px 10px;">
+        <div class="flex-rstyle " style="height: 35px;color: #969696;line-height: 37px; padding: 0px 10px;">
+            <span>3月25日 18:11 来着网页</span>
+            <div class="say"><img src="./images/say.png" alt="">(12565)</div>
+          </div>
+        </div>
+  
+        <div class="shine-bottom">
+          <div class="flex-cstyle row shine-title" style="background-image: url(./images/video.png); ">
+            <div style="font-weight: 400; font-size: 15px;">党建视频</div>
+            <a href="#" class="more">更多>></a>
+          </div>
+          <div class="mid-pic">
+            <img :src="pic" alt="">
+          </div>
+        </div>
+      </aside>
+      <div class="mid-pic">
+        <img src="./images/2.png" alt="">
+      </div>
+    </section>
+    
+  
+    <section class="clearfix">
+      <div class="flex-cstyle row shine-group">
+        <div>党员教育</div>
+        <div>
+          <span>远程教育</span>|
+          <span>政策法规</span>|
+          <span>党建期刊</span>|
+          <span>党建视频</span>|
+          <span>党性教育基地网上展馆</span>
+        </div>
+        
+      </div>
+      <div class="bottom-line"></div>
+  
+      <div class="section" style="width:67%">
+        <div class=" flex-cstyle row shine-content">
+            <div class="shine-set">
+              <div class="flex-cstyle row shine-title" style="background-image: url(./images/mao.png);">
+                <div>政策法规</div>
+                <a href="#" class="more">更多>></a>
+              </div>
+              <div class="flex-cstyle row" style="padding: 15px 10px;">
+                <div class="shine-detail">
+                  <h3>
+                    "两学一做"学习教育
+                  </h3>
+                  <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
+                  <a href="#">[详情]</a>
+                </div>
+  
+              </div>
+              <ul class="content-list" style="line-height: 30px;" >
+                <li v-for="(item,index) in 5" :key="index"><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+              </ul>
+              
+            </div>
+  
+            <div class="shine-set">
+              <div class="flex-cstyle row shine-title" style="background-image: url(./images/education.png);">
+                <div>远程教育</div>
+                <a href="#" class="more">更多>></a>
+              </div>
+              <div class="flex-cstyle row" style="padding: 15px 10px;">
+                <div class="shine-detail">
+                  <h3>
+                    "两学一做"学习教育
+                  </h3>
+                  <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
+                  <a href="#">[详情]</a>
+                </div>
+                
+              </div>
+              <ul class="content-list" style="line-height: 30px;" >
+                <li v-for="(item,index) in 5" :key="index"><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+                
+              </ul>
+              
+            </div>
+        </div>
+        
+      </div>
+      <aside style="width:32%; margin-top: 25px;">
+        <div style="padding-left: 4%;">
+         
+          <img src="./images/3.png" alt="" style="width:96%; height: 170px;">
+          <img src="./images/6.png" alt="" style="width:96%; margin-top: 15px;">
+        </div>
+      </aside>
+    </section>
+  
+    <section class="clearfix">
+      <div class="flex-cstyle row shine-group">
+        <div>互动服务</div>
+        <div>
+          <span>资料下载</span>|
+          <span>党务问答</span>|
+          <span>部长信箱</span>|
+          <span>12380举报</span>
+        </div>
+      </div>
+      <div class="bottom-line"></div>
+  
+      <div class="section" style="width:67%">
+        <div class=" flex-cstyle row shine-content">
+            <div class="shine-set download">
+              <div class="flex-cstyle row shine-title" style="background-image: url(./images/download.png);background-size: 22px;">
+                <div style="line-height: 28px;">资料下载</div>
+                <a href="#" class="more">更多>></a>
+              </div>
+              <div class="flex-cstyle row" style="padding: 5px 10px;">
+                <div class="shine-detail" style="line-height: 28px;">
+                  <h3>
+                    基层党委换届可以提前或延迟吗 ?
+                  </h3>
+                  <div>召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
+                </div>
+  
+              </div>
+              <ul class="content-list" style="line-height: 30px;" >
+                <li v-for="(item,index) in 4" :key="index"><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+                
+              </ul>
+              
+            </div>
+  
+            <div class="shine-set download">
+              <div class="flex-cstyle row shine-title" style="background-image: url(./images/no.png);background-size: 22px;">
+                <div style="line-height: 28px;">党务问答</div>
+                <a href="#" class="more">更多>></a>
+              </div>
+              <div class="flex-cstyle row" style="padding: 5px 10px;">
+                <div class="flex-cstyle ask">
+                  <img src="./images/do2.png" alt="">
+                  <span>常见业务</span>
+                  <span>知识问答</span>
+                </div>
+                
+                <div class="shine-detail">
+                  <ul class="content-list" style="line-height: 27px; border-top: none;" >
+                    <li v-for="(item,index) in 3" :key="index">对不及格党员进行组织处理 ?</li>
+                    
+                  </ul>
+                </div>
+                
+    
+              </div>
+              <div class="flex-cstyle row" style="padding: 5px 5px;background: #f5f5f5; margin: 5px;">
+                <div class="flex-cstyle ask">
+                  <img src="./images/do.png" alt="">
+                  <span>最新网上</span>
+                  <span>咨询问答</span>
+                </div>
+                
+                <div class="shine-detail">
+                  <ul class="content-list" style="line-height: 27px; border-top: none;" >
+                    <li v-for="(item,index) in 3" :key="index">对不及格党员进行组织处理 ?</li>
+                    
+                  </ul>
+                </div>
+                
+    
+              </div>
+              
+            </div>
+              
+        </div>
+        
+      </div>
+      <aside style="width:32%; margin-top: 25px;">
+        <div style="padding-left: 4%;">
+         
+          <img src="./images/show.png" alt="" style="width:96%; height: 159px;">
+          <img src="./images/e.png" alt="" style="width:96%; margin-top: 15px;">
+        </div>
+      </aside>
+  
+  
+    </section>
+  
+    <section class="clearfix">
+      <div class="flex-cstyle row shine-group">
+        <div>推荐专题</div>
+       
+        <a href="#" class="more">更多>></a>
+       
+      </div>
+      <div class="bottom-line"></div>
+      <div class="flex-rstyle horizontal ">
+        <img src="./images/5.png" alt="">
+        <img src="./images/4.png" alt="">
+      </div>
+  
+      <div class="flex-cstyle row shine-group">
+        <div>先锋导读</div>
+        
+      </div>
+      <div class="bottom-line"></div>
+  
+      <div class="section" style="width:100%">
+        <div class=" flex-cstyle row shine-content">
+            <div class="shine-set2 download">
+              <div class="flex-cstyle row shine-title" style="background-image: url(./images/maz.png);background-size: 22px;">
+                <div>杂志阅读</div>
+              </div>
+              <div class="flex-cstyle row book-list" >
+                <a v-for="(item,index) in 3" :key="index" href="#"><img src="./images/book.png" alt=""></a>
+  
+              </div>
+              <div class="flex-cstyle row book-list" >
+                <a v-for="(item,index) in 3" :key="index" href="#"><img src="./images/book.png" alt=""></a>
+                
+              </div>
+   
+            </div>
+  
+            <div class=" download shine-set3" >
+              <div class="flex-cstyle row shine-title" style="background-image: url(./images/no.png);background-size: 22px;">
+                <div>党建掠影</div>
+                <a href="#" class="more">查看更多>></a>
+              </div>
+              <div class="flex-cstyle row book-list2" >
+                <a href="#" v-for="(item,index) in 3" :key="index">
+                  <img :src="pic" alt="">
+                  <div>践行优良部风争创模范部门</div>
+                </a>
+               
+              </div>
+              <div class="flex-cstyle row book-list2" >
+                <a href="#" v-for="(item,index) in 3" :key="index">
+                  <img :src="pic" alt="">
+                  <div>践行优良部风争创模范部门</div>
+                </a>
+               
+                
+              </div>        
+            </div>
+              
+        </div>
+        
+      </div>
+    </section>
+  
+    <section class="clearfix">
+      <div class="flex-cstyle row links">
+        <div>
+          <span class="link-title">友情链接</span>
+          <span style="color: #969696;font-size: 13px; ">Links</span>
+          </div>
+       
+        <div class="webs">
+          <span class="webs-selected">党建网站</span>
+          <span>综合网站</span>
+          <span>报刊网站</span>
+        </div>
+      </div>
+        <ul class="flex-style row websites">
+          <li><a href="#">共产党员网</a></li>
+          <li><a href="#">中共中央组织部</a></li>
+          <li><a href="#">中国党建网</a></li>
+          <li><a href="#">中国共产党新闻网</a></li>
+          <li><a href="#">党史党建在线</a></li>
+          <li><a href="#">全国远程教育网</a></li>
+          <li><a href="#">北京组工</a></li>
+          <li><a href="#">新浪网</a></li>
+        </ul>
+       
+      
+    </section>
+  </div>
+  
+  <footer >
+    <div>
+      <a href="#">联系我们</a>|
+      <a href="#">网站地图</a>|
+      <a href="#">法律申明</a>|
+      <a href="#">投诉信箱</a>|
+      <a href="#">免责申明</a>
+      
+    </div>
+    <div>中共北海市委组织部主办</div>
+    <div>地址 : 广西市合平路东二巷2号 邮编 : 53600</div>
+    <div>桂公网安备 450502020000014号</div>
+    <img src="./images/bottom.png" alt="">
+  </footer>
+  
+</div>
+
+    
+
+<script>
+ new Vue({
+            el:'#app',
+            data:{
+                message:"123465",
+                pic:'./images/celect.jpg',
+            },
+            computed:{
+                msg(){
+                    console.log("msg==");
+                    return '789456';
+                }
+            },
+           
+            beforeMount(){
+                console.log("挂载前生命周期");
+            },
+            // 初始化页面
+            async created(){
+                
+                await this.getHome()
+                
+            },
+            mounted(){
+                
+            },
+            watch:{
+                'message'(){
+                    console.log("监视器调用");
+                }
+            },
+
+            methods:{
+                conOut(){
+                    console.log("调用输出",this.msg);
+
+                },
+                // 页面跳转
+                goDetailindex(url){
+                  location.href = url
+                },
+
+
+
+                // 获取首页banner、头条
+            async getHome(){
+              
+                const params = { //总的提交信息
+                    type: 1 //混合传过来  业务流id
+                }
+                let that = this;
+                await findById(params).then(res => {
+                    if (res.code == 0) {
+                        //do something
+                        console.log('11111');
+                        console.log(res.code);
+                        // this.banner = res.data.banner;
+                        // this.brandday = res.data.brandday;
+                        // this.goodsNews = res.data.goods_news;
+                        // this.livebanner = res.data.livebanner;
+                    } else {
+                        //do something
+                    }
+                })
+               
+            },
+
+                
+            },
+        })
+
+</script> 
+</body>
+</html>
