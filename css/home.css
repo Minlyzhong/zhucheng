@@ -92,6 +92,7 @@ nav{
     float: right;
     line-height: 24px;
     padding: 0px 10px;
+    /* max-width: 235px; */
 }
 .title-right a{
     padding: 5px;
@@ -138,19 +139,24 @@ nav{
 .new-content{
     margin-top: 20px;
     padding: 10px;
-    
+    width:100%;
+    height:550px;
 }
 
 .hot-img{
     /* margin: 10px; */
-    height: 315px;
+    /* height: 315px; */
     background: #ddd;
     margin-bottom: 15px;
+    width: 100%;
+    /* height: 425px; */
+
 }
 
 .hot-img img{
     width: 100%;
-    height: 100%;
+    max-height: 400px;
+    min-height: 350px;
     padding: 10px;
 }
 
@@ -215,17 +221,18 @@ nav{
 }
 .left-choice span{
     height: 30px;
-    background: #032197;
-    color: #fff;
+    cursor: pointer;
     padding: 7px 16px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     margin-top: 4px;
-}
-
-.left-choice span:nth-child(2){
     background-color: #fff;
     color: #3c3c3c;
+}
+
+.left-active {
+    background-color: #032197!important;
+    color: #fff!important;
 }
 
 .left-bottom{
@@ -251,9 +258,9 @@ nav{
 }
 
 .left-middle div:nth-child(2){
-    font-size: 13px;
+    font-size: 13px!important;
     padding: 5px;
-    line-height: 20px;
+    line-height: 25px;
     overflow: hidden;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -261,18 +268,19 @@ nav{
     box-orient: vertical;
     display: -webkit-box;
     display: box;
+    height: 80px;
 
 }
 
 .content-list{
     border-top: 1px solid #ddd;
-    line-height: 25px;
+    line-height: 33px;
     padding: 10px;
     /* margin-top: 5px; */
     font-size: 13px;
 }
 .content-list li{
-    min-width: 50px;
+    /* min-width: 50px; */
     white-space:nowrap;
     text-overflow:ellipsis;
     overflow: hidden;
@@ -304,13 +312,14 @@ nav{
     background-position: 2px 0px;
     background-size: contain;
     line-height: 62px;
+    width:100%;
 }
 .shine-group>div{
     font-size: 18px;
 }
 
-.shine-group span{
-    font-size: 12px;
+.shine-group span, .shine-group a{
+    font-size: 13px;
     padding: 0px 17px;
 }
 
@@ -368,6 +377,7 @@ nav{
     display: -webkit-box;
     display: box;
     font-size: 13px;
+    height: 45px;
 }
 
 .shine-detail h2{
@@ -443,6 +453,7 @@ nav{
     /* height: 175px; */
     display: block;
     margin: 7px auto;
+    height: 250px;
 }
 
 .download{
@@ -462,7 +473,7 @@ nav{
     color: #D11518;
     font-size: 12px;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 45px;
 }
 
 
@@ -484,18 +495,23 @@ nav{
 }
 
 .book-list{
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    justify-content: flex-start;
+    height: 45%;
 
 }
 
 .book-list a{
     width: 26%;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-left: 25px;
+    height: 95%;
 
 }
 
 .book-list img{
     width: 100%;
+    height: 100%;
     /* height: 148px;
     margin-top: 15px; */
 }
@@ -513,17 +529,21 @@ nav{
 }
 
 .book-list2{
-    justify-content: space-around;
+    justify-content: flex-start;
+    height: 50%;
 
 }
 
 .book-list2 a{
     width: 31%;
+    height: 90%;
     margin-top: 10px;
+    margin-left: 14px;
 
 }
 .book-list2 img{
     width: 100%;
+    height: 100%;
     /* height: 148px;
     width: 180px;
     margin-top: 15px; */
@@ -592,3 +612,4 @@ footer a{
 footer img{
     width:70px;
 }
+

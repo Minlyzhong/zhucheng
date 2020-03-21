@@ -1,40 +1,28 @@
+var host='http://120.24.51.37:9010/admin' //测试版
+// var host='http://120.24.51.37:9010/admin/' //测试版
 
-/* 服务器地址 */
-var base_url = 'http://180.142.130.246:9010/'; //测试服务器
-//var base_url = 'http://**********'; //正式服务器
+var filePath='http://120.24.51.37/group1/' //测试版
+// var filePath='http://120.24.51.37/group1/' //测试版
+ 
+//请求方法
+function ajaxMethod(str,param,obj) {
+    var link = urlLink(str);
+    var result = {};
+    $.ajax({
+        type: link.method,
+        url:host + link.url+param,
+        data:obj,
+        dataType:'json',
+        async:false,
+        cache:true,
+        success:function (data) {
+            result = data;
+        },
+        error: function() {
+          console.log("Error");
+        }
+  
+    });
+    return result;
 
-
-/******************* 配置的拦截器 封装的axios ***********************/
-// 创建axios实例
-const service = axios.create({
-  baseURL: base_url, // api的base_url
-  timeout: 120000 // 请求超时时间
-})
-
-// request拦截器
-service.interceptors.request.use(config => {
-  //config.headers['token'] = 66;
-  config.headers['Content-Type'] = "application/json";
-  // config.headers['id'] = window.sessionStorage.getItem("id");
-  // console.log(config.headers)
-  return config
-}, error => {
-  // Do something with request error
-  // console.log(error) // for debug
-  Promise.reject(error)
-})
-
-// respone拦截器
-service.interceptors.response.use(
-  response => {
-      const res = response.data
-
-      return res
-  },
-  error => {
-      console.log(error) // for debug
-      Toast('服务器异常, 请稍后重试')
-
-      return Promise.reject(error)
-  }
-)
+}

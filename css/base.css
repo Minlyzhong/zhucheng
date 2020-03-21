@@ -218,7 +218,7 @@ div.ellipsis {
     /* height:2.8em; */
     overflow:hidden;
 }
-.save p:after {
+/* .save p:after {
 	content: "...";
     position: absolute;
     bottom: 0;
@@ -227,6 +227,5 @@ div.ellipsis {
 	display: block;   
 	width: 50px;
     text-align: start;
-    /* padding-left:0.2em; */
-    /* padding-left:0.2em; */
-}
+    
+} */
