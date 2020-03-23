@@ -6,10 +6,11 @@
   <title>珠城先锋网</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/news.css">
-  <link rel="stylesheet" href="css/app.min.css">
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="css/app.min.css">
   <script type="text/javascript" src="js/app.min.js"></script>
   
+  <script type="text/javascript" src="js/jq-paginator.js"></script>
   <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/api.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
@@ -17,7 +18,7 @@
 <!-- Internet Explorer 已限制此网页运行脚本或ActiveX控件的解决方法 -->
 <!-- saved from url=(0014)about:internet -->
 <body id="some-element">
-  <div id="app" >
+  <div id="app">
     <nav class="flex-style row">
       <div class="flex-style row">
         <span>欢迎光临珠城先锋网, 今天是2016年04月20日</span>
@@ -41,42 +42,29 @@
       <section class="clearfix">
         
         <div class="flex-cstyle row shine-group">
-          <div id="topName"></div>
+          <div id="topName">先锋导读</div>
           <div style="width: 90%; text-align: center;" id="topList">
             
           </div>
           
         </div>
         <div class="bottom-line"></div>
-        <div class="sec-top">
-          <span>首页</span>>
-          <span>阳光组工</span>>
-          <span>党建工作</span>
+        <div class="sec-top" id="step">
+          <a href="./index.html" target="_blank">首页</a>>
+          <a href="#" target="_blank">先锋导读</a>
+          
         </div>
         <div class="section" style="width:67%">
           <div class=" flex-cstyle row shine-content
         ">
               <div class="shine-set" >
                 <div class="flex-cstyle row shine-title" id="setNewList">
-                  <div id="topTitle"></div>
-                  <!-- <span class="more">更多>></span> -->
+                  <div id="topTitle">党建掠影</div>
                 </div>
-                
-                <!-- <div class="main-new" >
-                  <a href=""><h3>济南市抗疫一线培养和发展党员纪实</h3></a>
-                  
-                  <div class="flex-cstyle row main-content" >
-                    <img v-show="see" class="max" src="./images/celect.jpg" alt="">
-                    <div class="shine-detail save">
-                      <a href="">
-                        <p style="text-indent:2em; color: #3c3c3c;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</p>
-                      <a href="#">[详情]</a>
-                      </a>
-                      
-                    </div>
-                  </div>
-                </div> -->
-    
+                <div style="width:100%;height:100%;" id="setNewListDetail">
+
+                </div>
+
                      
               </div>
     
@@ -121,7 +109,10 @@
         
       </section>
       
-    
+      <div class="demo customBootstrap">
+        <!-- <p>当前第 <span id="demo2-text"></span> 页</p> -->
+        <ul id="demo2" class="pagination flex-style"></ul>
+      </div>
     
       <section class="clearfix">
         <div class="flex-cstyle row links">
@@ -178,107 +169,81 @@
         var r = window.location.search.substr(1).match(reg);  //匹配目标参数   
         if (r != null) return unescape(r[2]); return null; //返回参数值  
    } 
+  //  type为1是党建视频
+   var type = getUrlParam('type') || 0;
 
-    var uId=getUrlParam("id");
-    var pId=getUrlParam("pId");
-      console.log(uId)
-
-    //获取顶部栏 
-    getTopList();
-    // 获取子栏目内容
-    if(uId != 0){
+   var totalPage = 1;
+console.log(type)
+   if(type !== 0){
+    getVideoList();
+    $('#topTitle').html('党建视频');
+   }else{
+      //  获取党建掠影
       getSetList();
-    }else{
-      // 获取最新下载
-      getNewDownload();
-    }
-    
-  //获取顶部栏 
-    function getTopList(){
-      var result=ajaxMethod('topSet',pId);
-      console.log(result)
-    
-        if (result.code == 0 && result.data != null) {
-            //do something
-            var data = result.data[0];
-            console.log(data)
-          //  $('#topName').html(data.catalogName);
-           document.getElementById("topName").innerHTML = data.catalogName;
-           var set='';
-           if(data.children.length>0){
-            
-               data.children.forEach(function(value, index ){
-                 console.log(value)
-                 if(value.id == uId){
-                  // $('#topTitle').html(value.catalogName);
-                  document.getElementById("topTitle").innerHTML = value.catalogName;
-                 }
-                 if(index == 0){
-                  var srt='<a href="./download.html?id='+value.id+'&pId='+pId+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
-                 }else{
-                  var srt='|<a href="./download.html?id='+value.id+'&pId='+pId+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
-                 }
-                 
-                 set += srt
- 
-                 
-               })
-               console.log(set)
-              //  $('#topList').html(set);
-               
-                
-           }else{
-            document.getElementById("topTitle").innerHTML = data.catalogName;
-           }
-           document.getElementById("topList").innerHTML = set;
-           
-               
-            
-        } else {
-            //do something
-        }
-    }
+      $('#topTitle').html('党建掠影');
 
-    function getSetList(){
-      
-      let that = this;
+   }
+  
+   //  初始化分页
+   $("#demo2").jqPaginator({
+        totalPages: totalPage,
+        visiblePages: 10,
+        currentPage: 1,
+        first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
+        prev: '<li class="prev"><a href="javascript:void(0);">上一页<\/a><\/li>',
+        next: '<li class="next"><a href="javascript:void(0);">下一页<\/a><\/li>',
+        last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
+        page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
+        onPageChange: function(n) {
+          // $("#demo2-text").html(n);
+            $('html,body').animate({scrollTop:0},'slow');
+
+            if(type !== 0){
+              // 获取党建视频
+              getVideoList(n);
+            }else{
+                //  获取党建掠影
+                getSetList(n);
+            }
+        }
+      })
+
+  
+
+   function getSetList(page){
+
+    var pageNo = page || 1;
       var data = {
-        catalogId:uId
+        current:pageNo,
+        size:20
     }
-    var result=ajaxMethod('newList','',data);
+    var result=ajaxMethod('filmFestival','',data);
     console.log(result)
     
         if (result.code == 0 && result.data != null) {
             //do something
-            
+            if(result.data.size > result.data.total){
+            totalPage = 1;
+          }else{
+            totalPage = Math.ceil(result.data.total/result.data.size);
+            console.log(totalPage);
+          }    
           var list = result.data.records;
           var set='';
+          $('#setNewListDetail').html(set); 
           list.forEach(function(value, index ){
                  console.log(value)
-
-                 var first = value.content.indexOf('<p');
-                var last = value.content.indexOf('</p>') + 4;
-                var cont =value.content.slice(first, last);
-                console.log(cont)
-                
-                 if(value.titlePic){
-                  var pic = filePath + value.titlePic;
+                 var picList = value.pics.split(',');
+                  var pic = filePath + picList[0];
                   var srt='<div class="main-new" >'+
-                  '<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'"><h3>'+value.title+'</h3></a>'+
-                  '<div class="flex-cstyle row main-content" >'+
-                    '<img  class="max" src="'+pic+'" alt="">'+
-                    '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
-                 }else{
-                  var srt='<div class="main-new" >'+
-                  '<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'"><h3>'+value.title+'</h3></a>'+
-                  '<div class="flex-cstyle row main-content" >'+
-                    '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
-                 }
+                  '<a target="_blank" href="./bookList.html?id='+value.id+'"><h3>'+value.object+'</h3></a>'+
+                  '<img  class="max" src="'+pic+'" alt=""></div>'
+                  
+                 
                  set += srt
- 
                  
                })
-               $('#setNewList').after(set);   
+               $('#setNewListDetail').html(set);   
               
             
         } else {
@@ -286,11 +251,49 @@
         }
     }
 
-    // 获取最新下载
-    function getNewDownload(){
-
+    // 获取党建视频
+    function getVideoList(page){
+      var pageNo = page || 1;
+      let that = this;
+      var data = {
+        current:pageNo,
+        size:20
     }
-
+    var result=ajaxMethod('partyVideo','',data);
+    console.log(result)
+    
+        if (result.code == 0 && result.data != null) {
+            //do something
+            if(result.data.size > result.data.total){
+            totalPage = 1;
+          }else{
+            totalPage = Math.ceil(result.data.total/result.data.size);
+            console.log(totalPage);
+          }    
+          var list = result.data.records;
+          var set='';
+          $('#setNewListDetail').html(set); 
+          list.forEach(function(value, index ){
+                 console.log(value)
+                 
+                  var url = './video.html?id='+value.id;
+                  var srt='<div class="main-new" >'+
+                  '<a target="_blank" href="'+url+'"><h3>'+value.title+'</h3></a>'+
+                  '<div class="flex-cstyle row main-content" >'+
+                    
+                    '<div class="shine-detail save">'+value.createdDate+'  </div></div></div>';
+                  
+                 
+                 set += srt
+                 
+               })
+               $('#setNewListDetail').html(set);   
+              
+            
+        } else {
+            //do something
+        }
+    }
     
  })
 

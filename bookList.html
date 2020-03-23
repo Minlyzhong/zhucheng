@@ -7,13 +7,17 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/news.css">
 
+  <link rel="stylesheet" href="css/app.min.css">
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/app.min.js"></script>
+  
   <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/api.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
 </head>
 <!-- Internet Explorer 已限制此网页运行脚本或ActiveX控件的解决方法 -->
 <!-- saved from url=(0014)about:internet -->
-<body>
+<body id="some-element">
   <div id="app">
     <nav class="flex-style row">
       <div class="flex-style row">
@@ -48,15 +52,14 @@
         <div class="bottom-line"></div>
         <div class="sec-top">
           <a href="./index.html" target="_blank">首页</a>>
-          <a href="#" target="_blank" id="sedStep"></a>>
           <span>内容</span>
         </div>
         
         
         <div class="news-title">
           <h1 id="detailTitle"></h1>								    
-          <span id="time">2020年03月04日 19:12</span>
-          <span style="margin-left:15px">来源:</span>
+          <span id="time"></span>
+          <!-- <span style="margin-left:15px">来源:</span>
           <span><a    href="#"   target="_blank" id="source">机构职能</a></span>
           <div style="float:right">
             <span>字体:</span>
@@ -64,13 +67,16 @@
             <span class="" id="middle">[中]</span>
             <span class="" id="small">[小]</span>
            
-          </div>
+          </div> -->
         </div>
-        
+        <!-- <div id="picContent">
+
+        </div> -->
         <div class="news clearfix" id="newDetail">
           
                 
         </div>
+       
           
         
       </section>
@@ -133,83 +139,55 @@ $(function(){
         if (r != null) return unescape(r[2]); return null; //返回参数值  
    }
 
-  var uId=getUrlParam("id");
-  var pId=getUrlParam("pId");
+  var bookId=getUrlParam("id");
+  var type=getUrlParam("type") || 0;
 
-  //获取顶部栏 
-  getTopList();
-  // 获取新闻详情
+  console.log(type)
+  if(type != 1){
+  // 获取影展详情
   getNewsDetail();
+  document.getElementById("topName").innerHTML = '党建掠影';
+  
+  }else{
+
+    document.getElementById("topName").innerHTML = '党务回答';
+  // 获取党务问答
+  getNewsQA();
+
+  }
+  
 
 
 
 
-  function getTopList(){
-      var result=ajaxMethod('topSet',pId);
-      console.log(result)
-    
-        if (result.code == 0 && result.data != null) {
-            //do something
-            var data = result.data[0];
-            console.log(data)
-          //  $('#topName').html(data.catalogName);
-           document.getElementById("topName").innerHTML = data.catalogName;
-           document.getElementById("sedStep").innerHTML = data.catalogName;
-           $('#sedStep').attr('href','./news.html?id='+data.id+'&pId='+data.parentId)
-            console.log(data.children);
-                  var set='';
-               data.children.forEach(function(value, index ){
-                 console.log(value)
-                 if(value.id == uId){
-                  // $('#topTitle').html(value.catalogName);
-                  
-                  document.getElementById("topTitle").innerHTML = value.catalogName;
-
-                 }
-                 if(index == 0){
-                  var srt='<a href="./news.html?id='+value.id+'+&pId='+pId+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
-                 }else{
-                  var srt='|<a href="./news.html?id='+value.id+'&pId='+pId+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
-                 
-                 }
-                 set += srt;
-                 
-               })
-               console.log(set)
-              //  $('#topList').html(set);
-               
-              document.getElementById("topList").innerHTML = set;
-            
-        } else {
-            //do something
-        }
-    }
-  // 获取新闻详情
+  
+  
+    // 获取影展详情
 function getNewsDetail(){
               
           
         let that = this;
     
-        var result=ajaxMethod('newDetail',uId);
+        var result=ajaxMethod('filmFestivalDetail',bookId);
         console.log(result)
         
             if (result.code == 0 && result.data != null) {
                 //do something
-                var data = result.data
+                var data = result.data;
+                var picList = data.pics.split(',');
               // $('#detailTitle').html(data.title);
               // $('#newDetail').html(data.content);
 
-              document.getElementById("time").innerHTML = data.creatTs;
-              document.getElementById("source").innerHTML = data.newsfrom;
-              document.getElementById("detailTitle").innerHTML = data.title;
-              document.getElementById("newDetail").innerHTML = data.content;
-
-              console.log('判断')
-
-              console.log($('#newDetail p img').parents());
-              // $('#newDetail p img').parents('p').addClass('tac');
-                  
-                  
+              document.getElementById("detailTitle").innerHTML = data.object;
+              // document.getElementById("picContent").innerHTML = data.object;
+              
+              var str='';
+              for(var i=0;i<picList.length;i++){
+                
+                str+='<div class="pic-cont"><img src="'+filePath+picList[i]+'" alt="" ></div>';
+              }
+              document.getElementById("newDetail").innerHTML = str;
+      
                 
             } else {
                 //do something
@@ -217,6 +195,33 @@ function getNewsDetail(){
         
         
     }
+
+        // 获取问答详情
+function getNewsQA(){
+              
+          
+              let that = this;
+          
+              var result=ajaxMethod('questionDetail',bookId);
+              console.log(result)
+              
+                  if (result.code == 0 && result.data != null) {
+                      //do something
+                      var data = result.data
+                    // $('#detailTitle').html(data.title);
+                    // $('#newDetail').html(data.content);
+      
+                    document.getElementById("detailTitle").innerHTML = data.questions;
+                    document.getElementById("newDetail").innerHTML = data.answers;
+                    document.getElementById("time").innerHTML = data.createdDate;
+            
+                      
+                  } else {
+                      //do something
+                  }
+              
+              
+          }
 
     $('#big').click(function(){
       console.log('111')

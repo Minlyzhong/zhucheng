@@ -58,6 +58,18 @@ function urlLink(str){
             method:'get',
             url:'/site/filmFestival/'
         },
+
+        //分页获取最新党建视频信息
+        partyVideo:{
+            method:'get',
+            url:'/site/partyVideo/list'
+        },
+
+        //根据ID获取视频内容的详情
+        partyVideoDetail:{
+            method:'get',
+            url:'/site/partyVideo/'
+        },
      
     };
     return url[str];

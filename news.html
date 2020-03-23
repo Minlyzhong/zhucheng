@@ -6,14 +6,23 @@
   <title>珠城先锋网</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/news.css">
+  <style>
+     
 
+
+  </style>
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="css/app.min.css">
+  <script type="text/javascript" src="js/app.min.js"></script>
+  
+  <script type="text/javascript" src="js/jq-paginator.js"></script>
   <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/api.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
 </head>
 <!-- Internet Explorer 已限制此网页运行脚本或ActiveX控件的解决方法 -->
 <!-- saved from url=(0014)about:internet -->
-<body>
+<body id="some-element">
   <div id="app">
     <nav class="flex-style row">
       <div class="flex-style row">
@@ -58,6 +67,9 @@
                   <div id="topTitle"></div>
                   <!-- <span class="more">更多>></span> -->
                 </div>
+                <div style="width: 100%; height: 100%;" id="setNewListHold">
+                  暂无相关内容
+                </div>
                 
                 <!-- <div class="main-new" >
                   <a href=""><h3>济南市抗疫一线培养和发展党员纪实</h3></a>
@@ -77,7 +89,7 @@
                      
               </div>
     
-           
+              
           </div>
           
         
@@ -117,7 +129,10 @@
         </aside>
         
       </section>
-      
+      <div class="demo customBootstrap">
+        <!-- <p>当前第 <span id="demo2-text"></span> 页</p> -->
+        <ul id="demo2" class="pagination flex-style"></ul>
+      </div>
     
     
       <section class="clearfix">
@@ -169,6 +184,7 @@
 
 <script>
  $(function(){
+
       //获取url中的参数  
       function getUrlParam(name) {   
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
@@ -176,23 +192,70 @@
         if (r != null) return unescape(r[2]); return null; //返回参数值  
    } 
 
+   var totalPage=1;
+  
+ 
+
+
+      // onPageChange: function (num) {
+      // // alert('当前第' + num + '页');
+      // //此处可以ajax加载下一页数据
+      // $.get('ajaxpage',{num:num},function(data){
+      // $("#tab").html('<tr><th>书籍Id</th><th>书名</th><th>价格</th><th>操作</th></tr>');
+      // for(var i=0;i<data.length;i++){
+      
+      // $("#tab").append('<tr><td>'+data[i].id+'</td><Td>'+data[i].bookName+'</Td><td>'+data[i].bookPrice+'</td>'+
+      // '<td><a href="/test_maven/updateBook?id=${book.id }">修改</a> <a href="#">删除</a></td> </tr>');
+      // }
+      // },'json')
+      // }
+
+
     var uId=getUrlParam("id");
     var pId=getUrlParam("pId");
+    var type=getUrlParam("type") || '';
+    // type=0是最新下载 1是党务问答
       console.log(uId)
 
     //获取顶部栏 
     getTopList();
     // 获取子栏目内容
     if(uId != 0){
-      getSetList();
+      getSetList(1);
     }else{
       // 获取最新下载
-      getNewDownload();
+      getDownload(1);
     }
+
+//  初始化分页
+    $("#demo2").jqPaginator({
+        totalPages: totalPage,
+        visiblePages: 10,
+        currentPage: 1,
+        first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
+        prev: '<li class="prev"><a href="javascript:void(0);">上一页<\/a><\/li>',
+        next: '<li class="next"><a href="javascript:void(0);">下一页<\/a><\/li>',
+        last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
+        page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
+        onPageChange: function(n) {
+          // $("#demo2-text").html(n);
+          // if(n !=1){
+            $('html,body').animate({scrollTop:0},'slow');
+            if(uId != 0){
+              getSetList(n);
+            }else{
+              // 获取最新下载
+              getDownload(n);
+            }
+          // }
+        }
+      })
     
   //获取顶部栏 
     function getTopList(){
-      var result=ajaxMethod('topSet',pId);
+
+      if(uId != 0){
+        var result=ajaxMethod('topSet',pId);
       console.log(result)
     
         if (result.code == 0 && result.data != null) {
@@ -236,53 +299,74 @@
         } else {
             //do something
         }
+      }else{
+        
+        if(type != 0){
+          document.getElementById("topName").innerHTML = '党务回答';
+           document.getElementById("sedStep").innerHTML = '党务回答';
+           document.getElementById("topTitle").innerHTML = '党务回答';
+        }else{
+          document.getElementById("topName").innerHTML = '最新下载';
+           document.getElementById("sedStep").innerHTML = '最新下载';
+           document.getElementById("topTitle").innerHTML = '最新下载';
+          
+        }
+        
+      }
+     
     }
 
-    function getSetList(){
+    function getSetList(page){
       
       let that = this;
       var data = {
-        catalogId:uId
+        catalogId:uId,
+        current:page,
+        size:20
     }
     var result=ajaxMethod('newList','',data);
     console.log(result)
     
         if (result.code == 0 && result.data != null) {
             //do something
-            
+          if(result.data.size > result.data.total){
+            totalPage = 1;
+          }else{
+            totalPage = Math.ceil(result.data.total/result.data.size);
+            console.log(totalPage);
+          }  
           var list = result.data.records;
           var set='';
+          
+          $('#setNewListHold').html(set);
           list.forEach(function(value, index ){
-                 console.log(value)
+                //  console.log(value)
 
-                 if(value.content !=null){
-                  var first = value.content.indexOf('<p');
-                  var last = value.content.indexOf('</p>') + 4;
-                  var cont =value.content.slice(first, last);
-                  console.log(cont)
+                 
+                  // var first = value.content.indexOf('<p');
+                  // var last = value.content.indexOf('</p>') + 4;
+                  // var cont =value.content.slice(first, last);
+                  // console.log(cont)
                   if(value.titlePic){
                   var pic = filePath + value.titlePic;
                   var srt='<div class="main-new" >'+
                   '<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'"><h3>'+value.title+'</h3></a>'+
                   '<div class="flex-cstyle row main-content" >'+
-                    '<img  class="max" src="'+pic+'" alt="">'+
-                    '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
+                    
+                    '<div class="shine-detail save">'+value.creatTs+'  </div></div></div>'; 
+                    // '<img  class="max" src="'+pic+'" alt="">'+
+                    // '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
                  }else{
                   var srt='<div class="main-new" >'+
                   '<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'"><h3>'+value.title+'</h3></a>'+
                   '<div class="flex-cstyle row main-content" >'+
-                    '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
+                    '<div class="shine-detail save">'+value.creatTs+'  </div></div></div>';
+                    // '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
                  }
                  set += srt
-
-                 }
-                
-                
-                 
- 
-                 
+         
                })
-               $('#setNewList').after(set);   
+               $('#setNewListHold').html(set);   
               
             
         } else {
@@ -290,10 +374,85 @@
         }
     }
 
-    // 获取最新下载
-    function getNewDownload(){
+   // 获取最新下载
+function getDownload(page){
+    
 
+    var that = this;
+    var data = {
+        catalogId:uId,
+        current:page,
+        size:20
     }
+    if(type !=0){
+      // QA问答
+      var url = 'question';
+      var result=ajaxMethod(url,'',data);
+    // console.log(result)
+      if (result.code == 0 && result.data != null) {
+            //do something
+            var resultList = result.data.records;
+            var set='';
+            $('#setNewListHold').html(set);   
+            resultList.forEach(function(value, index ){
+                // console.log(value)
+                var url = filePath + value.filePath;
+                var srt='<div class="main-new" >'+
+                  '<a target="_blank" href="'+url+'"><h3>'+value.questions+'</h3></a>'+
+                  '<div class="flex-cstyle row main-content" >'+
+                    
+                    '<div class="shine-detail save">'+value.createdDate+'  </div></div></div>';
+               
+                set += srt
+
+                
+              })
+           
+              $('#setNewListHold').html(set);   
+             
+             
+            
+        } else {
+            //do something
+        }
+    }else{
+      // 最新下载
+      var url ='downloadList';
+      var result=ajaxMethod(url,'',data);
+    // console.log(result)
+      if (result.code == 0 && result.data != null) {
+            //do something
+            var resultList = result.data.records;
+            var set='';
+            $('#setNewListHold').html(set);   
+            resultList.forEach(function(value, index ){
+                // console.log(value)
+                var url = filePath + value.filePath;
+                var srt='<div class="main-new" >'+
+                  '<a target="_blank" href="'+url+'"><h3>'+value.title+'</h3></a>'+
+                  '<div class="flex-cstyle row main-content" >'+
+                    
+                    '<div class="shine-detail save">'+value.createdDate+'  </div></div></div>';
+               
+                set += srt
+
+                
+              })
+           
+              $('#setNewListHold').html(set);   
+             
+             
+            
+        } else {
+            //do something
+        }
+    }
+    
+    
+       
+    
+   
+}
 
     
  })

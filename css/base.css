@@ -53,7 +53,7 @@ body {
 	/* font: 12px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif; */
 	font-size:14px;
 	color: #666;
-	background-image: url(../images/name.jpg);
+	background-image: url();
 	/* background-position: 10px; */
 	background-repeat: no-repeat;
 	background-size: 100% auto;
@@ -229,3 +229,67 @@ div.ellipsis {
     text-align: start;
     
 } */
+
+/* 分页器样式 */
+.demo {
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: #f7f7f7;
+  }
+  .customBootstrap .pagination > li > a {
+	margin-right: 5px;
+	border-radius: 2px;
+	background: #fff;
+	color: #333;
+	border-color: #ccc;
+	padding: 6px 15px;
+  }
+  .customBootstrap .pagination > li > a:hover,
+  .customBootstrap .pagination > li > a:focus {
+	color: #fff;
+	background: #fb9400;
+	border-color: #fb9400;
+  }
+  .customBootstrap .pagination > .active > a,
+  .customBootstrap .pagination > .active > a:hover,
+  .customBootstrap .pagination > .active > a:focus {
+	color: #fff;
+	background: #fb9400;
+	border-color: #fb9400;
+  }
+  .customBootstrap .pagination > .disabled > a,
+  .customBootstrap .pagination > .disabled > a:hover,
+  .customBootstrap .pagination > .disabled > a:focus {
+	color: #999;
+	background: #fff;
+	border-color: #ddd;
+	cursor: not-allowed;
+  }
+
+  /* 正在加载中样式 */
+
+  .busy-load-container{
+	align-items: flex-start!important;
+    padding-top: 154px!important;
+  }
+
+
+  /* 弹框样式 */
+
+  .showMessage {
+	padding: 15px 15px;
+	border-radius: 15px;
+	position: fixed;
+	top: 45%;
+	left: 45%;
+	color: #ffffff;
+}
+.showMessageSuccess {
+	background-color: rgba(0,183,238,0.8);
+	/* background-color: #00B7EE; */
+}
+.showMessageError {
+	background-color: rgba(243, 29, 29, 0.8);
+	/* trans */
+}
+

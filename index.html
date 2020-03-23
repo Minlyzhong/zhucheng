@@ -23,49 +23,70 @@
   <title>珠城先锋网</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/home.css">
+  
+  <style>
+    .shine-detail h3{
+      height: 50px;
+      font-size: 15px;
+      line-height: 50px;
+      overflow: hidden;
+    }
+  </style>
+  <script>
+
+  
+  </script>
+  
   <script type="text/javascript" src="js/jquery.min.js"></script>
- 
+  <!-- <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+  <link rel="stylesheet" href="css/app.min.css">
+  
+  <script type="text/javascript" src="js/app.min.js"></script>
   <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/api.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
 
 </head>
 <!-- Internet Explorer 已限制此网页运行脚本或ActiveX控件的解决方法 -->
 <!-- saved from url=(0014)about:internet -->
-<body>
-<div id="app" style="width: 100%; height: 100%;">
+<body id="some-element">
+<div id="app " style="width: 100%; height: 100%;">
   <nav class="flex-style row">
     <div class="flex-style row">
       <span>欢迎光临珠城先锋网, 今天是2016年04月20日</span>
-      <div class="search">
+      <div class="search" id="search">
         <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
         <button><i>搜索</i></button>
     </div>
     </div>
   
     <div>
-      <a href="#" id="text" >设为首页 |</a>
-      <a href="#">加入收藏 |</a>
-      <a href="#">意见反馈 |</a>
-      <a href="#">手机APP下载</a>
+      <a href="javascript:setHome(this,window.location);" id="text" >设为首页 |</a>
+      <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"  href="javascript:void(0);">加入收藏 </a>
+      <!-- <a href="#">意见反馈 |</a>
+      <a href="#">手机APP下载</a> -->
       
     </div>
     
   </nav>
   
-  <div class="content clearfix">
+  <div class="content clearfix" id="">
+    
     <section class="content-top row flex-cstyle" id="contentTop">
       
   
    
     </section>
   
+   
+
   
     <section class="hot-new">
-      <a href="" class="flex-style colum hot-content" target="_blank">
-        <div>我市在全区率先圆满完成乡镇党季换届工作</div>
+      <a href="#" class="flex-style colum hot-content" target="_blank" id="hotLink">
+        <div id="hotTitle">我市在全区率先圆满完成乡镇党季换届工作</div>
         <div class="flex-style row">
-          <span v-for="index in 5" :key="index">《党章》</span>
+          <span id="hotTime">《党章》</span>
           <!-- <span>《党政领导干部先拔任用工作条例》</span>
           <span>《中国共产党员纪律处分条例》</span>
           <span>《中国共产党党组工作条例》</span> -->
@@ -108,9 +129,9 @@
             </div>
             <div class="left-middle" id="groupContent">
               <a href="" target="_blank"></a>
-              <div style="text-indent:2em;"></div>
+              <div ></div>
               <ul class="content-list" id="groupList" style="line-height: 31px;">
-                <!-- <li ><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li> -->
+                <!-- <li ><a href="#"></a></li> -->
               </ul>
     
             </div>
@@ -160,11 +181,14 @@
               <div class="flex-cstyle row" style="padding: 15px 10px;">
                 <img :src="pic" alt="">
                 <div class="shine-detail" id="fNews-0first">
-                  <h3>
-                    "两学一做"学习教育
-                  </h3>
-                  <div style="text-indent:2em;"></div>
-                  <a href="#" target="_blank">[详情]</a>
+                  <a href="#" target="_blank" style="color:#494848;">
+                    <h3>
+                    
+                    </h3>
+                  </a>
+                  
+                  <div ></div>
+                  <a href="#" target="_blank"></a>
                 </div>
                 
   
@@ -184,17 +208,19 @@
               <div class="flex-cstyle row" style="padding: 15px 10px;">
                 <img :src="pic" alt="">
                 <div class="shine-detail" id="fNews-1first">
-                  <h3>
-                    "两学一做"学习教育
-                  </h3>
-                  <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
-                  <a href="#" target="_blank" >[详情]</a>
+                  <a href="#" target="_blank" style="color:#494848;">
+                    <h3>
+                    
+                    </h3>
+                  </a>
+                  <div ></div>
+                  <a href="#" target="_blank" ></a>
                 </div>
                 
   
               </div>
               <ul class="content-list" style="line-height: 30px;" id="fNewsList-1first">
-                <li ><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+                <li ><a href="#"></a></li>
                 
               </ul>
               
@@ -210,17 +236,19 @@
             <div class="flex-cstyle row" style="padding: 15px 10px;">
               <img :src="pic" alt="">
               <div class="shine-detail" id="fNews-2first">
-                <h3>
-                  "两学一做"学习教育
-                </h3>
-                <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
-                <a href="#" target="_blank">[详情]</a>
+                <a href="#" target="_blank" style="color:#494848;">
+                  <h3>
+                  
+                  </h3>
+                </a>
+                <div ></div>
+                <a href="#" target="_blank"></a>
               </div>
               
   
             </div>
             <ul class="content-list" style="line-height: 30px;" id="fNewsList-2first">
-              <li ><a href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+              <li ><a href="#"></a></li>
                 
             </ul>
             
@@ -234,17 +262,19 @@
             <div class="flex-cstyle row" style="padding: 15px 10px;">
               <img :src="pic" alt="">
               <div class="shine-detail" id="fNews-3first">
-                <h3>
-                  "两学一做"学习教育
-                </h3>
-                <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
-                <a href="#" target="_blank">[详情]</a>
+                <a href="#" target="_blank" style="color:#494848;">
+                  <h3>
+                  
+                  </h3>
+                </a>
+                <div ></div>
+                <a href="#" target="_blank"></a>
               </div>
               
   
             </div>
             <ul class="content-list" style="line-height: 30px;" id="fNewsList-3first">
-              <li ><a href="#" target="_blank">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+              
                 
             </ul>
             
@@ -267,7 +297,7 @@
           <div style="line-height: 23px; padding: 0px 10px;">
             #先锋新闻# 专稿 : 近年来 , 北海以"四个推手" 为抓手, 通过推动全覆盖, 规范化, 三帮带, 示范引领等多措并举, 有效促进该区非公企业党建工作由被动为主动的转变, 实现非公党建水平的整体提升.
           </div>
-          <img :src="pic" alt="" style="width:100%; height: 175px;padding: 0px 10px;">
+          <img src="./images/celect.jpg" alt="" style="width:100%; height: 175px;padding: 0px 10px;">
         <div class="flex-rstyle " style="height: 35px;color: #969696;line-height: 37px; padding: 0px 10px;">
             <span>3月25日 18:11 来着网页</span>
             <div class="say"><img src="./images/say.png" alt="">(12565)</div>
@@ -277,10 +307,11 @@
         <div class="shine-bottom">
           <div class="flex-cstyle row shine-title" style="background-image: url(./images/video.png); ">
             <div style="font-weight: 400; font-size: 15px;">党建视频</div>
-            <a href="#" class="more" target="_blank">更多>></a>
+            <a href="./moreBook.html?type=1" class="more" target="_blank">更多>></a>
           </div>
-          <div class="mid-pic">
-            <img :src="pic" alt="">
+          <div class="mid-pic clearfix" id="toVideo">
+            <a href="#" target="_blank"><img src="./images/noVideo.png" alt="" ></a>
+ 
           </div>
         </div>
       </aside>
@@ -313,16 +344,17 @@
               </div>
               <div class="flex-cstyle row" style="padding: 15px 10px;">
                 <div class="shine-detail" id="fNews-0sed">
-                  <h3>
-                    "两学一做"学习教育
-                  </h3>
-                  <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
-                  <a href="#" target="_blank">[详情]</a>
+                  <a href="#" target="_blank" style="color:#494848;">
+                    <h3>
+                    
+                    </h3>
+                  </a>
+                  <div ></div>
+                  <a href="#" target="_blank"></a>
                 </div>
   
               </div>
               <ul class="content-list" style="line-height: 30px;" id="fNewsList-0sed">
-                <li ><a target="_blank" href="#">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
               </ul>
               
             </div>
@@ -334,16 +366,18 @@
               </div>
               <div class="flex-cstyle row" style="padding: 15px 10px;">
                 <div class="shine-detail" id="fNews-1sed">
-                  <h3>
-                    "两学一做"学习教育
-                  </h3>
-                  <div style="text-indent:2em;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
-                  <a href="#" target="_blank">[详情]</a>
+                  <a href="#" target="_blank" style="color:#494848;">
+                    <h3>
+                    
+                    </h3>
+                  </a>
+                  <div ></div>
+                  <a href="#" target="_blank"></a>
                 </div>
                 
               </div>
               <ul class="content-list" style="line-height: 30px;" id="fNewsList-1sed">
-                <li ><a href="#" target="_blank">王可慰问困难职工, 全功劳模, 困难党员, 伤残军人</a></li>
+                
                 
               </ul>
               
@@ -377,14 +411,14 @@
             <div class="shine-set download">
               <div class="flex-cstyle row shine-title" style="background-image: url(./images/download.png);background-size: 22px;" id="fTitle-0thi">
                 <div style="line-height: 28px;">资料下载</div>
-                <a href="#" class="more" target="_blank">更多>></a>
+                <a href="./news.html?id=0&pId=0" class="more" target="_blank">更多>></a>
               </div>
               <!-- <div class="flex-cstyle row" style="padding: 5px 10px;">
                 <div class="shine-detail" style="line-height: 26px;">
                   <h3>
                     基层党委换届可以提前或延迟吗 ?
                   </h3>
-                  <div>召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</div>
+                  <div></div>
                 </div>
   
               </div> -->
@@ -396,7 +430,7 @@
             </div>
   
             <div class="shine-set download">
-              <div class="flex-cstyle row shine-title" style="background-image: url(./images/no.png);background-size: 22px;" id="fTitle-2sed">
+              <div class="flex-cstyle row shine-title" style="background-image: url(./images/no.png);background-size: 22px;" id="fTitle-1thi">
                 <div style="line-height: 28px;">党务问答</div>
                 <a href="#" class="more" target="_blank">更多>></a>
               </div>
@@ -407,7 +441,7 @@
                   <span>知识问答</span>
                 </div>
                 
-                <div class="shine-detail">
+                <div class="shine-detail" style="width:100%;">
                   <ul class="content-list" id="quest" style="line-height: 33px; border-top: none; height:195px" >
                     
                     
@@ -453,13 +487,13 @@
       <div class="flex-cstyle row shine-group">
         <div>推荐专题</div>
        
-        <a href="#" class="more" style="padding-top: 8px;">更多>></a>
+        <!-- <a href="#" class="more" style="padding-top: 8px;">更多>></a> -->
        
       </div>
       <div class="bottom-line"></div>
       <div class="flex-rstyle horizontal ">
-        <img src="./images/5.png" alt="">
-        <img src="./images/4.png" alt="">
+        <img src="./images/5.png" alt="" id="special-left">
+        <img src="./images/4.png" alt="" id="special-right">
       </div>
   
       <div class="flex-cstyle row shine-group">
@@ -475,15 +509,15 @@
                 <div>杂志阅读</div>
               </div>
               <div class="flex-cstyle row book-list" id="bookList1">
+                <!-- <a  href="#"><img src="./images/book.png" alt=""></a>
                 <a  href="#"><img src="./images/book.png" alt=""></a>
-                <a  href="#"><img src="./images/book.png" alt=""></a>
-                <a  href="#"><img src="./images/book.png" alt=""></a>
+                <a  href="#"><img src="./images/book.png" alt=""></a> -->
   
               </div>
               <div class="flex-cstyle row book-list" id="bookList2">
+                <!-- <a  href="#"><img src="./images/book.png" alt=""></a>
                 <a  href="#"><img src="./images/book.png" alt=""></a>
-                <a  href="#"><img src="./images/book.png" alt=""></a>
-                <a  href="#"><img src="./images/book.png" alt=""></a>
+                <a  href="#"><img src="./images/book.png" alt=""></a> -->
                 
               </div>
    
@@ -492,10 +526,10 @@
             <div class=" download shine-set3" >
               <div class="flex-cstyle row shine-title" style="background-image: url(./images/no.png);background-size: 22px;">
                 <div>党建掠影</div>
-                <a href="#" class="more">查看更多>></a>
+                <a href="./moreBook.html" class="more" target="_blank">查看更多>></a>
               </div>
-              <div class="flex-cstyle row book-list2" id="picList1">
-                <a >
+              <div class="flex-cstyle row book-list2" id="picList1" style="    height: 46%; ">
+                <!-- <a >
                   <img src='./images/celect.jpg' alt="">
                   <div>践行优良部风争创模范部门</div>
                 </a>
@@ -506,11 +540,11 @@
                 <a >
                   <img src='./images/celect.jpg' alt="">
                   <div>践行优良部风争创模范部门</div>
-                </a>
+                </a> -->
                
               </div>
               <div class="flex-cstyle row book-list2" id="picList2">
-                <a >
+                <!-- <a >
                   <img src='./images/celect.jpg' alt="">
                   <div>践行优良部风争创模范部门</div>
                 </a>
@@ -521,7 +555,7 @@
                 <a >
                   <img src='./images/celect.jpg' alt="">
                   <div>践行优良部风争创模范部门</div>
-                </a>
+                </a> -->
                
                 
               </div>        
@@ -584,6 +618,8 @@
    var mId=0;
    var mPid=0;
 
+   
+ 
 
   //  点击事件
   $(".left-choice span").on('click',function(){
@@ -606,9 +642,9 @@
         }  
     });
 
-     // $("#noticeMore").on('click', function(){
-                          //   window.open('./news.html',"","id="+val.id+'&pId='+val.id);
-                          // })
+     $("#search").on('click', function(){
+            window.open('./search.html',"");
+          })
 
     getHome();
     // 获取杂志
@@ -616,10 +652,14 @@
 
     // 获取网站影展
     getShow();
+     // 获取视频
+     getVideo();
+
+    
       // 获取首页顶部栏目
       function getHome(){
               var that = this;
-              var result=ajaxMethod('topSet',80);
+              var result=ajaxMethod('newList',101);
 
               console.log('获取首页顶部栏目')
               console.log(result)
@@ -721,6 +761,7 @@
                     if (result.code == 0 && result.data != null) {
                         //do something
                         var set='';
+                        var set2='';
                         var listCount = 7;
                         if(ind == 0){
                           var listCount = 7;
@@ -735,26 +776,37 @@
                             if(index == 0 && val.catalogName == "组工动态"){
                               console.log($("#groupContent div"));
                               // console.log(value);
-                              var first = value.content.indexOf('<p>');
-                              var last = value.content.indexOf('</p>') + 4;
-                              var cont =value.content.slice(first, last);
+                              // 获取文章前一段
+                              // var first = value.content.indexOf('<p>');
+                              // var last = value.content.indexOf('</p>') + 4;
+                              // var cont =value.content.slice(first, last);
 
                               // var cont = value.content.select("p").get(0).text();
-                              console.log(cont)
-                              $("#groupContent div").html(cont);
+                              // console.log(cont)
+                              $("#groupContent div").html(value.creatTs);
                               $("#groupContent a").html(value.title);
                               $("#groupContent a").attr('href','./newDetail.html?id='+value.id+'&pId='+val.parentId);
+
+                               // 热点内容
+                              document.getElementById("hotTitle").innerHTML = value.title;
+                              document.getElementById("hotTime").innerHTML = value.creatTs;
+                              $("#hotLink").attr('href','./newDetail.html?id='+value.id+'&pId='+val.parentId);
+                              
+                              // var url = './newDetail.html?id='+value.id+'&pId='+val.id;
+                              //   var srt='<li ><a target="_blank" href="'+url+'">'+value.title+'</a></li> ';
+                              //   set += srt
                             }else{
 
-                                var url = './newDetail.html?id='+value.id+'&pId='+val.parentId
+                                var url = './newDetail.html?id='+value.id+'&pId='+val.id;
+                                var srt2='<li ><a target="_blank" href="'+url+'">'+value.title+'</a></li> ';
+                                set2 += srt2
+
+                                var url = './newDetail.html?id='+value.id+'&pId='+val.id;
                                 var srt='<li ><a target="_blank" href="'+url+'">'+value.title+'</a></li> ';
                                 set += srt
                               
                              
                             }
-                            
-                            
-
                             
                           })
                           // console.log(set)
@@ -762,10 +814,12 @@
                         if(val.catalogName == "组工动态"){
                           document.getElementById("groupList").innerHTML = set;
                           $("#groupUrl").attr('href','./news.html?id='+val.id+'&pId='+val.id);
+                         
+
                           // $("#notice").attr('data-id',0);
                         }else if(val.catalogName == "通知公告"){
                           $("#notice").attr('data-id',val.id);
-                          document.getElementById("newNotice").innerHTML = set;
+                          document.getElementById("newNotice").innerHTML = set2;
                           $("#noticeMore").attr('href','./news.html?id='+val.id+'&pId='+val.id);
 
                           mPid = val.id;
@@ -826,9 +880,7 @@
         for(var index=0; index<data.length;index++){
           var value = data[index];
           var url = './news.html'
-          if(count == 3){
-            url='./download.html'
-          }
+          
           if(index == 0){
               var srt='<a href="'+url+'?id='+value.id+'&pId='+pId+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
             }else{
@@ -846,7 +898,8 @@
           console.log(data[i])
           
           $("fTitle-"+i+list+" div").innerHTML = data[i].catalogName;
-          $("#fTitle-"+i+list+" a").attr('href','./download.html?id='+data[i].id+'&pId='+data[i].parentId)
+          // type =0 资料下载, type=1QA问答
+          $("#fTitle-"+i+list+" a").attr('href','./news.html?id=0&pId=0&type='+i);
           // document.getElementById("fTitle-"+i).innerHTML = data[i].catalogName;
           $("#fTitle-"+i+list+" div").html(data[i].catalogName);
          
@@ -875,18 +928,18 @@
             var result = getNews(data[i].id).slice(0,6);
           }
           
+          
           console.log('result')
           console.log(result)
           var set='';
           for(var index=0; index<result.length;index++){
+           
               if(index == 0){
                 $("#fNews-"+i+list+" h3").html(result[index].title);
-                var first = result[index].content.indexOf('<p');
-                var last = result[index].content.indexOf('</p>') + 4;
-                var cont =result[index].content.slice(first, last);
-                console.log(cont)
-                $("#fNews-"+i+list+" div").html(cont);
+                
+                $("#fNews-"+i+list+" div").html(result[index].creatTs);
                 $("#fNews-"+i+list+" a").attr('href','./newDetail.html?id='+result[index].id+'&pId='+data[i].id);
+                $("#fNews-"+i+list+" a").eq(1).html('[详情]');
 
               }else{
                
@@ -926,13 +979,15 @@
           
           
       }
-      });
+      
       // 获取杂志
       function getMagazine(){
               
-               
+            var data={
+              size:6
+            }
               var that = this;
-              var result=ajaxMethod('magazine','');
+              var result=ajaxMethod('magazine','',data);
               // console.log(result)
               
                   if (result.code == 0 && result.data != null) {
@@ -969,7 +1024,10 @@
        // 获取网站影展
       function getShow(){
         var that = this;
-              var result=ajaxMethod('filmFestival','');
+        var data={
+          size:6
+        }
+              var result=ajaxMethod('filmFestival','',data);
               // console.log(result)
               
                   if (result.code == 0 && result.data != null) {
@@ -981,11 +1039,13 @@
                       var srt2='';
 
                       for(var i=0; i<data.length; i++){
-
+                        console.log(data[i].pics);
+                        var picList = data[i].pics.split(',');
+                        console.log(picList);
                         if(i<3){
-                          srt1+='<a target="_blank"  href=""><img src="'+filePath+data[i].pics+'" alt=""  ><div>'+data[i].object+'</div></a>';
+                          srt1+='<a target="_blank"  href="./bookList.html?id='+data[i].id+'"><img src="'+filePath+picList[0]+'" alt=""  ><div>'+data[i].object+'</div></a>';
                         }else{
-                          srt2+='<a target="_blank" href=""><img src="'+filePath+data[i].pics+'" alt="" ><div>'+data[i].object+'</div></a>';
+                          srt2+='<a target="_blank" href="./bookList.html?id='+data[i].id+'"><img src="'+filePath+picList[0]+'" alt="" ><div>'+data[i].object+'</div></a>';
                         }
                         console.log(srt1);
                         $('#picList1').html(srt1);
@@ -1004,7 +1064,33 @@
               
         }
 
-   
+      // 获取视频
+    function getVideo(){
+        var that = this;
+              var result=ajaxMethod('partyVideo','');
+              // console.log(result)
+                  if (result.code == 0 && result.data != null) {
+                      //do something
+                      // console.log('11111');
+                      console.log(result.data);
+                      console.log(result.data.records[0].id);
+                      console.log($("#toVideo a"));
+                    if(result.data.records.length>0){
+                        // var srt='<a href="./video.html?id='+result.data.records[0].id+'" target="_blank"><img src="./images/celect.jpg" alt="" ></a>';
+                        // document.getElementById("toVideo").innerHTML = srt;
+                      // $("#toVideo").html(srt);
+                      $("#toVideo a").attr('href','./video.html?id='+result.data.records[0].id);
+                      $("#toVideo img").attr('src','./images/celect.jpg');
+                    }
+                      
+
+                  } else {
+                      //do something
+                  }
+              
+        }
+
+          });
 </script> 
 </body>
 </html>

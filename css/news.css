@@ -180,7 +180,7 @@ nav{
 }
 
 .shine-detail{
-    padding-left: 10px;
+    /* padding-left: 10px; */
     line-height: 21px;
     max-height: 116px;
     overflow: hidden;
@@ -511,4 +511,13 @@ footer img{
 
 .tac{
     text-align: center;
+}
+
+.pic-cont{
+    text-align: center;
+}
+
+.pic-cont img{
+    max-width: 600px;
+
 }
