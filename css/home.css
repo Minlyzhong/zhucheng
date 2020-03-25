@@ -65,7 +65,7 @@ nav{
 .content-top{
     width: 100%;
     background: rgb(16,68,151);
-    height: 80px;
+    min-height: 80px;
     color:#fff;
     border-radius: 5px;
     -moz-border-radius: 5px;

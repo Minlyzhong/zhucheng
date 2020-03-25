@@ -518,6 +518,10 @@ footer img{
 }
 
 .pic-cont img{
-    max-width: 600px;
+    min-width: 600px;
+    max-width: 900px;
+    width: auto;
+    /* height: 600px; */
+    margin-top: 10px;
 
 }

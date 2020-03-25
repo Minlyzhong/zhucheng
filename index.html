@@ -54,7 +54,7 @@
 <div id="app " style="width: 100%; height: 100%;">
   <nav class="flex-style row">
     <div class="flex-style row">
-      <span>欢迎光临珠城先锋网, 今天是2016年04月20日</span>
+      <span>欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
       <div class="search" id="search">
         <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
         <button><i>搜索</i></button>
@@ -646,6 +646,8 @@
             window.open('./search.html',"");
           })
 
+   $("#some-element").busyLoad("show",state);
+
     getHome();
     // 获取杂志
     getMagazine();
@@ -659,7 +661,7 @@
       // 获取首页顶部栏目
       function getHome(){
               var that = this;
-              var result=ajaxMethod('newList',101);
+              var result=ajaxMethod('topSet',80);
 
               console.log('获取首页顶部栏目')
               console.log(result)
@@ -696,20 +698,31 @@
                             for (var ind = 0; ind < newData.children.length; ind++) {
                                 var val = newData.children[ind];
                                 // console.log(val)
+                                var url = './news.html?id='+val.id+'&pId='+value.id;
+                                if(val.catalogName == "党建视频"){
+                                  url = './moreBook.html?type=1';
+                                }
+                                if(val.catalogName == "资料下载"){
+                                  url = './news.html?id=0&pId=0&type=0';
+                                }
+                                if(val.catalogName == "党务回答"){
+                                  url = './news.html?id=0&pId=0&type=1';
+                                }
                                 if(ind !=0 && ind != 3 ){
+                                  
                                   if(ind == 2){
                                     str2+='<span>'+
-                                  '<span >|</span><a  href="./news.html?id='+val.id+'&pId='+value.id+'" data-id="'+val.id+'" target="_blank">'+val.catalogName+' </a> '
+                                  '<span >|</span><a  href="'+ url +'" data-id="'+val.id+'" target="_blank">'+val.catalogName+' </a> '
                                   +'</span></br>'
                                   }else{
                                     str2+='<span>'+
-                                  '<span >|</span><a  href="./news.html?id='+val.id+'&pId='+value.id+'" data-id="'+val.id+'" target="_blank">'+val.catalogName+' </a> '
+                                  '<span >|</span><a  href="'+ url +'" data-id="'+val.id+'" target="_blank">'+val.catalogName+' </a> '
                                   +'</span>'
                                   }
                                 }else{
                                   
                                   str2+='<span>'+
-                                  '<a  href="./news.html?id='+val.id+'&pId='+value.id+'" data-id="'+val.id+'" target="_blank">'+val.catalogName+' </a> '
+                                  '<a  href="'+ url +'" data-id="'+val.id+'" target="_blank">'+val.catalogName+' </a> '
                                   +'</span>'
                                 }  
                               }
@@ -727,6 +740,7 @@
 
                         }
                       //   $('.content-top').html(srt);
+                      
                         document.getElementById("contentTop").innerHTML = srt;
                         // console.log('totalData');
                         // console.log(totalData);
@@ -902,9 +916,6 @@
           $("#fTitle-"+i+list+" a").attr('href','./news.html?id=0&pId=0&type='+i);
           // document.getElementById("fTitle-"+i).innerHTML = data[i].catalogName;
           $("#fTitle-"+i+list+" div").html(data[i].catalogName);
-         
-        
-         
 
         }
       }
@@ -1090,6 +1101,8 @@
               
         }
 
+
+        $("#some-element").busyLoad("hide");
           });
 </script> 
 </body>

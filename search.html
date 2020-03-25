@@ -10,10 +10,14 @@
   <link rel="stylesheet" href="css/app.min.css">
 
   <style>
-  
+.main-new{
+  width:80%;
+  margin:0px auto;
+}
+
 .warp {
 	width:50%;
-	margin:0 auto;
+	margin:100px auto;
 }
 /*清除input默认样式*/
 input {
@@ -91,7 +95,7 @@ input {
   <div id="app">
     <nav class="flex-style row">
       <div class="flex-style row">
-        <span>欢迎光临珠城先锋网, 今天是2016年04月20日</span>
+        <span>欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
         <!-- <div class="search">
           <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
           <button><i>搜索</i></button>
@@ -99,8 +103,8 @@ input {
       </div>
     
       <div>
-        <a href="#">设为首页 |</a>
-        <a href="#">加入收藏 </a>
+        <a href="javascript:setHome(this,window.location);" id="text" >设为首页 |</a>
+      <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"  href="javascript:void(0);">加入收藏 </a>
         <!-- <a href="#">意见反馈 |</a>
         <a href="#">手机APP下载</a> -->
         
@@ -150,11 +154,8 @@ input {
           </div>
       </div>
         <div class="section" style="width:100%">
-          <div class=" flex-cstyle row shine-content
-        ">
-              
-    
-           
+          <div style="width: 100%; height: 100%;" id="setNewListHold">
+            暂无相关内容
           </div>
           
         
@@ -217,22 +218,24 @@ input {
 
 <script>
  $(function(){
+
+  getSetList();
       
   var search_input = $(".search_box input"),
         search_content = $(".search_content");
-    $(search_input).on("keyup", function() {
+    $(search_input).on("keyup", function(e) {
+                  if(e.repeat){
+                return ;
+              }
         if (search_input.val() == '') {
             $(search_content).show();
+            return;
         }
-        $(".search_content li:contains(" + search_input.val().trim() + ")").show();
-        $(".search_content li:not(:contains(" + search_input.val().trim() + "))").hide();
-
-
-        //第二中方法
-        //$(".search_content li").hide().filter(":contains("+ search_input.val().trim() +")").show();
-        // console.log(search_input.val());
+       
+          console.log(search_input.val().trim());
+      
             //  模糊搜索文章
-            getSetList();
+            // getSetList();
     });
 
 
@@ -243,25 +246,7 @@ input {
   
    //  初始化分页
    var totalPage = 1;
-   $("#demo2").jqPaginator({
-        totalPages: totalPage,
-        visiblePages: 10,
-        currentPage: 1,
-        first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
-        prev: '<li class="prev"><a href="javascript:void(0);">上一页<\/a><\/li>',
-        next: '<li class="next"><a href="javascript:void(0);">下一页<\/a><\/li>',
-        last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
-        page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
-        onPageChange: function(n) {
-          // $("#demo2-text").html(n);
-            $('html,body').animate({scrollTop:0},'slow');
-
-            
-                //  新闻列表
-                // getSetList(n);
-            
-        }
-      })
+   
 
   
 
@@ -273,7 +258,7 @@ input {
         size:20,
         catalogId:101,
     }
-    var result=ajaxMethod('site/news/findAll','',data);
+    var result=ajaxMethod('newList','',data);
     console.log(result)
     
         if (result.code == 0 && result.data != null) {
@@ -286,13 +271,11 @@ input {
           }    
           var list = result.data.records;
           var set='';
-          $('#setNewListDetail').html(set); 
+          $('#setNewListHold').html(set); 
           list.forEach(function(value, index ){
-                 console.log(value)
-                 var picList = value.pics.split(',');
-                  var pic = filePath + picList[0];
+                //  console.log(value)
                   var srt='<div class="main-new" >'+
-                  '<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'"><h3>'+value.title+'</h3></a>'+
+                  '<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+value.catalogId+'"><h3>'+value.title+'</h3></a>'+
                   '<div class="flex-cstyle row main-content" >'+
                     
                     '<div class="shine-detail save">'+value.creatTs+'  </div></div></div>'; 
@@ -301,13 +284,34 @@ input {
                  set += srt
                  
                })
-               $('#setNewListDetail').html(set);   
+               $('#setNewListHold').html(set);   
               
             
         } else {
             //do something
         }
     }
+    console.log('totalPage');
+    console.log(totalPage);
+    $("#demo2").jqPaginator({
+        totalPages: totalPage,
+        visiblePages: 10,
+        currentPage: 1,
+        first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
+        prev: '<li class="prev"><a href="javascript:void(0);">上一页<\/a><\/li>',
+        next: '<li class="next"><a href="javascript:void(0);">下一页<\/a><\/li>',
+        last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
+        page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
+        onPageChange: function(n) {
+          // $("#demo2-text").html(n);
+            $('html,body').animate({scrollTop:300},'slow');
+
+            
+                //  新闻列表
+                // getSetList(n);
+            
+        }
+      })
 
     
     

@@ -26,7 +26,7 @@
   <div id="app">
     <nav class="flex-style row">
       <div class="flex-style row">
-        <span>欢迎光临珠城先锋网, 今天是2016年04月20日</span>
+        <span>欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
         <div class="search">
           <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
           <button><i>搜索</i></button>
@@ -34,10 +34,10 @@
       </div>
     
       <div>
-        <a href="#">设为首页 |</a>
-        <a href="#">加入收藏 |</a>
-        <a href="#">意见反馈 |</a>
-        <a href="#">手机APP下载</a>
+        <a href="javascript:setHome(this,window.location);" id="text" >设为首页 |</a>
+      <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"  href="javascript:void(0);">加入收藏 </a>
+        <!-- <a href="#">意见反馈 |</a>
+        <a href="#">手机APP下载</a> -->
         
       </div>
       
@@ -193,34 +193,21 @@
    } 
 
    var totalPage=1;
-  
- 
 
-
-      // onPageChange: function (num) {
-      // // alert('当前第' + num + '页');
-      // //此处可以ajax加载下一页数据
-      // $.get('ajaxpage',{num:num},function(data){
-      // $("#tab").html('<tr><th>书籍Id</th><th>书名</th><th>价格</th><th>操作</th></tr>');
-      // for(var i=0;i<data.length;i++){
-      
-      // $("#tab").append('<tr><td>'+data[i].id+'</td><Td>'+data[i].bookName+'</Td><td>'+data[i].bookPrice+'</td>'+
-      // '<td><a href="/test_maven/updateBook?id=${book.id }">修改</a> <a href="#">删除</a></td> </tr>');
-      // }
-      // },'json')
-      // }
 
 
     var uId=getUrlParam("id");
     var pId=getUrlParam("pId");
     var type=getUrlParam("type") || '';
+    var flag = 0;
     // type=0是最新下载 1是党务问答
       console.log(uId)
-
     //获取顶部栏 
     getTopList();
     // 获取子栏目内容
+
     if(uId != 0){
+     
       getSetList(1);
     }else{
       // 获取最新下载
@@ -240,13 +227,16 @@
         onPageChange: function(n) {
           // $("#demo2-text").html(n);
           // if(n !=1){
-            $('html,body').animate({scrollTop:0},'slow');
-            if(uId != 0){
-              getSetList(n);
-            }else{
-              // 获取最新下载
-              getDownload(n);
+            $('html,body').animate({scrollTop:200},'slow');
+            if(flag != 1){
+                if(uId != 0){
+                getSetList(n);
+              }else{
+                // 获取最新下载
+                getDownload(n);
+              }
             }
+            
           // }
         }
       })
@@ -275,10 +265,20 @@
                   document.getElementById("topTitle").innerHTML = value.catalogName;
                   
                  }
+                 var url = './news.html?id='+value.id+'&pId='+pId;
+                    if(value.catalogName == "党建视频"){
+                      url = './moreBook.html?type=1';
+                    }
+                    if(value.catalogName == "资料下载"){
+                      url = './news.html?id=0&pId=0&type=0';
+                    }
+                    if(value.catalogName == "党务回答"){
+                      url = './news.html?id=0&pId=0&type=1';
+                    }
                  if(index == 0){
-                  var srt='<a href="./news.html?id='+value.id+'&pId='+pId+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
+                  var srt='<a href="'+url+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
                  }else{
-                  var srt='|<a href="./news.html?id='+value.id+'&pId='+pId+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
+                  var srt='|<a href="'+url+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
                  }
                  
                  set += srt
@@ -317,13 +317,14 @@
     }
 
     function getSetList(page){
-      
+      flag+=1;
       let that = this;
       var data = {
         catalogId:uId,
         current:page,
         size:20
     }
+    
     var result=ajaxMethod('newList','',data);
     console.log(result)
     
@@ -337,7 +338,6 @@
           }  
           var list = result.data.records;
           var set='';
-          
           $('#setNewListHold').html(set);
           list.forEach(function(value, index ){
                 //  console.log(value)
@@ -366,7 +366,8 @@
                  set += srt
          
                })
-               $('#setNewListHold').html(set);   
+               $('#setNewListHold').html(set);
+                  
               
             
         } else {
@@ -376,7 +377,7 @@
 
    // 获取最新下载
 function getDownload(page){
-    
+    flag+=1;
 
     var that = this;
     var data = {

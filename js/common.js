@@ -20,7 +20,27 @@ $(function(){
     }
     
     
-    
+    //判断是否在前面加0(获取时间)
+function getNow(s) {
+    return s < 10 ? '0' + s: s;
+    }
+     
+    var myDate = new Date();            
+     
+    var year=myDate.getFullYear();        //获取当前年
+    var month=myDate.getMonth()+1;   //获取当前月
+    var date=myDate.getDate();            //获取当前日
+     
+     
+    var h=myDate.getHours();              //获取当前小时数(0-23)
+    var m=myDate.getMinutes();          //获取当前分钟数(0-59)
+    var s=myDate.getSeconds();
+     
+    // var now=year+'年'+getNow(month)+"月"+getNow(date)+"日 "+getNow(h)+':'+getNow(m)+":"+getNow(s);
+    var now=year+'年'+getNow(month)+"月"+getNow(date)+"日";
+    console.log('now');
+    console.log(now);
+    $('#nowTime').html(now);
     
     
     })
@@ -96,3 +116,5 @@ $(function(){
 //       prefs.setCharPref('browser.startup.homepage', 'https://www.baidu.com/');
 //     }
 //   }
+
+
