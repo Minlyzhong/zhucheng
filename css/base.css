@@ -236,6 +236,10 @@ div.ellipsis {
 	margin-bottom: 20px;
 	background-color: #f7f7f7;
   }
+  .customBootstrap .pagination li{
+	  float: left;
+  }
+
   .customBootstrap .pagination > li > a {
 	margin-right: 5px;
 	border-radius: 2px;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -9,43 +10,45 @@
   <link rel="stylesheet" href="css/app.min.css">
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/app.min.js"></script>
-  
+
   <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/api.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
 </head>
 <!-- Internet Explorer 已限制此网页运行脚本或ActiveX控件的解决方法 -->
 <!-- saved from url=(0014)about:internet -->
+
 <body id="some-element">
   <div id="app">
     <nav class="flex-style row">
       <div class="flex-style row">
         <span>欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
-        <div class="search">
+        <div class="search" id="search">
           <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
           <button><i>搜索</i></button>
+        </div>
       </div>
-      </div>
-    
+
       <div>
-        <a href="javascript:setHome(this,window.location);" id="text" >设为首页 |</a>
-      <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"  href="javascript:void(0);">加入收藏 </a>
+        <a href="javascript:setHome(this,window.location);" id="text">设为首页 |</a>
+        <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"
+          href="javascript:void(0);">加入收藏 </a>
         <!-- <a href="#">意见反馈 |</a>
         <a href="#">手机APP下载</a> -->
-        
+
       </div>
-      
+
     </nav>
-    
+
     <div class="content clearfix">
       <section class="clearfix">
-        
+
         <div class="flex-cstyle row shine-group">
           <div id="topName"></div>
           <div style="width: 80%;" id="topList">
-            
+
           </div>
-          
+
         </div>
 
         <div class="bottom-line"></div>
@@ -54,187 +57,191 @@
           <a href="#" target="_blank" id="sedStep"></a>>
           <span>内容</span>
         </div>
-        
-        
+
+
         <div class="news-title">
-          <h1 id="detailTitle"></h1>								    
+          <h1 id="detailTitle"></h1>
           <span id="time">2020年03月04日 19:12</span>
           <span style="margin-left:15px">来源:</span>
-          <span><a    href="#"   target="_blank" id="source">机构职能</a></span>
+          <span><a href="#" target="_blank" id="source">机构职能</a></span>
           <div style="float:right">
             <span>字体:</span>
             <span class="" id="big">[大]</span>
             <span class="" id="middle">[中]</span>
             <span class="" id="small">[小]</span>
-           
+
           </div>
         </div>
-        
+
         <div class="news clearfix" id="newDetail">
-          
-                
+
+
         </div>
-          
-        
+
+
       </section>
-      
-    
-    
+
+
+
       <section class="clearfix">
         <div class="flex-cstyle row links">
           <div>
             <span class="link-title">友情链接</span>
             <span style="color: #969696;font-size: 13px; ">Links</span>
-            </div>
-         
+          </div>
+
           <div class="webs">
             <span class="webs-selected">党建网站</span>
             <span>综合网站</span>
             <span>报刊网站</span>
           </div>
         </div>
-          <ul class="flex-style row websites">
-            <li><a href="#">共产党员网</a></li>
-            <li><a href="#">中共中央组织部</a></li>
-            <li><a href="#">中国党建网</a></li>
-            <li><a href="#">中国共产党新闻网</a></li>
-            <li><a href="#">党史党建在线</a></li>
-            <li><a href="#">全国远程教育网</a></li>
-            <li><a href="#">北京组工</a></li>
-            <li><a href="#">新浪网</a></li>
-          </ul>
-         
-        
+        <ul class="flex-style row websites">
+          <li><a href="#">共产党员网</a></li>
+          <li><a href="#">中共中央组织部</a></li>
+          <li><a href="#">中国党建网</a></li>
+          <li><a href="#">中国共产党新闻网</a></li>
+          <li><a href="#">党史党建在线</a></li>
+          <li><a href="#">全国远程教育网</a></li>
+          <li><a href="#">北京组工</a></li>
+          <li><a href="#">新浪网</a></li>
+        </ul>
+
+
       </section>
     </div>
-    
-    <footer >
+
+    <footer>
       <div>
         <a href="#">联系我们</a>|
         <a href="#">网站地图</a>|
         <a href="#">法律申明</a>|
         <a href="#">投诉信箱</a>|
         <a href="#">免责申明</a>
-        
+
       </div>
       <div>中共北海市委组织部主办</div>
       <div>地址 : 广西市合平路东二巷2号 邮编 : 53600</div>
       <div>桂公网安备 450502020000014号</div>
       <img src="./images/bottom.png" alt="">
     </footer>
-    
-        
-    
+
+
+
   </div>
 
-<script>
-$(function(){
-    //获取url中的参数  
-    function getUrlParam(name) {   
+  <script>
+    $(function () {
+      //获取url中的参数  
+      function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
         var r = window.location.search.substr(1).match(reg);  //匹配目标参数   
         if (r != null) return unescape(r[2]); return null; //返回参数值  
-   }
+      }
 
-  var uId=getUrlParam("id");
-  var pId=getUrlParam("pId");
+      $("#search").on('click', function () {
+        window.open('./search.html', "");
+      });
+      var uId = getUrlParam("id");
+      var pId = getUrlParam("pId");
 
-  //获取顶部栏 
-  getTopList();
-  // 获取新闻详情
-  getNewsDetail();
+      //获取顶部栏 
+      getTopList();
+      // 获取新闻详情
+      getNewsDetail();
 
-  // 获取问答详情
-  // getQAdetail();
+      // 获取问答详情
+      // getQAdetail();
 
 
-  function getTopList(){
-      var result=ajaxMethod('topSet',pId);
-      console.log(result)
-    
-        if (result.code == 0 && result.data != null) {
-            //do something
-            var data = result.data[0];
-            console.log(data)
-          //  $('#topName').html(data.catalogName);
-           document.getElementById("topName").innerHTML = data.catalogName;
-           document.getElementById("sedStep").innerHTML = data.catalogName;
-           $('#sedStep').attr('href','./news.html?id='+data.id+'&pId='+data.parentId)
-            console.log(data.children);
-                  var set='';
-               data.children.forEach(function(value, index ){
-                 console.log(value)
-                 if(value.id == uId){
-                  // $('#topTitle').html(value.catalogName);
-                  
-                  document.getElementById("topTitle").innerHTML = value.catalogName;
-
-                 }
-                 if(index == 0){
-                  var srt='<a href="./news.html?id='+value.id+'+&pId='+pId+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
-                 }else{
-                  var srt='|<a href="./news.html?id='+value.id+'&pId='+pId+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
-                 
-                 }
-                 set += srt;
-                 
-               })
-               console.log(set)
-              //  $('#topList').html(set);
-               
-              document.getElementById("topList").innerHTML = set;
-            
-        } else {
-            //do something
-        }
-    }
-  // 获取新闻详情
-function getNewsDetail(){
-              
-          
-        let that = this;
-    
-        var result=ajaxMethod('newDetail',uId);
+      function getTopList() {
+        var result = ajaxMethod('topSet', pId);
         console.log(result)
-        
-            if (result.code == 0 && result.data != null) {
-                //do something
-                var data = result.data
-              // $('#detailTitle').html(data.title);
-              // $('#newDetail').html(data.content);
 
-              document.getElementById("time").innerHTML = data.creatTs;
-              document.getElementById("source").innerHTML = data.newsfrom;
-              document.getElementById("detailTitle").innerHTML = data.title;
-              document.getElementById("newDetail").innerHTML = data.content;
+        if (result.code == 0 && result.data != null) {
+          //do something
+          var data = result.data[0];
+          console.log(data)
+          //  $('#topName').html(data.catalogName);
+          document.getElementById("topName").innerHTML = data.catalogName;
+          document.getElementById("sedStep").innerHTML = data.catalogName;
+          $('#sedStep').attr('href', './news.html?id=' + data.id + '&pId=' + data.parentId)
+          console.log(data.children);
+          var set = '';
+          data.children.forEach(function (value, index) {
+            console.log(value)
+            if (value.id == uId) {
+              // $('#topTitle').html(value.catalogName);
 
-              console.log('判断')
+              document.getElementById("topTitle").innerHTML = value.catalogName;
 
-              console.log($('#newDetail p img').parents());
-              $('#newDetail p img').parents('p').addClass('tac');
-                  
-                  
-                
-            } else {
-                //do something
             }
-        
-        
-    }
+            if (index == 0) {
+              var srt = '<a href="./news.html?id=' + value.id + '+&pId=' + pId + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
+            } else {
+              var srt = '|<a href="./news.html?id=' + value.id + '&pId=' + pId + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
 
-    $('#big').click(function(){
-      console.log('111')
-			$('#newDetail p, #newDetail p span').attr('class','big-font');
-		})
-		$('#middle').click(function(){
-			$('#newDetail p, #newDetail p span').attr('class','mid-font');
-		})
-		$('#small').click(function(){
-			$('#newDetail p, #newDetail p span').attr('class','small-font');
-		})
-    
-    
-})
-</script> 
+            }
+            set += srt;
+
+          })
+          console.log(set)
+          //  $('#topList').html(set);
+
+          document.getElementById("topList").innerHTML = set;
+
+        } else {
+          //do something
+        }
+      }
+      // 获取新闻详情
+      function getNewsDetail() {
+
+
+        let that = this;
+
+        var result = ajaxMethod('newDetail', uId);
+        console.log(result)
+
+        if (result.code == 0 && result.data != null) {
+          //do something
+          var data = result.data
+          // $('#detailTitle').html(data.title);
+          // $('#newDetail').html(data.content);
+
+          document.getElementById("time").innerHTML = data.creatTs;
+          document.getElementById("source").innerHTML = data.newsfrom;
+          document.getElementById("detailTitle").innerHTML = data.title;
+          document.getElementById("newDetail").innerHTML = data.content;
+
+          console.log('判断')
+
+          console.log($('#newDetail p img').parents());
+          $('#newDetail p img').parents('p').addClass('tac');
+
+
+
+        } else {
+          //do something
+        }
+
+
+      }
+
+      $('#big').click(function () {
+        console.log('111')
+        $('#newDetail p, #newDetail p span').attr('class', 'big-font');
+      })
+      $('#middle').click(function () {
+        $('#newDetail p, #newDetail p span').attr('class', 'mid-font');
+      })
+      $('#small').click(function () {
+        $('#newDetail p, #newDetail p span').attr('class', 'small-font');
+      })
+
+
+    })
+  </script>
 </body>
+
 </html>

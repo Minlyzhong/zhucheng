@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -7,14 +8,14 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/news.css">
   <style>
-     
+
 
 
   </style>
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
   <link rel="stylesheet" href="css/app.min.css">
   <script type="text/javascript" src="js/app.min.js"></script>
-  
+
   <script type="text/javascript" src="js/jq-paginator.js"></script>
   <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/api.js"></script>
@@ -22,56 +23,58 @@
 </head>
 <!-- Internet Explorer 已限制此网页运行脚本或ActiveX控件的解决方法 -->
 <!-- saved from url=(0014)about:internet -->
+
 <body id="some-element">
   <div id="app">
     <nav class="flex-style row">
       <div class="flex-style row">
         <span>欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
-        <div class="search">
+        <div class="search" id="search">
           <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
           <button><i>搜索</i></button>
+        </div>
       </div>
-      </div>
-    
+
       <div>
-        <a href="javascript:setHome(this,window.location);" id="text" >设为首页 |</a>
-      <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"  href="javascript:void(0);">加入收藏 </a>
+        <a href="javascript:setHome(this,window.location);" id="text">设为首页 |</a>
+        <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"
+          href="javascript:void(0);">加入收藏 </a>
         <!-- <a href="#">意见反馈 |</a>
         <a href="#">手机APP下载</a> -->
-        
+
       </div>
-      
+
     </nav>
-    
+
     <div class="content clearfix">
       <section class="clearfix">
-        
+
         <div class="flex-cstyle row shine-group">
           <div id="topName"></div>
           <div style="width: 90%; text-align: center;" id="topList">
-            
+
           </div>
-          
+
         </div>
         <div class="bottom-line"></div>
         <div class="sec-top" id="step">
           <a href="./index.html" target="_blank">首页</a>>
           <a href="#" target="_blank" id="sedStep"></a>
-          
+
         </div>
         <div class="section" style="width:67%">
           <div class=" flex-cstyle row shine-content
         ">
-              <div class="shine-set" >
-                <div class="flex-cstyle row shine-title" id="setNewList">
-                  <div id="topTitle"></div>
-                  <!-- <span class="more">更多>></span> -->
-                </div>
-                <div style="width: 100%; height: 100%;" id="setNewListHold">
-                  暂无相关内容
-                </div>
-                
-                <!-- <div class="main-new" >
+            <div class="shine-set">
+              <div class="flex-cstyle row shine-title" id="setNewList">
+                <div id="topTitle"></div>
+                <!-- <span class="more">更多>></span> -->
+              </div>
+              <div style="width: 100%; height: 100%;" id="setNewListHold">
+                暂无相关内容
+              </div>
+
+              <!-- <div class="main-new" >
                   <a href=""><h3>济南市抗疫一线培养和发展党员纪实</h3></a>
                   
                   <div class="flex-cstyle row main-content" >
@@ -85,92 +88,92 @@
                     </div>
                   </div>
                 </div> -->
-    
-                     
-              </div>
-    
-              
+
+
+            </div>
+
+
           </div>
-          
-        
+
+
         </div>
         <aside style="width:30%; margin-top: 25px;">
-          <div class="shine-set shine-left" >
-            <div class="flex-cstyle row" style="padding: 15px 10px; background-color: #F5F5F5;">
-              <img src="./images/celect.jpg" alt="">
+          <div class="shine-set shine-left">
+            <div class="flex-cstyle row" style="padding: 15px 10px; background-color: #F5F5F5;height: 130px;">
+              <img src="./images/celect.jpg" alt="" style="height:100px;">
               <div class="shine-detail">
                 <h3>
                   北海先锋
                 </h3>
                 <button type="button">立即收听</button>
               </div>
-              
-    
+
+
             </div>
             <div style="line-height: 23px; padding: 0px 10px;">
               #先锋新闻# 专稿 : 近年来 , 北海以"四个推手" 为抓手, 通过推动全覆盖, 规范化, 三帮带, 示范引领等多措并举, 有效促进该区非公企业党建工作由被动为主动的转变, 实现非公党建水平的整体提升.
             </div>
             <img src="./images/celect.jpg" alt="" style="width:100%; height: 175px;padding: 0px 10px;">
-          <div class="flex-rstyle " style="height: 35px;color: #969696;line-height: 37px; padding: 0px 10px;">
+            <div class="flex-rstyle " style="height: 35px;color: #969696;line-height: 37px; padding: 0px 10px;">
               <span>3月25日 18:11 来着网页</span>
               <div class="say"><img src="./images/say.png" alt="">(12565)</div>
             </div>
           </div>
-    
+
           <div class="shine-bottom">
             <div class="flex-cstyle row shine-title" style="background-image: url(./images/video.png); ">
               <div style="font-weight: 400; font-size: 15px;">党建视频</div>
               <span class="more">更多>></span>
             </div>
             <div class="mid-pic">
-              <img src="./images/celect.jpg" alt="">
+              <img src="./images/timg.png" alt="">
             </div>
           </div>
         </aside>
-        
+
       </section>
       <div class="demo customBootstrap">
         <!-- <p>当前第 <span id="demo2-text"></span> 页</p> -->
-        <ul id="demo2" class="pagination flex-style"></ul>
+        <ul id="demo2" class="pagination"></ul>
       </div>
-    
-    
+
+
       <section class="clearfix">
         <div class="flex-cstyle row links">
           <div>
             <span class="link-title">友情链接</span>
             <span style="color: #969696;font-size: 13px; ">Links</span>
-            </div>
-         
+          </div>
+
           <div class="webs">
             <span class="webs-selected">党建网站</span>
             <span>综合网站</span>
             <span>报刊网站</span>
           </div>
         </div>
-          <ul class="flex-style row websites">
-            <li><a href="#">共产党员网</a></li>
-            <li><a href="#">中共中央组织部</a></li>
-            <li><a href="#">中国党建网</a></li>
-            <li><a href="#">中国共产党新闻网</a></li>
-            <li><a href="#">党史党建在线</a></li>
-            <li><a href="#">全国远程教育网</a></li>
-            <li><a href="#">北京组工</a></li>
-            <li><a href="#">新浪网</a></li>
-          </ul>
-         
-        
+        <ul class="flex-style row websites">
+          <li><a href="#">共产党员网</a></li>
+          <li><a href="#">中共中央组织部</a></li>
+          <li><a href="#">中国党建网</a></li>
+          <li><a href="#">中国共产党新闻网</a></li>
+          <li><a href="#">党史党建在线</a></li>
+          <li><a href="#">全国远程教育网</a></li>
+          <li><a href="#">北京组工</a></li>
+          <li><a href="#">新浪网</a></li>
+        </ul>
+
+
       </section>
     </div>
-    
-    <footer >
+
+    <footer>
       <div>
         <a href="#">联系我们</a>|
         <a href="#">网站地图</a>|
         <a href="#">法律申明</a>|
         <a href="#">投诉信箱</a>|
         <a href="#">免责申明</a>
-        
+
       </div>
       <div>中共北海市委组织部主办</div>
       <div>地址 : 广西市合平路东二巷2号 邮编 : 53600</div>
@@ -180,42 +183,45 @@
   </div>
 
 
-    
 
-<script>
- $(function(){
+
+  <script>
+    $(function () {
 
       //获取url中的参数  
-      function getUrlParam(name) {   
+      function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
         var r = window.location.search.substr(1).match(reg);  //匹配目标参数   
         if (r != null) return unescape(r[2]); return null; //返回参数值  
-   } 
+      }
 
-   var totalPage=1;
+      var totalPage = 1;
+
+      $("#search").on('click', function () {
+        window.open('./search.html', "");
+      });
 
 
-
-    var uId=getUrlParam("id");
-    var pId=getUrlParam("pId");
-    var type=getUrlParam("type") || '';
-    var flag = 0;
-    // type=0是最新下载 1是党务问答
+      var uId = getUrlParam("id");
+      var pId = getUrlParam("pId");
+      var type = getUrlParam("type") || '';
+      var flag = 0;
+      // type=0是最新下载 1是党务问答
       console.log(uId)
-    //获取顶部栏 
-    getTopList();
-    // 获取子栏目内容
+      //获取顶部栏 
+      getTopList();
+      // 获取子栏目内容
 
-    if(uId != 0){
-     
-      getSetList(1);
-    }else{
-      // 获取最新下载
-      getDownload(1);
-    }
+      if (uId != 0) {
 
-//  初始化分页
-    $("#demo2").jqPaginator({
+        getSetList(1);
+      } else {
+        // 获取最新下载
+        getDownload(1);
+      }
+
+      //  初始化分页
+      $("#demo2").jqPaginator({
         totalPages: totalPage,
         visiblePages: 10,
         currentPage: 1,
@@ -224,240 +230,245 @@
         next: '<li class="next"><a href="javascript:void(0);">下一页<\/a><\/li>',
         last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
         page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
-        onPageChange: function(n) {
+        onPageChange: function (n) {
           // $("#demo2-text").html(n);
           // if(n !=1){
-            $('html,body').animate({scrollTop:200},'slow');
-            if(flag != 1){
-                if(uId != 0){
-                getSetList(n);
-              }else{
-                // 获取最新下载
-                getDownload(n);
-              }
-            }
+          $('html,body').animate({ scrollTop: 200 }, 'slow');
+          console.log(flag)
+          if (flag != 1) {
             
+            if (uId != 0) {
+              getSetList(n);
+            } else {
+              // 获取最新下载
+              getDownload(n);
+            }
+          }else{
+            flag+=1;
+          }
+
           // }
         }
       })
-    
-  //获取顶部栏 
-    function getTopList(){
 
-      if(uId != 0){
-        var result=ajaxMethod('topSet',pId);
-      console.log(result)
-    
-        if (result.code == 0 && result.data != null) {
+      //获取顶部栏 
+      function getTopList() {
+
+        if (uId != 0) {
+          var result = ajaxMethod('topSet', pId);
+          console.log(result)
+
+          if (result.code == 0 && result.data != null) {
             //do something
             var data = result.data[0];
             console.log(data)
-          //  $('#topName').html(data.catalogName);
-           document.getElementById("topName").innerHTML = data.catalogName;
-           document.getElementById("sedStep").innerHTML = data.catalogName;
-           var set='';
-           if(data.children.length>0){
-            
-               data.children.forEach(function(value, index ){
-                 console.log(value)
-                 if(value.id == uId){
+            //  $('#topName').html(data.catalogName);
+            document.getElementById("topName").innerHTML = data.catalogName;
+            document.getElementById("sedStep").innerHTML = data.catalogName;
+            var set = '';
+            if (data.children.length > 0) {
+
+              data.children.forEach(function (value, index) {
+                console.log(value)
+                if (value.id == uId) {
                   // $('#topTitle').html(value.catalogName);
                   document.getElementById("topTitle").innerHTML = value.catalogName;
-                  
-                 }
-                 var url = './news.html?id='+value.id+'&pId='+pId;
-                    if(value.catalogName == "党建视频"){
-                      url = './moreBook.html?type=1';
-                    }
-                    if(value.catalogName == "资料下载"){
-                      url = './news.html?id=0&pId=0&type=0';
-                    }
-                    if(value.catalogName == "党务回答"){
-                      url = './news.html?id=0&pId=0&type=1';
-                    }
-                 if(index == 0){
-                  var srt='<a href="'+url+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
-                 }else{
-                  var srt='|<a href="'+url+'" data-id="'+value.id+'" target="_blank" >'+value.catalogName+'</a>';
-                 }
-                 
-                 set += srt
- 
-                 
-               })
-               console.log(set)
+
+                }
+                var url = './news.html?id=' + value.id + '&pId=' + pId;
+                if (value.catalogName == "党建视频") {
+                  url = './moreBook.html?type=1';
+                }
+                if (value.catalogName == "资料下载") {
+                  url = './news.html?id=0&pId=0&type=0';
+                }
+                if (value.catalogName == "党务回答") {
+                  url = './news.html?id=0&pId=0&type=1';
+                }
+                if (index == 0) {
+                  var srt = '<a href="' + url + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
+                } else {
+                  var srt = '|<a href="' + url + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
+                }
+
+                set += srt
+
+
+              })
+              console.log(set)
               //  $('#topList').html(set);
-               
-                
-           }else{
-            document.getElementById("topTitle").innerHTML = data.catalogName;
-           }
-           document.getElementById("topList").innerHTML = set;
-           
-               
-            
-        } else {
+
+
+            } else {
+              document.getElementById("topTitle").innerHTML = data.catalogName;
+            }
+            document.getElementById("topList").innerHTML = set;
+
+
+
+          } else {
             //do something
+          }
+        } else {
+
+          if (type != 0) {
+            document.getElementById("topName").innerHTML = '党务回答';
+            document.getElementById("sedStep").innerHTML = '党务回答';
+            document.getElementById("topTitle").innerHTML = '党务回答';
+          } else {
+            document.getElementById("topName").innerHTML = '最新下载';
+            document.getElementById("sedStep").innerHTML = '最新下载';
+            document.getElementById("topTitle").innerHTML = '最新下载';
+
+          }
+
         }
-      }else{
-        
-        if(type != 0){
-          document.getElementById("topName").innerHTML = '党务回答';
-           document.getElementById("sedStep").innerHTML = '党务回答';
-           document.getElementById("topTitle").innerHTML = '党务回答';
-        }else{
-          document.getElementById("topName").innerHTML = '最新下载';
-           document.getElementById("sedStep").innerHTML = '最新下载';
-           document.getElementById("topTitle").innerHTML = '最新下载';
-          
-        }
-        
+
       }
-     
-    }
 
-    function getSetList(page){
-      flag+=1;
-      let that = this;
-      var data = {
-        catalogId:uId,
-        current:page,
-        size:20
-    }
-    
-    var result=ajaxMethod('newList','',data);
-    console.log(result)
-    
+      function getSetList(page) {
+        flag += 1;
+        let that = this;
+        var data = {
+          catalogId: uId,
+          current: page,
+          size: 20
+        }
+
+        var result = ajaxMethod('newList', '', data);
+        console.log(result)
+
         if (result.code == 0 && result.data != null) {
-            //do something
-          if(result.data.size > result.data.total){
+          //do something
+          if (result.data.size > result.data.total) {
             totalPage = 1;
-          }else{
-            totalPage = Math.ceil(result.data.total/result.data.size);
+          } else {
+            totalPage = Math.ceil(result.data.total / result.data.size);
             console.log(totalPage);
-          }  
+          }
           var list = result.data.records;
-          var set='';
+          var set = '';
           $('#setNewListHold').html(set);
-          list.forEach(function(value, index ){
-                //  console.log(value)
+          list.forEach(function (value, index) {
+            //  console.log(value)
 
-                 
-                  // var first = value.content.indexOf('<p');
-                  // var last = value.content.indexOf('</p>') + 4;
-                  // var cont =value.content.slice(first, last);
-                  // console.log(cont)
-                  if(value.titlePic){
-                  var pic = filePath + value.titlePic;
-                  var srt='<div class="main-new" >'+
-                  '<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'"><h3>'+value.title+'</h3></a>'+
-                  '<div class="flex-cstyle row main-content" >'+
-                    
-                    '<div class="shine-detail save">'+value.creatTs+'  </div></div></div>'; 
-                    // '<img  class="max" src="'+pic+'" alt="">'+
-                    // '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
-                 }else{
-                  var srt='<div class="main-new" >'+
-                  '<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'"><h3>'+value.title+'</h3></a>'+
-                  '<div class="flex-cstyle row main-content" >'+
-                    '<div class="shine-detail save">'+value.creatTs+'  </div></div></div>';
-                    // '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
-                 }
-                 set += srt
-         
-               })
-               $('#setNewListHold').html(set);
-                  
-              
-            
+
+            // var first = value.content.indexOf('<p');
+            // var last = value.content.indexOf('</p>') + 4;
+            // var cont =value.content.slice(first, last);
+            // console.log(cont)
+            if (value.titlePic) {
+              var pic = filePath + value.titlePic;
+              var srt = '<div class="main-new" >' +
+                '<a target="_blank" href="./newDetail.html?id=' + value.id + '&pId=' + pId + '"><h3>' + value.title + '</h3></a>' +
+                '<div class="flex-cstyle row main-content" >' +
+
+                '<div class="shine-detail save">' + value.creatTs + '  </div></div></div>';
+              // '<img  class="max" src="'+pic+'" alt="">'+
+              // '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
+            } else {
+              var srt = '<div class="main-new" >' +
+                '<a target="_blank" href="./newDetail.html?id=' + value.id + '&pId=' + pId + '"><h3>' + value.title + '</h3></a>' +
+                '<div class="flex-cstyle row main-content" >' +
+                '<div class="shine-detail save">' + value.creatTs + '  </div></div></div>';
+              // '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
+            }
+            set += srt
+
+          })
+          $('#setNewListHold').html(set);
+
+
+
         } else {
-            //do something
+          //do something
         }
-    }
+      }
 
-   // 获取最新下载
-function getDownload(page){
-    flag+=1;
+      // 获取最新下载
+      function getDownload(page) {
+        flag += 1;
 
-    var that = this;
-    var data = {
-        catalogId:uId,
-        current:page,
-        size:20
-    }
-    if(type !=0){
-      // QA问答
-      var url = 'question';
-      var result=ajaxMethod(url,'',data);
-    // console.log(result)
-      if (result.code == 0 && result.data != null) {
+        var that = this;
+        var data = {
+          catalogId: uId,
+          current: page,
+          size: 20
+        }
+        if (type != 0) {
+          // QA问答
+          var url = 'question';
+          var result = ajaxMethod(url, '', data);
+          // console.log(result)
+          if (result.code == 0 && result.data != null) {
             //do something
             var resultList = result.data.records;
-            var set='';
-            $('#setNewListHold').html(set);   
-            resultList.forEach(function(value, index ){
-                // console.log(value)
-                var url = filePath + value.filePath;
-                var srt='<div class="main-new" >'+
-                  '<a target="_blank" href="'+url+'"><h3>'+value.questions+'</h3></a>'+
-                  '<div class="flex-cstyle row main-content" >'+
-                    
-                    '<div class="shine-detail save">'+value.createdDate+'  </div></div></div>';
-               
-                set += srt
+            var set = '';
+            $('#setNewListHold').html(set);
+            resultList.forEach(function (value, index) {
+              // console.log(value)
+              var url = filePath + value.filePath;
+              var srt = '<div class="main-new" >' +
+                '<a target="_blank" href="' + url + '"><h3>' + value.questions + '</h3></a>' +
+                '<div class="flex-cstyle row main-content" >' +
 
-                
-              })
-           
-              $('#setNewListHold').html(set);   
-             
-             
-            
-        } else {
+                '<div class="shine-detail save">' + value.createdDate + '  </div></div></div>';
+
+              set += srt
+
+
+            })
+
+            $('#setNewListHold').html(set);
+
+
+
+          } else {
             //do something
-        }
-    }else{
-      // 最新下载
-      var url ='downloadList';
-      var result=ajaxMethod(url,'',data);
-    // console.log(result)
-      if (result.code == 0 && result.data != null) {
+          }
+        } else {
+          // 最新下载
+          var url = 'downloadList';
+          var result = ajaxMethod(url, '', data);
+          // console.log(result)
+          if (result.code == 0 && result.data != null) {
             //do something
             var resultList = result.data.records;
-            var set='';
-            $('#setNewListHold').html(set);   
-            resultList.forEach(function(value, index ){
-                // console.log(value)
-                var url = filePath + value.filePath;
-                var srt='<div class="main-new" >'+
-                  '<a target="_blank" href="'+url+'"><h3>'+value.title+'</h3></a>'+
-                  '<div class="flex-cstyle row main-content" >'+
-                    
-                    '<div class="shine-detail save">'+value.createdDate+'  </div></div></div>';
-               
-                set += srt
+            var set = '';
+            $('#setNewListHold').html(set);
+            resultList.forEach(function (value, index) {
+              // console.log(value)
+              var url = filePath + value.filePath;
+              var srt = '<div class="main-new" >' +
+                '<a target="_blank" href="' + url + '"><h3>' + value.title + '</h3></a>' +
+                '<div class="flex-cstyle row main-content" >' +
 
-                
-              })
-           
-              $('#setNewListHold').html(set);   
-             
-             
-            
-        } else {
+                '<div class="shine-detail save">' + value.createdDate + '  </div></div></div>';
+
+              set += srt
+
+
+            })
+
+            $('#setNewListHold').html(set);
+
+
+
+          } else {
             //do something
+          }
         }
-    }
-    
-    
-       
-    
-   
-}
 
-    
- })
 
-</script> 
+
+
+
+      }
+
+
+    })
+
+  </script>
 </body>
+
 </html>

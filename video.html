@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -8,8 +9,8 @@
   <link rel="stylesheet" href="css/news.css">
   <link rel="stylesheet" href="css/video-js.min.css">
   <style>
-    .video-js{
-      margin:0px auto;
+    .video-js {
+      margin: 0px auto;
     }
   </style>
 
@@ -23,36 +24,38 @@
 </head>
 <!-- Internet Explorer 已限制此网页运行脚本或ActiveX控件的解决方法 -->
 <!-- saved from url=(0014)about:internet -->
+
 <body id="some-element">
   <div id="app">
     <nav class="flex-style row">
       <div class="flex-style row">
         <span>欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
-        <div class="search">
+        <div class="search" id="search">
           <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
           <button><i>搜索</i></button>
+        </div>
       </div>
-      </div>
-    
+
       <div>
-        <a href="javascript:setHome(this,window.location);" id="text" >设为首页 |</a>
-      <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"  href="javascript:void(0);">加入收藏 </a>
+        <a href="javascript:setHome(this,window.location);" id="text">设为首页 |</a>
+        <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"
+          href="javascript:void(0);">加入收藏 </a>
         <!-- <a href="#">意见反馈 |</a>
         <a href="#">手机APP下载</a> -->
-        
+
       </div>
-      
+
     </nav>
-    
+
     <div class="content clearfix">
       <section class="clearfix">
-        
+
         <div class="flex-cstyle row shine-group">
           <div id="topName"></div>
           <div style="width: 80%;" id="topList">
-            
+
           </div>
-          
+
         </div>
 
         <div class="bottom-line"></div>
@@ -60,12 +63,12 @@
           <a href="./index.html" target="_blank">首页</a>>
           <span>内容</span>
         </div>
-        
-        
+
+
         <div class="news-title">
-          <h1 id="detailTitle"></h1>								    
+          <h1 id="detailTitle"></h1>
           <span id="time"></span>
-          
+
         </div>
         <!-- <div id="picContent">
 
@@ -73,132 +76,136 @@
         <div class="news clearfix" id="newDetail">
 
 
-          
+
           <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
             poster="./images/noVideo.png">
-            <source src="" type="video/mp4" id="videoLink"/>
+            <source src="" type="video/mp4" id="videoLink" />
           </video>
-           
+
 
         </div>
         <div id="videoContent">
 
         </div>
-       
-          
-        
+
+
+
       </section>
-      
-    
-    
+
+
+
       <section class="clearfix">
         <div class="flex-cstyle row links">
           <div>
             <span class="link-title">友情链接</span>
             <span style="color: #969696;font-size: 13px; ">Links</span>
-            </div>
-         
+          </div>
+
           <div class="webs">
             <span class="webs-selected">党建网站</span>
             <span>综合网站</span>
             <span>报刊网站</span>
           </div>
         </div>
-          <ul class="flex-style row websites">
-            <li><a href="#">共产党员网</a></li>
-            <li><a href="#">中共中央组织部</a></li>
-            <li><a href="#">中国党建网</a></li>
-            <li><a href="#">中国共产党新闻网</a></li>
-            <li><a href="#">党史党建在线</a></li>
-            <li><a href="#">全国远程教育网</a></li>
-            <li><a href="#">北京组工</a></li>
-            <li><a href="#">新浪网</a></li>
-          </ul>
-         
-        
+        <ul class="flex-style row websites">
+          <li><a href="#">共产党员网</a></li>
+          <li><a href="#">中共中央组织部</a></li>
+          <li><a href="#">中国党建网</a></li>
+          <li><a href="#">中国共产党新闻网</a></li>
+          <li><a href="#">党史党建在线</a></li>
+          <li><a href="#">全国远程教育网</a></li>
+          <li><a href="#">北京组工</a></li>
+          <li><a href="#">新浪网</a></li>
+        </ul>
+
+
       </section>
     </div>
-    
-    <footer >
+
+    <footer>
       <div>
         <a href="#">联系我们</a>|
         <a href="#">网站地图</a>|
         <a href="#">法律申明</a>|
         <a href="#">投诉信箱</a>|
         <a href="#">免责申明</a>
-        
+
       </div>
       <div>中共北海市委组织部主办</div>
       <div>地址 : 广西市合平路东二巷2号 邮编 : 53600</div>
       <div>桂公网安备 450502020000014号</div>
       <img src="./images/bottom.png" alt="">
     </footer>
-    
-        
-    
+
+
+
   </div>
 
-<script>
-$(function(){
-    //获取url中的参数  
-    function getUrlParam(name) {   
+  <script>
+    $(function () {
+      //获取url中的参数  
+      function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
         var r = window.location.search.substr(1).match(reg);  //匹配目标参数   
         if (r != null) return unescape(r[2]); return null; //返回参数值  
-   }
+      }
 
-  var bookId=getUrlParam("id");
+      var bookId = getUrlParam("id");
 
-  
-  // 获取影展详情
-  
-  document.getElementById("topName").innerHTML = '党建视频';
-  $("#some-element").busyLoad("show",state);
-  
-  getVideo();
+      $("#search").on('click', function () {
+        window.open('./search.html', "");
+      });
 
-  var player = videojs('example_video_1',{
-    muted: true,
-    controls : true,      
-    height:600, 
-    width:900,
-    autoplay :true,
-    //是否重复播
-    loop : false,
-    // 是否静音
-    muted : true,
-    preload : true,
-    // 更多配置.....
-  });
+      // 获取影展详情
 
-  
+      document.getElementById("topName").innerHTML = '党建视频';
+      $("#some-element").busyLoad("show", state);
+
+      getVideo();
+
+      var player = videojs('example_video_1', {
+        muted: true,
+        controls: true,
+        height: 600,
+        width: 900,
+        autoplay: true,
+        //是否重复播
+        loop: false,
+        // 是否静音
+        muted: true,
+        preload: true,
+        // 更多配置.....
+      });
+
+
       // 获取视频
-      function getVideo(){
-        $('html,body').animate({scrollTop:400},'slow');
+      function getVideo() {
+        $('html,body').animate({ scrollTop: 400 }, 'slow');
         var that = this;
-              var result=ajaxMethod('partyVideoDetail',bookId);
-              // console.log(result)
-                  if (result.code == 0 && result.data != null) {
-                      //do something
-                      // console.log('11111');
-                      console.log(result.data);
-                      document.getElementById("detailTitle").innerHTML = result.data.title;
-                      document.getElementById("videoContent").innerHTML = result.data.content;
-                      $("#some-element").busyLoad("hide");
+        var result = ajaxMethod('partyVideoDetail', bookId);
+        // console.log(result)
+        if (result.code == 0 && result.data != null) {
+          //do something
+          // console.log('11111');
+          console.log(result.data);
+          document.getElementById("detailTitle").innerHTML = result.data.title;
+          document.getElementById("videoContent").innerHTML = result.data.content;
+          $("#some-element").busyLoad("hide");
 
-                      $('#videoLink').attr('src',filePath+result.data.videoPath )
+          $('#videoLink').attr('src', filePath + result.data.videoPath)
 
-                      
 
-                  } else {
-                      //do something
-                  }
-              
+
+        } else {
+          //do something
         }
 
-       
-    
-})
-</script> 
+      }
+
+
+
+    })
+  </script>
 </body>
+
 </html>

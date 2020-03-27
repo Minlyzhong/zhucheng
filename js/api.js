@@ -70,6 +70,12 @@ function urlLink(str){
             method:'get',
             url:'/site/partyVideo/'
         },
+
+        //全文搜索新闻
+        searchNews:{
+            method:'get',
+            url:'/site/news/findByQuery'
+        },
      
     };
     return url[str];
@@ -91,7 +97,7 @@ function urlLink(str){
               
                
 //     let that = this;
-//     var result=ajaxMethod('banner',1);
+//     var result=ajaxMethod('banner','',1);
 //     console.log(result)
     
 //         if (result.code == 0 && result.data != null) {

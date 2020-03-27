@@ -1,17 +1,17 @@
-
-section{
+section {
     padding: 15px;
 }
-nav{
+
+nav {
     justify-content: space-around;
     width: 100%;
     line-height: 44px;
     height: 44px;
-    background-color:rgba(255, 255, 255,0.4);
+    background-color: rgba(255, 255, 255, 0.4);
     font-size: 12px;
 }
 
-.search{
+.search {
     height: 25px;
     /* width: 120px; */
     margin-left: 10px;
@@ -20,7 +20,8 @@ nav{
     margin-top: 10px;
     width: 200px;
 }
-.search input{
+
+.search input {
     float: left;
     flex: 4;
     height: 25px;
@@ -30,7 +31,8 @@ nav{
     box-sizing: border-box;
     padding-left: 10px;
 }
-.search button{
+
+.search button {
     float: right;
     flex: 1;
     height: 25px;
@@ -42,17 +44,19 @@ nav{
     padding: 3px;
     line-height: 20px;
 }
-.search button i{
+
+.search button i {
     font-style: normal;
 }
-.search button:hover{
+
+.search button:hover {
     /* font-size: 16px; */
 }
 
 
 
 
-.content{
+.content {
     height: 100%;
     width: 85%;
     background: #fff;
@@ -62,11 +66,11 @@ nav{
 
 }
 
-.content-top{
+.content-top {
     width: 100%;
-    background: rgb(16,68,151);
+    background: rgb(16, 68, 151);
     min-height: 80px;
-    color:#fff;
+    color: #fff;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -74,7 +78,7 @@ nav{
 
 }
 
-.title-left{
+.title-left {
     width: 60px;
     height: 50px;
     background: #f1f1f4;
@@ -88,20 +92,23 @@ nav{
     float: left;
 }
 
-.title-right{
+.title-right {
     float: right;
     line-height: 24px;
-    padding: 0px 10px;
+    /* padding: 0px 10px; */
     /* max-width: 235px; */
 }
-.title-right a{
+
+.title-right a {
     padding: 5px;
-    color:#fff;
+    color: #fff;
 }
-.title-hold{
+
+.title-hold {
     /* padding: 10px; */
 }
-.hot-content{
+
+.hot-content {
     width: 80%;
     margin: 0px auto;
     height: 100%;
@@ -110,7 +117,7 @@ nav{
 
 }
 
-.hot-new{
+.hot-new {
     padding-top: 10px;
     height: 80px;
     border: 1px solid #ddd;
@@ -126,24 +133,24 @@ nav{
 
 }
 
-.hot-new div{
+.hot-new div {
     color: #494848;
     font-size: 18px;
 }
 
-.hot-new span{
+.hot-new span {
     color: #969696;
     font-size: 13px;
 }
 
-.new-content{
+.new-content {
     margin-top: 20px;
     padding: 10px;
-    width:100%;
-    height:550px;
+    width: 100%;
+    height: 550px;
 }
 
-.hot-img{
+.hot-img {
     /* margin: 10px; */
     /* height: 315px; */
     background: #ddd;
@@ -153,14 +160,14 @@ nav{
 
 }
 
-.hot-img img{
+.hot-img img {
     width: 100%;
     max-height: 400px;
     min-height: 350px;
     padding: 10px;
 }
 
-.scan{
+.scan {
     padding-top: 15px;
     /* margin-top: 10px; */
     float: left;
@@ -171,40 +178,44 @@ nav{
     border: 1px solid #ddd;
     color: #969696;
     box-shadow: 2px 2px 2px #ddd;
-    background: -webkit-linear-gradient(#969696a3,#fff); /* Safari 5.1-6.0 */
-    background: -o-linear-gradient(#969696a3,#fff); /* Opera 11.1-12.0 */ 
-    background: -moz-linear-gradient(#969696a3,#fff); /* Firefox 3.6-15 */
-    background: linear-gradient(#969696a3,#fff); /* 标准语法 */
+    background: -webkit-linear-gradient(#969696a3, #fff);
+    /* Safari 5.1-6.0 */
+    background: -o-linear-gradient(#969696a3, #fff);
+    /* Opera 11.1-12.0 */
+    background: -moz-linear-gradient(#969696a3, #fff);
+    /* Firefox 3.6-15 */
+    background: linear-gradient(#969696a3, #fff);
+    /* 标准语法 */
 }
 
-.scan img{
+.scan img {
     margin-bottom: 5px;
 
 }
 
-.call{
+.call {
     float: right;
     width: 35%;
     justify-content: space-between;
     align-items: flex-end;
-    
+
 
 }
 
-.call img{
+.call img {
     height: 55px;
     /* margin-bottom: 5px; */
     width: 89%;
     box-shadow: 2px 2px 2px #ddd;
 }
 
-.content-left{
+.content-left {
     border: 1px solid #ddd;
     border-top: 2px solid #c81623;
 
 }
 
-.left-title{
+.left-title {
     background-color: #EDEDED;
     justify-content: space-between;
     align-items: center;
@@ -213,13 +224,15 @@ nav{
     font-size: 16px;
     box-shadow: 2px 2px 2px #ddd;
     color: #666;
-    
+
 }
-.left-title a{
+
+.left-title a {
     font-size: 12px;
     color: #969696;
 }
-.left-choice span{
+
+.left-choice span {
     height: 30px;
     cursor: pointer;
     padding: 7px 16px;
@@ -231,16 +244,16 @@ nav{
 }
 
 .left-active {
-    background-color: #032197!important;
-    color: #fff!important;
+    background-color: #032197 !important;
+    color: #fff !important;
 }
 
-.left-bottom{
+.left-bottom {
     border: 1px solid #ddd;
     margin-top: 5px;
 }
 
-.left-bottom>div{
+.left-bottom>div {
     justify-content: space-between;
     padding: 0px 10px;
 }
@@ -248,17 +261,17 @@ nav{
 
 
 
-.left-middle{
+.left-middle {
     padding: 10px;
 }
 
-.left-middle div:nth-child(1){
+.left-middle div:nth-child(1) {
     color: #c81623;
     padding: 5px;
 }
 
-.left-middle div:nth-child(2){
-    font-size: 13px!important;
+.left-middle div:nth-child(2) {
+    font-size: 13px !important;
     padding: 5px;
     line-height: 25px;
     overflow: hidden;
@@ -272,37 +285,41 @@ nav{
 
 }
 
-.content-list{
+.content-list {
     border-top: 1px solid #ddd;
     line-height: 33px;
     padding: 10px;
     /* margin-top: 5px; */
     font-size: 13px;
 }
-.content-list li{
+
+.content-list li {
     /* min-width: 50px; */
-    white-space:nowrap;
-    text-overflow:ellipsis;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     overflow: hidden;
+    width: 95%;
+
 }
-.content-list li::before{
+
+.content-list li::before {
     content: "";
     display: inline-block;
     width: 5px;
     height: 5px;
     background-color: #DE001D;
-    margin-right:5px;
+    margin-right: 5px;
 
-  }
+}
 
-  .more{
+.more {
     padding: 7px 16px;
     font-size: 12px;
     color: #969696;
     padding-top: 11px;
-  }
+}
 
-.shine-group{
+.shine-group {
     justify-content: space-between;
     height: 50px;
     border-bottom: 4px solid #D11518;
@@ -312,38 +329,41 @@ nav{
     background-position: 2px 0px;
     background-size: contain;
     line-height: 62px;
-    width:100%;
+    width: 100%;
 }
-.shine-group>div{
+
+.shine-group>div {
     font-size: 18px;
 }
 
-.shine-group span, .shine-group a{
+.shine-group span,
+.shine-group a {
     font-size: 13px;
     padding: 0px 17px;
 }
 
-.bottom-line{
+.bottom-line {
     width: 100%;
     height: 20px;
     background: #F2F3F3;
 }
 
-.shine-content{
+.shine-content {
     margin-top: 20px;
 }
 
-.shine-set img{
+.shine-set img {
     /* width: 140px; */
     height: 100px;
 }
-.shine-set{
-    width: 50%;
+
+.shine-set {
+    width: 47%;
     margin-left: 3%;
     /* border: 1px solid #ddd; */
 }
 
-.shine-title{
+.shine-title {
     justify-content: space-between;
     height: 40px;
     font-size: 18px;
@@ -357,19 +377,20 @@ nav{
 
 }
 
-.shine-title>div{
+.shine-title>div {
     padding-left: 50px;
     width: 50%;
     border-bottom: 2px solid #D11518;
 }
 
-.shine-detail{
+.shine-detail {
     padding-left: 10px;
     line-height: 21px;
     min-height: 116px;
+    width: 90%;
 }
 
-.shine-detail>div{
+.shine-detail>div {
     overflow: hidden;
     -webkit-line-clamp: 3;
     line-clamp: 3;
@@ -381,29 +402,27 @@ nav{
     height: 45px;
 }
 
-.shine-detail h2{
+.shine-detail h2 {}
 
-}
-
-.shine-detail a{
+.shine-detail a {
     color: #D11518;
     font-size: 13px;
 }
 
-.mid-pic{
+.mid-pic {
     width: 100%;
     /* height: 100px; */
 }
 
-.mid-pic img{
+.mid-pic img {
     width: 100%;
     height: 110px;
     margin-top: 10px;
 }
 
 
-.shine-left{
-    margin-left: 0px!important;
+.shine-left {
+    margin-left: 0px !important;
     background-image: url(../images/vlog.png);
     background-position: 270px 15px;
     background-repeat: no-repeat;
@@ -415,7 +434,7 @@ nav{
 }
 
 
-.shine-left button{
+.shine-left button {
     padding: 3px 10px 3px 26px;
     border: 1px solid #ddd;
     background: url(../images/plus.png) no-repeat;
@@ -427,31 +446,32 @@ nav{
     font-size: 13px;
 }
 
-.shine-left h3{
+.shine-left h3 {
     padding: 4px 0px 11px 6px;
     font-size: 16px;
 }
-.say{
+
+.say {
     width: 110px;
     height: 20px;
     padding: 0px 10px;
 
 }
 
-.say img{
+.say img {
     width: 20px;
     height: 20px;
     margin-right: 5px;
 
 }
 
-.shine-bottom{
+.shine-bottom {
     border: 1px solid #ddd;
     margin-top: 10px;
 }
 
 
-.shine-bottom img{
+.shine-bottom img {
     width: 80%;
     /* height: 175px; */
     display: block;
@@ -460,18 +480,18 @@ nav{
     /* height: 250px; */
 }
 
-.download{
+.download {
     border: 1px solid #ddd;
     /* margin-left: 2%; */
-    
+
 }
 
-.download>div{
+.download>div {
     font-size: 15px;
     font-weight: 400;
 }
 
-.ask{
+.ask {
     flex-direction: column;
     justify-content: flex-start;
     color: #D11518;
@@ -481,31 +501,31 @@ nav{
 }
 
 
-.ask img{
+.ask img {
     width: 60px;
     height: 44px;
 }
 
 
-.horizontal{
+.horizontal {
     margin-top: 25px;
     margin-bottom: 20px;
     /* padding: 0px 15px; */
 }
 
-.horizontal img{
+.horizontal img {
     width: 49%;
     height: 92px;
 }
 
-.book-list{
+.book-list {
     /* justify-content: space-around; */
     justify-content: flex-start;
     height: 45%;
 
 }
 
-.book-list a{
+.book-list a {
     width: 26%;
     margin-top: 5px;
     margin-left: 25px;
@@ -513,41 +533,42 @@ nav{
 
 }
 
-.book-list img{
+.book-list img {
     width: 100%;
     height: 100%;
     /* height: 148px;
     margin-top: 15px; */
 }
 
-.shine-set2{
+.shine-set2 {
     width: 40%;
     /* margin-left: 3%; */
     padding-bottom: 15px;
     min-height: 330px;
 }
 
-.shine-set3{
+.shine-set3 {
     width: 60%;
     margin-left: 2%;
     padding-bottom: 15px;
     min-height: 330px;
 }
 
-.book-list2{
+.book-list2 {
     justify-content: flex-start;
     height: 50%;
 
 }
 
-.book-list2 a{
+.book-list2 a {
     width: 31%;
     height: 90%;
     margin-top: 10px;
     margin-left: 14px;
 
 }
-.book-list2 img{
+
+.book-list2 img {
     width: 100%;
     height: 100%;
     /* height: 148px;
@@ -556,23 +577,23 @@ nav{
 }
 
 
-.book-list2 a{
+.book-list2 a {
     position: relative;
 }
 
-.book-list2 a div{
+.book-list2 a div {
     position: absolute;
     bottom: 0px;
     color: #fff;
     font-size: 13px;
-    background-color: rgba(0, 0, 0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
     width: 100%;
     height: 26px;
     line-height: 24px;
 }
 
-.links{
+.links {
     height: 40px;
     background: #F4F4F4;
     border: 1px solid #ddd;
@@ -583,7 +604,7 @@ nav{
     padding-right: 40px;
 }
 
-.link-title{
+.link-title {
     background-color: #B90010;
     padding: 3px 7px;
     color: #fff;
@@ -592,40 +613,40 @@ nav{
     -webkit-border-radius: 3px;
 }
 
-.webs span{
+.webs span {
     padding: 10px 12px;
-    
+
 }
 
-.webs-selected{
+.webs-selected {
     background: #FAF9F5;
 }
 
-.websites{
+.websites {
     justify-content: space-between;
     height: 70px;
     line-height: 50px;
     padding: 10px 10px 10px 10px;
-    
+
     border-bottom: 2px solid #D11518;
     margin-bottom: 50px;
 }
 
-footer a{
+footer a {
     padding: 10px;
 }
 
-footer img{
-    width:70px;
+footer img {
+    width: 70px;
 }
 
-#groupContent>a{
+#groupContent>a {
     height: 50px;
     line-height: 50px;
     font-size: 17px;
     display: block;
 }
 
-#quest li{
-    width: 75%;
+#quest li {
+    width: 90%;
 }
