@@ -64,14 +64,14 @@ nav{
 
 .content-top{
     width: 100%;
-    background: rgb(16,68,151);
-    /* height: 100px; */
-    color:#fff;
+    background: rgb(16, 68, 151);
+    min-height: 80px;
+    color: #fff;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     justify-content: space-around;
-
+    margin-bottom: 10px;
 }
 
 .title-left{
@@ -88,14 +88,16 @@ nav{
     float: left;
 }
 
-.title-right{
+.title-right {
     float: right;
-    line-height: 50px;
-    padding: 0px 10px;
+    line-height: 24px;
+    /* padding: 0px 10px; */
+    /* max-width: 235px; */
 }
-.title-right a{
+
+.title-right a {
     padding: 5px;
-    color:#fff;
+    color: #fff;
 }
 .title-hold{
     /* padding: 10px; */

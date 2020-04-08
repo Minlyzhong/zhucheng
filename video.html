@@ -42,12 +42,14 @@
           href="javascript:void(0);">加入收藏 </a>
         <!-- <a href="#">意见反馈 |</a>
         <a href="#">手机APP下载</a> -->
-
       </div>
-
     </nav>
 
     <div class="content clearfix">
+      <!-- 顶部栏目 -->
+      <section class="content-top row flex-cstyle" id="contentTop">
+      </section>
+
       <section class="clearfix">
 
         <div class="flex-cstyle row shine-group">
@@ -55,40 +57,30 @@
           <div style="width: 80%;" id="topList">
 
           </div>
-
         </div>
-
         <div class="bottom-line"></div>
         <div class="sec-top">
           <a href="./index.html" target="_blank">首页</a>>
-          <span>内容</span>
+          <a href="./moreBook.html?type=1" target="_blank">党建视频</a>>
+          <span id="topTitle">内容</span>
         </div>
-
 
         <div class="news-title">
           <h1 id="detailTitle"></h1>
           <span id="time"></span>
 
         </div>
-        <!-- <div id="picContent">
-
-        </div> -->
         <div class="news clearfix" id="newDetail">
-
-
 
           <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
             poster="./images/noVideo.png">
             <source src="" type="video/mp4" id="videoLink" />
           </video>
 
-
         </div>
         <div id="videoContent">
 
         </div>
-
-
 
       </section>
 
@@ -117,8 +109,6 @@
           <li><a href="#">北京组工</a></li>
           <li><a href="#">新浪网</a></li>
         </ul>
-
-
       </section>
     </div>
 
@@ -136,8 +126,6 @@
       <div>桂公网安备 450502020000014号</div>
       <img src="./images/bottom.png" alt="">
     </footer>
-
-
 
   </div>
 
@@ -189,6 +177,7 @@
           // console.log('11111');
           console.log(result.data);
           document.getElementById("detailTitle").innerHTML = result.data.title;
+          document.getElementById("topTitle").innerHTML = result.data.title;
           document.getElementById("videoContent").innerHTML = result.data.content;
           $("#some-element").busyLoad("hide");
 
@@ -199,10 +188,7 @@
         } else {
           //do something
         }
-
       }
-
-
 
     })
   </script>

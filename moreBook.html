@@ -42,6 +42,10 @@
     </nav>
 
     <div class="content clearfix">
+      <!-- 顶部栏目 -->
+      <section class="content-top row flex-cstyle" id="contentTop">
+      </section>
+
       <section class="clearfix">
 
         <div class="flex-cstyle row shine-group">
@@ -49,12 +53,11 @@
           <div style="width: 90%; text-align: center;" id="topList">
 
           </div>
-
         </div>
         <div class="bottom-line"></div>
         <div class="sec-top" id="step">
           <a href="./index.html" target="_blank">首页</a>>
-          <a href="#" target="_blank">先锋导读</a>
+          <a href="#" target="_blank" id="sedName">先锋导读</a>
 
         </div>
         <div class="section" style="width:67%">
@@ -67,14 +70,8 @@
               <div style="width:100%;height:100%;" id="setNewListDetail">
 
               </div>
-
-
             </div>
-
-
           </div>
-
-
         </div>
         <aside style="width:30%; margin-top: 25px;">
           <div class="shine-set shine-left">
@@ -86,8 +83,6 @@
                 </h3>
                 <button type="button">立即收听</button>
               </div>
-
-
             </div>
             <div style="line-height: 23px; padding: 0px 10px;">
               #先锋新闻# 专稿 : 近年来 , 北海以"四个推手" 为抓手, 通过推动全覆盖, 规范化, 三帮带, 示范引领等多措并举, 有效促进该区非公企业党建工作由被动为主动的转变, 实现非公党建水平的整体提升.
@@ -140,8 +135,6 @@
           <li><a href="#">北京组工</a></li>
           <li><a href="#">新浪网</a></li>
         </ul>
-
-
       </section>
     </div>
 
@@ -160,9 +153,6 @@
       <img src="./images/bottom.png" alt="">
     </footer>
   </div>
-
-
-
 
   <script>
     $(function () {
@@ -184,13 +174,13 @@
       if (type !== 0) {
         getVideoList();
         $('#topTitle').html('党建视频');
+        $('#sedName').html('党建视频');
+        $('#topName').html('党建视频');
       } else {
         //  获取党建掠影
         getSetList();
         $('#topTitle').html('党建掠影');
-
       }
-
       //  初始化分页
       $("#demo2").jqPaginator({
         totalPages: totalPage,
@@ -208,14 +198,13 @@
           if (type !== 0) {
             // 获取党建视频
             getVideoList(n);
+           
           } else {
             //  获取党建掠影
             getSetList(n);
           }
         }
       })
-
-
 
       function getSetList(page) {
 
@@ -290,9 +279,7 @@
 
               '<div class="shine-detail save">' + value.createdDate + '  </div></div></div>';
 
-
             set += srt
-
           })
           // $("#some-element").busyLoad("hide");
 
@@ -303,7 +290,6 @@
           //do something
         }
       }
-
     })
 
   </script>

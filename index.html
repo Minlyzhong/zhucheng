@@ -815,12 +815,12 @@
                   // console.log(cont)
                   $("#groupContent div").html(value.creatTs);
                   $("#groupContent a").html(value.title);
-                  $("#groupContent a").attr('href', './newDetail.html?id=' + value.id + '&pId=' + val.parentId);
-
+                  $("#groupContent a").attr('href', './newDetail.html?id=' + value.id + '&pId=' + val.id);
+                   
                   // 热点内容
                   document.getElementById("hotTitle").innerHTML = value.title;
                   document.getElementById("hotTime").innerHTML = value.creatTs;
-                  $("#hotLink").attr('href', './newDetail.html?id=' + value.id + '&pId=' + val.parentId);
+                  $("#hotLink").attr('href', './newDetail.html?id=' + value.id + '&pId=' + val.id);
 
                   // var url = './newDetail.html?id='+value.id+'&pId='+val.id;
                   //   var srt='<li ><a target="_blank" href="'+url+'">'+value.title+'</a></li> ';
@@ -916,6 +916,19 @@
           } else {
             var srt = '|<a href="' + url + '?id=' + value.id + '&pId=' + pId + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
           }
+
+          if(value.catalogName == '党建视频'){
+            srt = '|<a href="./moreBook.html?type=1" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
+          }
+
+          if(value.catalogName == '党务回答'){
+            srt = '|<a href="./news.html?type=1&id=0&pId=0" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
+          }
+
+          if(value.catalogName == '资料下载'){
+            srt = '<a href="./news.html?id=0&pId=0&type=0" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
+          }
+
           set += srt
         }
 
@@ -954,8 +967,6 @@
           } else {
             var result = getNews(data[i].id).slice(0, 6);
           }
-
-
           console.log('result')
           console.log(result)
           var set = '';
@@ -974,8 +985,6 @@
               var srt = '<li ><a target="_blank" href="' + url + '">' + result[index].title + '</a></li>';
               set += srt
 
-
-
             }
 
             $('#fNewsList-' + i + list).html(set);
@@ -985,8 +994,6 @@
 
       // 获取新闻列表
       function getNews(id) {
-
-
         var that = this;
         var data = {
           catalogId: id
@@ -998,7 +1005,6 @@
           //do something
 
           return result.data.records;
-
 
         } else {
           //do something
@@ -1037,15 +1043,9 @@
 
           }
 
-
-
-
-
         } else {
           //do something
         }
-
-
       }
 
       // 获取网站影展
@@ -1080,15 +1080,9 @@
 
           }
 
-
-
-
-
         } else {
           //do something
         }
-
-
       }
 
       // 获取视频
@@ -1109,8 +1103,6 @@
             $("#toVideo a").attr('href', './video.html?id=' + result.data.records[0].id);
             $("#toVideo img").attr('src', './images/timg.png');
           }
-
-
         } else {
           //do something
         }

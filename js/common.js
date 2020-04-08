@@ -2,6 +2,8 @@ $(function () {
     // 获取背景图片
     getBackground();
 
+    getHome();
+
     function getBackground() {
         var result = ajaxMethod('banner', 1);
         // console.log(result)
@@ -18,6 +20,95 @@ $(function () {
             //do something
         }
     }
+
+    // 获取首页顶部栏目
+    function getHome() {
+        var that = this;
+        var result = ajaxMethod('topSet', 80);
+        console.log('获取首页顶部栏目')
+        console.log(result)
+        if (result.code == 0 && result.data != null) {
+          //do something
+          var data = result.data[0].children;
+
+          var totalData = [];
+          var sigleData = [];
+          var srt = '';
+          for (var index = 0; index < data.length; index++) {
+            var value = data[index];
+            // console.log(value.children)
+            if (value.children.length > 0) {
+              var newData = new Object({
+                id: 0,
+                catalogName: '',
+                title1: '',
+                title2: '',
+              });
+              newData.children = value.children;
+              newData.title1 = value.catalogName.substring(0, 2);
+              newData.title2 = value.catalogName.substring(2, 4);
+              newData.id = value.id;
+              newData.catalogName = value.catalogName;
+             
+              totalData.push(newData);
+              // console.log(newData.children);
+              var str2 = '';
+
+              for (var ind = 0; ind < newData.children.length; ind++) {
+                var val = newData.children[ind];
+                // console.log(val)
+                var url = './news.html?id=' + val.id + '&pId=' + value.id;
+                if (val.catalogName == "党建视频") {
+                  url = './moreBook.html?type=1';
+                }
+                if (val.catalogName == "资料下载") {
+                  url = './news.html?id=0&pId=0&type=0';
+                }
+                if (val.catalogName == "党务回答") {
+                  url = './news.html?id=0&pId=0&type=1';
+                }
+                if (ind != 0 && ind != 3) {
+
+                  if (ind == 2) {
+                    str2 += '<span>' +
+                      '<span >|</span><a  href="' + url + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
+                      + '</span></br>'
+                  } else {
+                    str2 += '<span>' +
+                      '<span >|</span><a  href="' + url + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
+                      + '</span>'
+                  }
+                } else {
+
+                  str2 += '<span>' +
+                    '<a  href="' + url + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
+                    + '</span>'
+                }
+              }
+              srt += '<div class="title-hold ">' +
+                '<div class="title-left">' +
+                '<div>' + newData.title1 + '</div>' +
+                '<div>' + newData.title2 + '</div>' +
+                '</div>' +
+                '<div class="title-right list' + index + ' " >' +
+                '<div >' + str2 + '</div></div></div>'
+
+            } else {
+              sigleData.push(value);
+            }
+
+            document.getElementById("contentTop").innerHTML = srt;
+          }
+
+
+        
+
+        } else {
+          //do something
+        }
+
+      }
+
 
 
     //判断是否在前面加0(获取时间)

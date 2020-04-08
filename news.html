@@ -47,6 +47,10 @@
     </nav>
 
     <div class="content clearfix">
+      <!-- 顶部栏目 -->
+      <section class="content-top row flex-cstyle" id="contentTop">
+      </section>
+
       <section class="clearfix">
 
         <div class="flex-cstyle row shine-group">
@@ -59,7 +63,8 @@
         <div class="bottom-line"></div>
         <div class="sec-top" id="step">
           <a href="./index.html" target="_blank">首页</a>>
-          <a href="#" target="_blank" id="sedStep"></a>
+          <!-- <a href="#" target="_blank" id="sedStep"></a> -->
+          <span id="sedStep"></span>
 
         </div>
         <div class="section" style="width:67%">
@@ -73,22 +78,6 @@
               <div style="width: 100%; height: 100%;" id="setNewListHold">
                 暂无相关内容
               </div>
-
-              <!-- <div class="main-new" >
-                  <a href=""><h3>济南市抗疫一线培养和发展党员纪实</h3></a>
-                  
-                  <div class="flex-cstyle row main-content" >
-                    <img v-show="see" class="max" src="./images/celect.jpg" alt="">
-                    <div class="shine-detail save">
-                      <a href="">
-                        <p style="text-indent:2em; color: #3c3c3c;">召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"召开全县 "两学一做"学习教育工作会议, 深入贯彻习近平总书记关于"两学"</p>
-                      <a href="#">[详情]</a>
-                      </a>
-                      
-                    </div>
-                  </div>
-                </div> -->
-
 
             </div>
 
@@ -360,7 +349,7 @@
             if (value.titlePic) {
               var pic = filePath + value.titlePic;
               var srt = '<div class="main-new" >' +
-                '<a target="_blank" href="./newDetail.html?id=' + value.id + '&pId=' + pId + '"><h3>' + value.title + '</h3></a>' +
+                '<a target="_blank" href="./newDetail.html?id=' + value.id + '&pId=' + uId + '"><h3>' + value.title + '</h3></a>' +
                 '<div class="flex-cstyle row main-content" >' +
 
                 '<div class="shine-detail save">' + value.creatTs + '  </div></div></div>';
@@ -368,7 +357,7 @@
               // '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
             } else {
               var srt = '<div class="main-new" >' +
-                '<a target="_blank" href="./newDetail.html?id=' + value.id + '&pId=' + pId + '"><h3>' + value.title + '</h3></a>' +
+                '<a target="_blank" href="./newDetail.html?id=' + value.id + '&pId=' + uId + '"><h3>' + value.title + '</h3></a>' +
                 '<div class="flex-cstyle row main-content" >' +
                 '<div class="shine-detail save">' + value.creatTs + '  </div></div></div>';
               // '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
@@ -407,7 +396,7 @@
             $('#setNewListHold').html(set);
             resultList.forEach(function (value, index) {
               // console.log(value)
-              var url = filePath + value.filePath;
+              var url = './bookList.html?id='+value.id+'&pId=0&type=1';
               var srt = '<div class="main-new" >' +
                 '<a target="_blank" href="' + url + '"><h3>' + value.questions + '</h3></a>' +
                 '<div class="flex-cstyle row main-content" >' +

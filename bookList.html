@@ -29,7 +29,6 @@
           <button><i>搜索</i></button>
         </div>
       </div>
-
       <div>
         <a href="javascript:setHome(this,window.location);" id="text">设为首页 |</a>
         <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"
@@ -42,23 +41,23 @@
     </nav>
 
     <div class="content clearfix">
-      <section class="clearfix">
+      <!-- 顶部栏目 -->
+      <section class="content-top row flex-cstyle" id="contentTop">
+      </section>
 
+      <section class="clearfix">
         <div class="flex-cstyle row shine-group">
           <div id="topName"></div>
           <div style="width: 80%;" id="topList">
 
           </div>
-
         </div>
-
         <div class="bottom-line"></div>
         <div class="sec-top">
           <a href="./index.html" target="_blank">首页</a>>
-          <span>内容</span>
+          <a href="#" target="_blank" id="sedStep">党务问答</a>>
+          <span id="contentTitle">内容</span>
         </div>
-
-
         <div class="news-title">
           <h1 id="detailTitle"></h1>
           <span id="time"></span>
@@ -77,14 +76,8 @@
         </div> -->
         <div class="news clearfix" id="newDetail">
 
-
         </div>
-
-
-
       </section>
-
-
 
       <section class="clearfix" style="margin-top:200px;">
         <div class="flex-cstyle row links">
@@ -92,7 +85,6 @@
             <span class="link-title">友情链接</span>
             <span style="color: #969696;font-size: 13px; ">Links</span>
           </div>
-
           <div class="webs">
             <span class="webs-selected">党建网站</span>
             <span>综合网站</span>
@@ -110,7 +102,6 @@
           <li><a href="#">新浪网</a></li>
         </ul>
 
-
       </section>
     </div>
 
@@ -121,15 +112,12 @@
         <a href="#">法律申明</a>|
         <a href="#">投诉信箱</a>|
         <a href="#">免责申明</a>
-
       </div>
       <div>中共北海市委组织部主办</div>
       <div>地址 : 广西市合平路东二巷2号 邮编 : 53600</div>
       <div>桂公网安备 450502020000014号</div>
       <img src="./images/bottom.png" alt="">
     </footer>
-
-
 
   </div>
 
@@ -153,20 +141,18 @@
         // 获取影展详情
         getNewsDetail();
         document.getElementById("topName").innerHTML = '党建掠影';
+        document.getElementById("sedStep").innerHTML = '党建掠影';
+        document.getElementById("sedStep").href = './moreBook.html?';
 
       } else {
 
         document.getElementById("topName").innerHTML = '党务回答';
+        document.getElementById("sedStep").innerHTML = '党务回答';
+        document.getElementById("sedStep").href = './news.html?id=0&pId=0&type=1';
         // 获取党务问答
         getNewsQA();
 
       }
-
-
-
-
-
-
 
       // 获取影展详情
       function getNewsDetail() {
@@ -185,7 +171,8 @@
           // $('#newDetail').html(data.content);
 
           document.getElementById("detailTitle").innerHTML = data.object;
-          // document.getElementById("picContent").innerHTML = data.object;
+          document.getElementById("contentTitle").innerHTML = data.object;
+          
 
           var str = '';
           for (var i = 0; i < picList.length; i++) {
@@ -194,17 +181,13 @@
           }
           document.getElementById("newDetail").innerHTML = str;
 
-
         } else {
           //do something
         }
-
-
       }
 
       // 获取问答详情
       function getNewsQA() {
-
 
         let that = this;
 
@@ -218,14 +201,13 @@
           // $('#newDetail').html(data.content);
 
           document.getElementById("detailTitle").innerHTML = data.questions;
+          document.getElementById("contentTitle").innerHTML = data.questions;
           document.getElementById("newDetail").innerHTML = data.answers;
           document.getElementById("time").innerHTML = data.createdDate;
-
 
         } else {
           //do something
         }
-
 
       }
 
