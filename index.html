@@ -1,50 +1,113 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <!-- <meta name="renderer" content="webkit" /> -->
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
-  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE9">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
   <meta http-equiv="x-ua-compatible" content="IE=EmulateIE8">
-
-  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE7">
-
-  <!--[if lt IE 9]>
-
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-
-<![endif]-->
+  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE9">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+  <!-- <meta name="renderer" content="webkit|ie-comp|ie-stand"> -->
 
   <title>珠城先锋网</title>
+  
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/idangerous.swiper.css">
   <link rel="stylesheet" href="css/home.css">
+  
 
   <style>
+
     .shine-detail h3 {
-      height: 50px;
-      font-size: 15px;
+      height: 42px;
+      font-size: 17px;
       line-height: 50px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+    .swiper-container{
+      width: 100%;
+      height: 100%;
+    }
+    .container1{
+      height:400px!important;
+    }
+    .container2{
+      height:120px!important;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    
+   .pagination {
+      position: absolute;
+      z-index: 20;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+    }
+    .swiper-pagination-switch {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      
+      /*关键属性设置 需要把路径设置好*/
+      /* behavior: url(ie-css3.htc); */
+      background: #969696;
+      margin: 0 5px;
+      opacity: 0.8;
+      border: 1px solid #969696;
+      cursor: pointer;
+    }
+
+    
+    .swiper-active-switch {
+      background: rgb(16, 68, 151);
+      border: 1px solid rgb(16, 68, 151);
+    }
   </style>
-  <script>
+ 
 
+<!--[if !IE]> -->
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<!-- <![endif]-->
 
-  </script>
+<!--[if IE 9]>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
 
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <!-- <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+<!--[if IE 8]>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+ 
+  <!-- 暂时注释 -->
   <link rel="stylesheet" href="css/app.min.css">
 
-  <script type="text/javascript" src="js/app.min.js"></script>
+  
   <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/api.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
@@ -57,15 +120,15 @@
 <body id="some-element">
   <div id="app " style="width: 100%; height: 100%;">
     <nav class="flex-style row">
-      <div class="flex-style row">
-        <span>欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
-        <div class="search" id="search">
-          <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
-          <button><i>搜索</i></button>
+      <div class="flex-style row fl" style="margin-left: 150px;">
+        <span class="fl">欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
+        <div class="search fr" >
+          <input class="fl" type="text" placeholder="请输入关键词搜索" name="" id="searchInput" value="" />
+          <button id="search"><i>搜索</i></button>
         </div>
       </div>
 
-      <div>
+      <div class="fr" style="margin-right: 150px;">
         <a href="javascript:setHome(this,window.location);" id="text">设为首页 |</a>
         <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"
           href="javascript:void(0);">加入收藏 </a>
@@ -78,22 +141,44 @@
 
     </nav>
 
+    <section class="content-top row flex-cstyle" >
+
+      <div class="top">
+        
+         <ul id="contentTop">
+         <!-- <li><a href="index.html">首页</a></li>
+         <li>
+           <a href="#">阳光组工</a>
+          <ul>
+            <li><a href="#">机构职能</a></li>
+            <li><a href="#">工作动态</a></li>
+            <li><a href="#">党建工作</a></li>
+          </ul>
+        </li>
+         <li><a href="#">党员教育</a></li>
+         <li><a href="#">互动服务</a></li>
+         <li><a href="#">专题专栏</a></li>
+         <li><a href="#">组工动态</a></li>
+         <li>
+             <a href="#">通知公告</a>
+             <ul>
+                 <li><a href="#">二级菜单</a></li>
+                 <li><a href="#">二级菜单</a></li>
+             </ul>
+         </li>   -->     
+           </ul> 
+              
+      </div>
+
+    </section>
+
     <div class="content clearfix" id="">
-
-      <section class="content-top row flex-cstyle" id="contentTop">
-
-
-
-      </section>
-
-
-
 
       <section class="hot-new">
         <a href="#" class="flex-style colum hot-content" target="_blank" id="hotLink">
-          <div id="hotTitle">我市在全区率先圆满完成乡镇党季换届工作</div>
+          <div id="hotTitle">暂无热点</div>
           <div class="flex-style row">
-            <span id="hotTime">《党章》</span>
+            <span id="hotTime"></span>
             <!-- <span>《党政领导干部先拔任用工作条例》</span>
           <span>《中国共产党员纪律处分条例》</span>
           <span>《中国共产党党组工作条例》</span> -->
@@ -105,26 +190,32 @@
 
       <section class="new-content clearfix">
 
-        <div class="section flex-cstyle colum">
-          <div class="hot-img">
-            <img src="" alt="">
+        <div class="section flex-cstyle colum ">
+          <div class="swiper-container container1 ">
+            <div class="swiper-wrapper hot-img">
+              <img class="swiper-slide" src="images/hold.jpg" alt="">
+              <!-- <img class="swiper-slide" src="images/hold.jpg" alt=""> -->
+            </div>
+            <div class="pagination" id="swiperPage"></div>
           </div>
-
-          <div class="flex-cstyle row ">
+          
+          <div class="flex-cstyle row " style="margin-top: 15px;">
             <div class="flex-cstyle row space scan">
-              <div>
-                <img src="./images/scan.png" alt="">
+              <div class="fl">
+                <img src="./images/wxin01.jpg" alt="">
                 <div>北海先锋微信</div>
               </div>
-              <div>
-                <img src="./images/phone.png" alt="">
+              <div class="fr">
+                <img src="./images/wexin02.jpg" alt="">
                 <div>手机APP下载</div>
               </div>
 
             </div>
             <div class="flex-cstyle colum call">
-              <img src="./images/123.png" alt="" style="margin-bottom: 5px;">
-              <img src="./images/email.png" alt="">
+              <a href="http://bh.gx12380.gov.cn/" target="_blank"><img src="./images/buz_01.jpg" alt="" style="margin-bottom: 5px;"></a>
+
+              <a href="mailto:bhzgtg@126.com" target="_blank"><img src="./images/buz_02.jpg" alt=""></a>
+              
             </div>
           </div>
         </div>
@@ -132,11 +223,13 @@
           <div class="content-left" style="height:65%;">
             <div class="flex-cstyle row left-title">
               <span>组工动态</span>
-              <a href="#" id="groupUrl" target="_blank">查看更多>></a>
+              <a class="fr" href="#" id="groupUrl" target="_blank">查看更多>></a>
             </div>
             <div class="left-middle" id="groupContent">
-              <a href="" target="_blank"></a>
-              <div></div>
+              <a href="" target="_blank" ></a>
+              <a href="" target="_blank" style="color:#D11518;font-size: 13px;line-height: 17px;
+              height: 30px;">[详情]</a>
+              
               <ul class="content-list" id="groupList" style="line-height: 31px;">
                 <!-- <li ><a href="#"></a></li> -->
               </ul>
@@ -146,12 +239,12 @@
 
 
           <div class="left-bottom" style="height:35%;">
-            <div class="flex-cstyle row ">
-              <div class="flex-cstyle row left-choice">
+            <div class=" moreHeight">
+              <div class=" left-choice fl">
                 <span data-type='0' data-id="0" id="notice" class="left-active">通知公告</span>
                 <span data-type='1' data-id="" id="down">最新下载</span>
               </div>
-              <a href="#" class="more" id="noticeMore" target="_blank">更多>></a>
+              <a href="#" class="more fr" id="noticeMore" target="_blank">更多>></a>
             </div>
             <ul class="content-list choice " style="line-height: 33px;" id="newNotice">
             </ul>
@@ -165,8 +258,8 @@
 
       <section class="clearfix">
         <div class="flex-cstyle row shine-group">
-          <div id="firstSet"></div>
-          <div id="firstSetList">
+          <div id="firstSet" class="fl"></div>
+          <div id="firstSetList" class="fr">
             <!-- <span>机构职能</span>|
           <span>工作动态</span>|
           <span>党建工作</span>|
@@ -179,14 +272,14 @@
         <div class="bottom-line"></div>
 
         <div class="section" style="width:67%">
-          <div class=" flex-cstyle row shine-content">
-            <div class="shine-set">
+          <div class=" flex-cstyle row shine-content fl">
+            <div class="shine-set fl">
               <div class="flex-cstyle row shine-title" id="fTitle-0first">
-                <div></div>
-                <a href="#" class="more" target="_blank">更多>></a>
+                <div class="fl"></div>
+                <a href="#" class="more fr" target="_blank">更多>></a>
               </div>
-              <div class="flex-cstyle row" style="padding: 15px 10px;">
-                <img :src="pic" alt="">
+              <div class="flex-cstyle row" style="padding: 5px 10px;">
+                <!-- <img src="pic" alt=""> -->
                 <div class="shine-detail" id="fNews-0first">
                   <a href="#" target="_blank" style="color:#494848;">
                     <h3>
@@ -194,96 +287,96 @@
                     </h3>
                   </a>
 
-                  <div></div>
+                  <!-- <div></div> -->
                   <a href="#" target="_blank"></a>
                 </div>
 
 
               </div>
-              <ul class="content-list" style="line-height: 30px;" id="fNewsList-0first">
+              <ul class="content-list content-min" style="line-height: 38px;" id="fNewsList-0first">
 
 
               </ul>
 
             </div>
 
-            <div class="shine-set">
+            <div class="shine-set fr">
               <div class="flex-cstyle row shine-title" style="background-image: url(./images/tool.png);"
                 id="fTitle-1first">
-                <div></div>
-                <a href="#" class="more" target="_blank">更多>></a>
+                <div class="fl"></div>
+                <a href="#" class="more fr" target="_blank">更多>></a>
               </div>
-              <div class="flex-cstyle row" style="padding: 15px 10px;">
-                <img :src="pic" alt="">
+              <div class="flex-cstyle row" style="padding: 5px 10px;">
+                <!-- <img src="pic" alt=""> -->
                 <div class="shine-detail" id="fNews-1first">
                   <a href="#" target="_blank" style="color:#494848;">
                     <h3>
 
                     </h3>
                   </a>
-                  <div></div>
+                  <!-- <div></div> -->
                   <a href="#" target="_blank"></a>
                 </div>
 
 
               </div>
-              <ul class="content-list" style="line-height: 30px;" id="fNewsList-1first">
-                <li><a href="#"></a></li>
+              <ul class="content-list content-min" style="line-height: 38px;" id="fNewsList-1first">
+                <!-- <li><a href="#"></a></li> -->
 
               </ul>
 
             </div>
           </div>
 
-          <div class=" flex-cstyle row shine-content">
-            <div class="shine-set ">
+          <div class=" flex-cstyle row shine-content fl">
+            <div class="shine-set fl">
               <div class="flex-cstyle row shine-title " style="background-image: url(./images/people.png);"
                 id="fTitle-2first">
-                <div></div>
-                <a href="#" class="more" target="_blank">更多>></a>
+                <div class="fl"></div>
+                <a href="#" class="more fr" target="_blank">更多>></a>
               </div>
-              <div class="flex-cstyle row" style="padding: 15px 10px;">
-                <img :src="pic" alt="">
+              <div class="flex-cstyle row" style="padding: 5px 10px;">
+                <!-- <img src="pic" alt=""> -->
                 <div class="shine-detail" id="fNews-2first">
                   <a href="#" target="_blank" style="color:#494848;">
                     <h3>
 
                     </h3>
                   </a>
-                  <div></div>
+                  <!-- <div></div> -->
                   <a href="#" target="_blank"></a>
                 </div>
 
 
               </div>
-              <ul class="content-list" style="line-height: 30px;" id="fNewsList-2first">
-                <li><a href="#"></a></li>
+              <ul class="content-list content-min" style="line-height: 38px;" id="fNewsList-2first">
+                <!-- <li><a href="#"></a></li> -->
 
               </ul>
 
             </div>
 
-            <div class="shine-set">
+            <div class="shine-set fr">
               <div class="flex-cstyle row shine-title" style="background-image: url(./images/mai.png);"
                 id="fTitle-3first">
-                <div></div>
-                <a href="#" class="more" target="_blank">更多>></a>
+                <div class="fl"></div>
+                <a href="#" class="more fr" target="_blank">更多>></a>
               </div>
-              <div class="flex-cstyle row" style="padding: 15px 10px;">
-                <img :src="pic" alt="">
+              <div class="flex-cstyle row" style="padding: 5px 10px;">
+                <!-- <img src="pic" alt=""> -->
                 <div class="shine-detail" id="fNews-3first">
                   <a href="#" target="_blank" style="color:#494848;">
                     <h3>
 
                     </h3>
                   </a>
-                  <div></div>
+                  <!-- <div></div> -->
                   <a href="#" target="_blank"></a>
                 </div>
 
 
               </div>
-              <ul class="content-list" style="line-height: 30px;" id="fNewsList-3first">
+              <ul class="content-list content-min" style="line-height: 38px;" id="fNewsList-3first">
 
 
               </ul>
@@ -293,13 +386,16 @@
         </div>
         <aside style="width:30%; margin-top: 25px;">
           <div class="shine-set shine-left">
-            <div class="flex-cstyle row" style="padding: 15px 10px; background-color: #F5F5F5;">
-              <img src="./images/celect.jpg" alt="">
-              <div class="shine-detail">
+            <div class="flex-cstyle row shine-leftIcon" style="padding: 15px 10px; background-color: #F5F5F5;">
+              <img src="./images/u5.jpg" alt="" class="fl">
+              <div class="shine-detail fr" style="width:59%">
                 <h3>
                   北海先锋
                 </h3>
-                <button type="button">立即收听</button>
+                <a href="http://e.weibo.com/beihaizzb" target="_blank">
+                  <button type="button" >立即收听</button>
+                </a>
+                
               </div>
 
 
@@ -307,34 +403,44 @@
             <div style="line-height: 23px; padding: 0px 10px;">
               #先锋新闻# 专稿 : 近年来 , 北海以"四个推手" 为抓手, 通过推动全覆盖, 规范化, 三帮带, 示范引领等多措并举, 有效促进该区非公企业党建工作由被动为主动的转变, 实现非公党建水平的整体提升.
             </div>
-            <img src="./images/celect.jpg" alt="" style="width:100%; height: 175px;padding: 0px 10px;">
+            <a href="http://weibo.com/beihaizzb?refer_flag=1005055014_&is_all=1#_rnd1470278615323http://weibo.com/p/100808ddd6e5a81db6a9771819aff1de6df551?k=先锋播报&from=501&_from_=huati_topic" target="_blank">
+              <img src="./images/u6.jpg" alt="" style="width:100%; height: 175px;padding: 0px 10px;">
+            </a>
+            
             <div class="flex-rstyle " style="height: 35px;color: #969696;line-height: 37px; padding: 0px 10px;">
-              <span>3月25日 18:11 来着网页</span>
-              <div class="say"><img src="./images/say.png" alt="">(12565)</div>
+              <span class="fl">3月25日 18:11 来着网页</span>
+              <div class="say fr"><img src="./images/pinglun.jpg" alt="">(12565)</div>
             </div>
           </div>
 
           <div class="shine-bottom">
             <div class="flex-cstyle row shine-title" style="background-image: url(./images/video.png); ">
-              <div style="font-weight: 400; font-size: 15px;">党建视频</div>
-              <a href="./moreBook.html?type=1" class="more" target="_blank">更多>></a>
+              <div style="font-weight: 400; font-size: 15px; float: left;">党建视频</div>
+              <a href="./moreBook.html?type=1" class="more fr" target="_blank">更多>></a>
             </div>
             <div class="mid-pic clearfix" id="toVideo">
-              <a href="#" target="_blank"><img src="./images/noVideo.png" alt=""></a>
+              <a href="./moreBook.html?type=1" target="_blank"><img src="./images/tv_tu.jpg" alt=""></a>
 
             </div>
           </div>
         </aside>
-        <div class="mid-pic">
-          <img src="./images/2.png" alt="">
+        <div class="mid-pic swiper-container container2">
+          <div class="swiper-wrapper longImg">
+            <img class="swiper-slide" src="./images/san_banner.jpg" alt="" style="pointer-events:none;">
+          </div>
+          <!-- Add Pagination -->
+          <div class="pagination" id="swiperPage2" style="text-align: end;left: -43px;"></div>
         </div>
+        <!-- <div class="mid-pic longImg">
+          <img src="./images/san_banner.jpg" alt="">
+        </div> -->
       </section>
 
 
       <section class="clearfix">
         <div class="flex-cstyle row shine-group">
-          <div id="sedSet"></div>
-          <div id="sedSetList">
+          <div id="sedSet" class="fl"></div>
+          <div id="sedSetList" class="fr">
             <!-- <span>远程教育</span>|
           <span>政策法规</span>|
           <span>党建期刊</span>|
@@ -347,48 +453,48 @@
 
         <div class="section" style="width:67%">
           <div class=" flex-cstyle row shine-content">
-            <div class="shine-set">
+            <div class="shine-set fl">
               <div class="flex-cstyle row shine-title" style="background-image: url(./images/mao.png);"
                 id="fTitle-0sed">
-                <div>政策法规</div>
-                <a href="#" class="more" target="_blank">更多>></a>
+                <div class="fl">政策法规</div>
+                <a href="#" class="more fr" target="_blank">更多>></a>
               </div>
-              <div class="flex-cstyle row" style="padding: 15px 10px;">
+              <div class="flex-cstyle row" style="padding: 5px 10px;">
                 <div class="shine-detail" id="fNews-0sed">
                   <a href="#" target="_blank" style="color:#494848;">
                     <h3>
 
                     </h3>
                   </a>
-                  <div></div>
+                  <!-- <div></div> -->
                   <a href="#" target="_blank"></a>
                 </div>
 
               </div>
-              <ul class="content-list" style="line-height: 30px;" id="fNewsList-0sed">
+              <ul class="content-list content-min" style="line-height: 38px;" id="fNewsList-0sed">
               </ul>
 
             </div>
 
-            <div class="shine-set">
+            <div class="shine-set fr">
               <div class="flex-cstyle row shine-title" style="background-image: url(./images/education.png);"
                 id="fTitle-1sed">
-                <div>远程教育</div>
-                <a href="#" class="more" target="_blank">更多>></a>
+                <div class="fl">远程教育</div>
+                <a href="#" class="more fr" target="_blank">更多>></a>
               </div>
-              <div class="flex-cstyle row" style="padding: 15px 10px;">
+              <div class="flex-cstyle row" style="padding: 5px 10px;">
                 <div class="shine-detail" id="fNews-1sed">
                   <a href="#" target="_blank" style="color:#494848;">
                     <h3>
 
                     </h3>
                   </a>
-                  <div></div>
+                  <!-- <div></div> -->
                   <a href="#" target="_blank"></a>
                 </div>
 
               </div>
-              <ul class="content-list" style="line-height: 30px;" id="fNewsList-1sed">
+              <ul class="content-list content-min" style="line-height: 38px;" id="fNewsList-1sed">
 
 
               </ul>
@@ -399,17 +505,22 @@
         </div>
         <aside style="width:32%; margin-top: 25px;">
           <div style="padding-left: 4%;">
-
-            <img src="./images/3.png" alt="" style="width:96%; height: 170px;">
-            <img src="./images/6.png" alt="" style="width:96%; margin-top: 15px;">
+            <a href="http://www.bhgbzx.gov.cn/" target="_blank">
+              <img src="./images/bhn_baner01.jpg" alt="" style="width:96%; height: 170px;">
+            </a>
+            <a href="http://www.bhlgbgz.gov.cn/" target="_blank">
+              <img src="./images/bhn_baner02.jpg" alt="" style="width:96%; margin-top: 15px;">
+            </a>
+            
+            
           </div>
         </aside>
       </section>
 
       <section class="clearfix" style="height:330px;">
         <div class="flex-cstyle row shine-group">
-          <div id="thiSet"></div>
-          <div id="thiSetList">
+          <div id="thiSet" class="fl"></div>
+          <div id="thiSetList" class="fr">
             <!-- <span>资料下载</span>|
           <span>党务问答</span>|
           <span>部长信箱</span>|
@@ -420,11 +531,11 @@
 
         <div class="section" style="width:67%;height:100%;">
           <div class=" flex-cstyle row shine-content" style="height:80%;">
-            <div class="shine-set download">
+            <div class="shine-set download fl">
               <div class="flex-cstyle row shine-title"
                 style="background-image: url(./images/download.png);background-size: 22px;" id="fTitle-0thi">
-                <div style="line-height: 28px;">资料下载</div>
-                <a href="./news.html?id=0&pId=0" class="more" target="_blank">更多>></a>
+                <div style="line-height: 28px;" class="fl">资料下载</div>
+                <a href="./news.html?id=0&pId=0" class="more fr" target="_blank">更多>></a>
               </div>
               <!-- <div class="flex-cstyle row" style="padding: 5px 10px;">
                 <div class="shine-detail" style="line-height: 26px;">
@@ -436,26 +547,24 @@
   
               </div> -->
               <ul class="content-list" id="downloadData" style="line-height: 40px;font-size: 15px; padding:21px;">
-
-
               </ul>
 
             </div>
 
-            <div class="shine-set download">
+            <div class="shine-set download fr">
               <div class="flex-cstyle row shine-title"
                 style="background-image: url(./images/no.png);background-size: 22px;" id="fTitle-1thi">
-                <div style="line-height: 28px;">党务问答</div>
-                <a href="#" class="more" target="_blank">更多>></a>
+                <div style="line-height: 28px;" class="fl">党务问答</div>
+                <a href="#" class="more fr" target="_blank">更多>></a>
               </div>
               <div class="flex-cstyle row" style="padding: 5px 10px;">
-                <div class="flex-cstyle ask">
+                <div class="flex-cstyle ask fl">
                   <img src="./images/do2.png" alt="">
                   <span>常见业务</span>
                   <span>知识问答</span>
                 </div>
 
-                <div class="shine-detail" style="width:88%;">
+                <div class="shine-detail fr" style="width:82%;">
                   <ul class="content-list" id="quest" style="line-height: 33px; border-top: none; height:195px">
 
 
@@ -488,9 +597,11 @@
         </div>
         <aside style="width:32%; margin-top: 25px;">
           <div style="padding-left: 4%;">
+            <a href="http://bhzg.beihai.gov.cn/room/" target="_blank"><img src="./images/u10.jpg" alt="" style="width:96%; height: 140px;"></a>
+            <a href="http://bh.gx12380.gov.cn/" target="_blank"><img src="./images/u11.jpg" alt="" style="width:96%; margin-top: 12px;height: 75px;"></a>
 
-            <img src="./images/show.png" alt="" style="width:96%; height: 140px;">
-            <img src="./images/e.png" alt="" style="width:96%; margin-top: 12px;height: 75px;">
+            
+            
           </div>
         </aside>
 
@@ -498,27 +609,29 @@
       </section>
 
       <section class="clearfix">
-        <div class="flex-cstyle row shine-group">
+        <div class="flex-cstyle row shine-group fl ">
           <div>推荐专题</div>
 
           <!-- <a href="#" class="more" style="padding-top: 8px;">更多>></a> -->
 
         </div>
-        <div class="bottom-line"></div>
-        <div class="flex-rstyle horizontal ">
-          <img src="./images/5.png" alt="" id="special-left">
-          <img src="./images/4.png" alt="" id="special-right">
+        <div class="bottom-line fl"></div>
+        <div class="flex-rstyle horizontal fl">
+          <a href="" target="_blank" id="special-left" class="fl"><img src="./images/lxy_ban01-94.jpg" alt="" ></a>
+          <a href="" target="_blank" id="special-right" class="fr"><img src="./images/lxy_ban02-96.jpg" alt="" ></a>
+          
+          
         </div>
 
-        <div class="flex-cstyle row shine-group">
+        <div class="flex-cstyle row shine-group fl">
           <div>先锋导读</div>
 
         </div>
-        <div class="bottom-line"></div>
+        <div class="bottom-line fl"></div>
 
         <div class="section" style="width:100%">
           <div class=" flex-cstyle row shine-content">
-            <div class="shine-set2 download">
+            <div class="shine-set2 download fl">
               <div class="flex-cstyle row shine-title"
                 style="background-image: url(./images/maz.png);background-size: 22px;">
                 <div>杂志阅读</div>
@@ -530,19 +643,17 @@
 
               </div>
               <div class="flex-cstyle row book-list" id="bookList2">
-                <!-- <a  href="#"><img src="./images/book.png" alt=""></a>
-                <a  href="#"><img src="./images/book.png" alt=""></a>
-                <a  href="#"><img src="./images/book.png" alt=""></a> -->
+             
 
               </div>
 
             </div>
 
-            <div class=" download shine-set3">
+            <div class=" download shine-set3 fl">
               <div class="flex-cstyle row shine-title"
                 style="background-image: url(./images/no.png);background-size: 22px;">
-                <div>党建掠影</div>
-                <a href="./moreBook.html" class="more" target="_blank">查看更多>></a>
+                <div class="fl">党建掠影</div>
+                <a href="./moreBook.html" class="more fr" target="_blank">查看更多>></a>
               </div>
               <div class="flex-cstyle row book-list2" id="picList1" style="    height: 46%; ">
                 <!-- <a >
@@ -584,58 +695,277 @@
 
       <section class="clearfix">
         <div class="flex-cstyle row links">
-          <div>
+          <div class="fl">
             <span class="link-title">友情链接</span>
             <span style="color: #969696;font-size: 13px; ">Links</span>
           </div>
 
-          <div class="webs">
-            <span class="webs-selected">党建网站</span>
-            <span>综合网站</span>
-            <span>报刊网站</span>
+          <div class="webs fr">
+            <span class="" data-type="1" style="background:#FAF9F5;">党建网站</span>
+            <span  data-type="2">综合网站</span>
+            <span  data-type="3">报刊网站</span>
           </div>
         </div>
-        <ul class="flex-style row websites">
-          <li><a href="#">共产党员网</a></li>
-          <li><a href="#">中共中央组织部</a></li>
-          <li><a href="#">中国党建网</a></li>
-          <li><a href="#">中国共产党新闻网</a></li>
-          <li><a href="#">党史党建在线</a></li>
-          <li><a href="#">全国远程教育网</a></li>
-          <li><a href="#">北京组工</a></li>
-          <li><a href="#">新浪网</a></li>
+        <ul class=" websites site1">
+          <li><a href="http://www.12371.cn" target="_blank">共产党员网</a></li>
+        
+          <li><a href="http://cpc.people.com.cn/GB/64114/75347/" target="_blank">中共中央组织部</a></li>
+           
+          <li><a href="http://www.dangjiancn.com/" target="_blank">中国党建网</a></li>
+           
+          <li><a href="http://cpc.people.com.cn/" target="_blank">中国共产党新闻网</a></li>
+           
+          <li><a href="http://www.ccphistory.org.cn/" target="_blank">党史党建在线</a></li>
+           
+          <li><a href="http://www.dygbjy.gov.cn" target="_blank">全国远程教育网</a></li>
+           
+          <li><a href="http://www.bjdj.gov.cn/viewpubarticle.do?id=123393" target="_blank">北京组工</a></li>
+           
+          <li><a href="http://www.jszzb.gov.cn/" target="_blank">江苏党建</a></li>
+        </ul>
+        <ul class=" websites site2" style="display: none;">
+          <li><a href="http://www.sohu.com/" target="_blank">搜狐网</a></li>
+        
+          <li><a href="http://www.sina.com.cn/" target="_blank">新浪网</a></li>
+            
+          <li><a href="http://www.china.com.cn/" target="_blank">中国网</a></li>
+            
+          <li><a href="http://www.people.com.cn/" target="_blank">人民网</a></li>
+            
+          <li><a href="http://www.xinhua.org/" target="_blank">新华网</a></li>
+            
+          <li><a href="http://www.china.com/zh_cn/" target="_blank">中华网</a></li>
+            
+          <li><a href="http://www.cntv.cn/" target="_blank">CCTV</a></li>
+
+          
+        </ul>
+        <ul class="websites site3" style="display: none;">
+          <li><a href="http://www.gxnews.com.cn/" target="_blank">广西新闻网</a></li>
+        
+          <li><a href="http://paper.people.com.cn/rmrb/html/2012-05/14/nbs.D110000renmrb_01.htm" target="_blank">人民日报</a></li>
+           
+          <li><a href="http://zjdaily.zjol.com.cn" target="_blank">浙江日报</a></li>
+           
+          <li><a href="http://epaper.cnnb.com.cn/rp/clt/newreader" target="_blank">宁波日报</a></li>
+           
+          <li><a href="http://www.chinadaily.com.cn/" target="_blank">中国日报</a></li>
+           
+          <li><a href="http://www.zuzhirenshi.com/dianzibao/index.htm" target="_blank">组织人事报</a></li>
+           
+          <li><a href="http://www.admaimai.com/newspaper/Detail10_1565.htm" target="_blank">光明日报</a></li>
+          
         </ul>
 
 
       </section>
     </div>
 
-    <footer>
-      <div>
+    <footer style="color:rgb(60, 60, 60);text-align: center;" >
+      <!-- <div>
         <a href="#">联系我们</a>|
         <a href="#">网站地图</a>|
         <a href="#">法律申明</a>|
         <a href="#">投诉信箱</a>|
         <a href="#">免责申明</a>
 
-      </div>
+      </div> -->
       <div>中共北海市委组织部主办</div>
       <div>地址 : 广西市合平路东二巷2号 邮编 : 53600</div>
-      <div>桂公网安备 450502020000014号</div>
-      <img src="./images/bottom.png" alt="">
+      <div><a href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" style="padding: 0px;">桂公网安备 450502020000014号</a>&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn" target="_blank" style="padding: 0px;">桂ICP备06006473号-1</a></div>
+      <a href="http://bszs.conac.cn/sitename?method=show&id=11231DF6641C21ECE053022819AC104A" target="_blank">
+        <img src="./images/u12.jpg" alt="">
+      </a>
     </footer>
 
   </div>
 
-
-
+<!-- 暂时注释 -->
+  <!-- 兼容IE8轮播图 -->
+<script src="js/idangerous.swiper.min.js"></script>
   <script>
     $(function () {
+      getBanner();
+ // 获取顶部banner
+  function getBanner() {
+
+  //参数 : 1, 背景图片, 2,头部大图, 3, 中间横图, 4,推荐专题左图, 5,推荐专题右图
+
+    var resultAll = ajaxMethod('bannerList', '');
+          console.log('resultAll');
+          console.log(resultAll.data);
+
+    if (resultAll.code == 0 && resultAll.data != null){
+          var resultAllList={
+            list1:[],
+            list2:[],
+            list3:[],
+            list4:[],
+            list5:[],
+          }
+
+          for(var i=0; i<resultAll.data.length;i++){
+            var item = resultAll.data[i];
+            var srt='list'+item.position
+            resultAllList[srt].push(item);       
+          }
+
+          console.log(resultAllList);
+         
+    // 顶部轮播图         
+         
+          console.log('顶部轮播图');
+          var dataImg = resultAllList.list2;
+          if (dataImg.length == 1) {
+              var str='';
+              for (var i = 0; i < dataImg.length; i++) {
+                  var url = filePath + dataImg[i].bannerPath;
+                  if(!dataImg[i].jumpUrl || dataImg[i].jumpUrl==null){
+                    str+='<a class="swiper-slide" href="'+dataImg[i].jumpUrl +'" target="_blank" style="pointer-events:none;"><img src="'+url+'" alt="" ></img></a>';
+                  }else{
+                    str+='<a class="swiper-slide" href="'+dataImg[i].jumpUrl +'" target="_blank"><img src="'+url+'" alt="" style=""></img></a>';
+                  }  
+                // style="pointer-events:none;"a标签禁止点击事件
+
+              }
+            
+              $('.hot-img').html(str);
+              $('#swiperPage').remove();//删除轮播的点
+              // mySwiper.detachEvents();//禁止滑动
+
+          }else if(dataImg.length > 0 && dataImg.length != 1){
+            console.log('222')
+              var str='';
+              for (var i = 0; i < dataImg.length; i++) {
+                  var url = filePath + dataImg[i].bannerPath;
+                  if(!dataImg[i].jumpUrl || dataImg[i].jumpUrl==null){
+                    str+='<a class="swiper-slide" href="'+dataImg[i].jumpUrl +'" target="_blank" style="pointer-events:none;" ><img  src="'+url+'" alt=""></img></a>';
+                  }else{
+                    str+='<a class="swiper-slide" href="'+dataImg[i].jumpUrl +'" target="_blank"><img  src="'+url+'" alt=""></img></a>';
+                  }
+              }
+              console.log('中部轮播图')
+              console.log(str)
+              $('.hot-img').html(str);
+
+              var mySwiper = new Swiper('.container1',{
+                  loop: true,
+                  autoplay: 3000,
+                  pagination : '#swiperPage',
+                }); 
+              // var mySwiper = new Swiper('.container1', {
+              //     // pagination: {
+              //     //   el: '#swiperPage',
+              //     //   loop:true,//循环 最后面一个往后面滑动会滑到第一个
+              //     // },
+              //     autoplay: 3000,
+              //     touchMoveStopPropagation : false,//阻止当和iscoll插件一起时的a标签跳转的冒泡事件
+              //   });
+          }
+
+
+           // 下部长栏
+
+        //do something
+        console.log('中部轮播图');
+        var dataImg2 = resultAllList.list3;
+      
+        if (dataImg2.length == 1) {
+            var str='';
+            for (var i = 0; i < dataImg2.length; i++) {
+                var url = filePath + dataImg2[i].bannerPath;
+                if(!dataImg2[i].jumpUrl || dataImg2[i].jumpUrl==null){
+                  str+='<a class="swiper-slide" href="'+dataImg2[i].jumpUrl +'" target="_blank" style="pointer-events:none;"><img src="'+url+'" alt="" ></img></a>';
+                }else{
+                  str+='<a class="swiper-slide" href="'+dataImg2[i].jumpUrl +'" target="_blank"><img src="'+url+'" alt="" style=""></img></a>';
+                }  
+              // style="pointer-events:none;"a标签禁止点击事件
+            }
+          
+            $('.longImg').html(str);
+            $('#swiperPage2').remove();//删除轮播的点
+            // mySwiper.detachEvents();//禁止滑动
+
+        }else if(dataImg2.length > 0 && dataImg2.length != 1){
+            var str='';
+            for (var i = 0; i < dataImg2.length; i++) {
+                var url = filePath + dataImg2[i].bannerPath;
+                if(!dataImg2[i].jumpUrl || dataImg2[i].jumpUrl==null){
+                  str+='<a class="swiper-slide" href="'+dataImg2[i].jumpUrl +'" target="_blank" style="pointer-events:none;" ><img  src="'+url+'" alt=""></img></a>';
+                }else{
+                  str+='<a class="swiper-slide" href="'+dataImg2[i].jumpUrl +'" target="_blank"><img  src="'+url+'" alt=""></img></a>';
+                }
+            }
+            $('.longImg').html(str);
+            var mySwiper = new Swiper('.container2',{
+                  loop: true,
+                  pagination : '#swiperPage2',
+                  autoplay: 3000,
+                }); 
+           
+        }
+
+       
+        var dataImg3 = resultAllList.list4;
+        if (dataImg3.length>0) {
+            if (dataImg3.length > 0 ) {
+                var imgUrl = filePath + dataImg3[0].bannerPath
+                $('#special-left img').attr('src', imgUrl);
+                $('#special-left ').attr('href', dataImg3[0].jumpUrl);
+            }
+        } else {
+          $('#special-left ').css('pointer-events', 'none');
+            //do something
+        }
+
+        var dataImg4 = resultAllList.list5;
+        if (dataImg4.length>0) {
+            if (dataImg4.length > 0) {
+                var imgUrl = filePath + dataImg4[0].bannerPath
+                $('#special-right img').attr('src', imgUrl);
+                $('#special-right').attr('href', dataImg4[0].jumpUrl);
+            }
+        } else {
+            //do something
+            $('#special-right ').css('pointer-events', 'none');
+        }
+
+            }
+          }
+
+    })
+  </script>
+  <script>
+    $(function () {
+      // 兼容ie8
+      if ( !Array.prototype.forEach ) {
+        Array.prototype.forEach = function forEach( callback, thisArg ) {
+          var T, k;
+          if ( this == null ) {
+            throw new TypeError( "this is null or not defined" );
+          }
+          var O = Object(this);
+          var len = O.length >>> 0; 
+          if ( typeof callback !== "function" ) {
+            throw new TypeError( callback + " is not a function" );
+          }
+          if ( arguments.length > 1 ) {
+            T = thisArg;
+          }
+          k = 0;
+          while( k < len ) {
+            var kValue;
+            if ( k in O ) {
+              kValue = O[ k ];
+              callback.call( T, kValue, k, O );
+            }
+            k++;
+          }
+        };
+      }
       var mId = 0;
       var mPid = 0;
-
-
-
+         
 
       //  点击事件
       $(".left-choice span").on('click', function () {
@@ -657,12 +987,8 @@
           $("#noticeMore").attr('href', './news.html?id=0&pId=0');
         }
       });
-
-      $("#search").on('click', function () {
-        window.open('./search.html', "");
-      });
-
-      $("#some-element").busyLoad("show", state);
+   
+      // $("#some-element").busyLoad("show", state);
 
       getHome();
       // 获取杂志
@@ -679,8 +1005,8 @@
         var that = this;
         var result = ajaxMethod('topSet', 80);
 
-        console.log('获取首页顶部栏目')
-        console.log(result)
+        // console.log('获取首页顶部栏目')
+        // console.log(result)
 
         if (result.code == 0 && result.data != null) {
           //do something
@@ -692,16 +1018,17 @@
           for (var index = 0; index < data.length; index++) {
             var value = data[index];
             // console.log(value.children)
-            if (value.children.length > 0) {
+            if(value.children.length == 0){
+                sigleData.push(value);
+              }
+            // if (value.children.length > 0) {
               var newData = new Object({
                 id: 0,
                 catalogName: '',
-                title1: '',
-                title2: '',
+                children:[],
               });
               newData.children = value.children;
-              newData.title1 = value.catalogName.substring(0, 2);
-              newData.title2 = value.catalogName.substring(2, 4);
+             
               newData.id = value.id;
               newData.catalogName = value.catalogName;
               // newData.parentId = value.parentId;
@@ -713,55 +1040,27 @@
 
               for (var ind = 0; ind < newData.children.length; ind++) {
                 var val = newData.children[ind];
-                // console.log(val)
-                var url = './news.html?id=' + val.id + '&pId=' + value.id;
-                if (val.catalogName == "党建视频") {
-                  url = './moreBook.html?type=1';
-                }
-                if (val.catalogName == "资料下载") {
-                  url = './news.html?id=0&pId=0&type=0';
-                }
-                if (val.catalogName == "党务回答") {
-                  url = './news.html?id=0&pId=0&type=1';
-                }
-                if (ind != 0 && ind != 3) {
-
-                  if (ind == 2) {
-                    str2 += '<span>' +
-                      '<span >|</span><a  href="' + url + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
-                      + '</span></br>'
-                  } else {
-                    str2 += '<span>' +
-                      '<span >|</span><a  href="' + url + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
-                      + '</span>'
-                  }
-                } else {
-
-                  str2 += '<span>' +
-                    '<a  href="' + url + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
-                    + '</span>'
-                }
+               
+                    str2 += '<li>' +
+                      '<a  href="' + val.catalogUrl + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
+                      + '</li>'
+    
               }
-              srt += '<div class="title-hold ">' +
-                '<div class="title-left">' +
-                '<div>' + newData.title1 + '</div>' +
-                '<div>' + newData.title2 + '</div>' +
-                '</div>' +
-                '<div class="title-right list' + index + ' " >' +
-                '<div >' + str2 + '</div></div></div>'
 
-            } else {
-              sigleData.push(value);
-
-
-            }
-            //   $('.content-top').html(srt);
-
-            document.getElementById("contentTop").innerHTML = srt;
-            // console.log('totalData');
-            // console.log(totalData);
-
-
+              console.log('newData')
+              console.log(newData)
+              if(newData.children == 0){
+              
+                srt += '<li><a  href="./news.html?id=' + newData.id + '&pId=' + newData.id+'" target="_blank">'+ newData.catalogName + '</a>'+
+                  '<ul >' + str2 + '</ul>'+
+                  '</li>' ;
+              }else{
+                srt += '<li><a  href="#" style="pointer-events:none;">' + newData.catalogName + '</a>'+
+                  '<ul >' + str2 + '</ul>'+
+                  '</li>' ;
+              }
+              
+               $('#contentTop').html(srt);
 
           }
 
@@ -783,7 +1082,8 @@
           data.forEach(function (val, ind) {
             // console.log(val);
             var data = {
-              catalogId: val.id
+              catalogId: val.id,
+              size:10
             }
             var result = ajaxMethod('newList', '', data);
             // console.log(result)
@@ -794,17 +1094,18 @@
               var set2 = '';
               var listCount = 7;
               if (ind == 0) {
-                var listCount = 7;
+                var listCount = 8;
               } else {
                 var listCount = 4;
               }
               var resultList = result.data.records.slice(0, listCount);
-              console.log('resultList')
-              console.log(resultList)
+              // console.log('resultList')
+              // console.log(resultList)
+
               resultList.forEach(function (value, index) {
                 // console.log(value)
                 if (index == 0 && val.catalogName == "组工动态") {
-                  console.log($("#groupContent div"));
+                  // console.log($("#groupContent div"));
                   // console.log(value);
                   // 获取文章前一段
                   // var first = value.content.indexOf('<p>');
@@ -813,19 +1114,25 @@
 
                   // var cont = value.content.select("p").get(0).text();
                   // console.log(cont)
-                  $("#groupContent div").html(value.creatTs);
-                  $("#groupContent a").html(value.title);
-                  $("#groupContent a").attr('href', './newDetail.html?id=' + value.id + '&pId=' + val.id);
+                  
+                  
+
+
+                  
                    
                   // 热点内容
                   document.getElementById("hotTitle").innerHTML = value.title;
                   document.getElementById("hotTime").innerHTML = value.creatTs;
-                  $("#hotLink").attr('href', './newDetail.html?id=' + value.id + '&pId=' + val.id);
+                  $("#hotLink").attr('href', 'newDetail.html?id=' + value.id + '&pId=' + val.id);
 
                   // var url = './newDetail.html?id='+value.id+'&pId='+val.id;
                   //   var srt='<li ><a target="_blank" href="'+url+'">'+value.title+'</a></li> ';
                   //   set += srt
-                } else {
+                } else if(index == 1 && val.catalogName == "组工动态"){
+                  $("#groupContent a").eq(0).html(value.title);
+                  $("#groupContent a").attr('href', './newDetail.html?id=' + value.id + '&pId=' + val.id);
+
+                }else{
 
                   var url = './newDetail.html?id=' + value.id + '&pId=' + val.id;
                   var srt2 = '<li ><a target="_blank" href="' + url + '">' + value.title + '</a></li> ';
@@ -865,7 +1172,7 @@
       }
       // 获取多栏目内容
       function getMoreSet(data) {
-        console.log(data);
+        // console.log(data);
         for (var i = 0; i < data.length; i++) {
           getFistNew(data[i], i, data[i].id);
         }
@@ -873,7 +1180,7 @@
       }
       // 获取前三set
       function getFistNew(data, index, pId) {
-        console.log(index)
+        // console.log(index)
         if (index != 3) {
           switch (index) {
             case 0:
@@ -929,6 +1236,20 @@
             srt = '<a href="./news.html?id=0&pId=0&type=0" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
           }
 
+          if (value.catalogName == "部长信箱") {
+            srt = '|<a href="mailto:bhzzbbz@163.com" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
+                 
+          }
+
+          if (value.catalogName == "12380举报") {
+            srt = '|<a href="http://bh.gx12380.gov.cn/" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
+                  
+                }
+
+          if(value.catalogName == '党性教育基地网上展馆'){
+            srt = '|<a href="http://bhzg.beihai.gov.cn/room/" target="_blank" >' + value.catalogName + '</a>';
+          }
+
           set += srt
         }
 
@@ -937,8 +1258,8 @@
       // 获取互动服务子栏目title
       function getChildTitle(data, count, list) {
         for (var i = 0; i < count; i++) {
-          console.log($("#fTitle-" + i + list + " a"))
-          console.log(data[i])
+          // console.log($("#fTitle-" + i + list + " a"))
+          // console.log(data[i])
 
           $("fTitle-" + i + list + " div").innerHTML = data[i].catalogName;
           // type =0 资料下载, type=1QA问答
@@ -953,22 +1274,22 @@
       function getChildNews(data, count, list) {
 
         for (var i = 0; i < count; i++) {
-          console.log($("#fTitle-" + i + list + " a"))
-          console.log(data[i])
+          // console.log($("#fTitle-" + i + list + " a"))
+          // console.log(data[i])
 
           $("fTitle-" + i + list + " div").innerHTML = data[i].catalogName;
           $("#fTitle-" + i + list + " a").attr('href', './news.html?id=' + data[i].id + '&pId=' + data[i].parentId)
           // document.getElementById("fTitle-"+i).innerHTML = data[i].catalogName;
           $("#fTitle-" + i + list + " div").html(data[i].catalogName);
-          console.log(i);
-          console.log(data[i]);
+          // console.log(i);
+          // console.log(data[i]);
           if (count != 5) {
             var result = getNews(data[i].id).slice(0, 5);
           } else {
             var result = getNews(data[i].id).slice(0, 6);
           }
-          console.log('result')
-          console.log(result)
+          // console.log('result')
+          // console.log(result)
           var set = '';
           for (var index = 0; index < result.length; index++) {
 
@@ -1027,17 +1348,17 @@
           //do something
           // console.log('11111');
           var data = result.data.records;
-          console.log(data);
+          // console.log(data);
           var srt1 = '';
           var srt2 = '';
           for (var i = 0; i < data.length; i++) {
 
             if (i < 3) {
-              srt1 += '<a target="_blank"  href="' + filePath + data[i].path + '"><img src="' + filePath + data[i].coverPic + '" alt=""  ></a>';
+              srt1 += '<a target="_blank"  href="' +data[i].path + '"><img src="' + filePath + data[i].coverPic + '" alt=""  ></a>';
             } else {
-              srt2 += '<a target="_blank" href="' + filePath + data[i].path + '"><img src="' + filePath + data[i].coverPic + '" alt="" ></a>';
+              srt2 += '<a target="_blank" href="' +data[i].path + '"><img src="' + filePath + data[i].coverPic + '" alt="" ></a>';
             }
-            console.log(srt1);
+            // console.log(srt1);
             $('#bookList1').html(srt1);
             $('#bookList2').html(srt2);
 
@@ -1061,20 +1382,20 @@
           //do something
           // console.log('11111');
           var data = result.data.records.slice(0, 7);
-          console.log(data);
+          // console.log(data);
           var srt1 = '';
           var srt2 = '';
 
           for (var i = 0; i < data.length; i++) {
-            console.log(data[i].pics);
+            // console.log(data[i].pics);
             var picList = data[i].pics.split(',');
-            console.log(picList);
+            // console.log(picList);
             if (i < 3) {
               srt1 += '<a target="_blank"  href="./bookList.html?id=' + data[i].id + '"><img src="' + filePath + picList[0] + '" alt=""  ><div>' + data[i].object + '</div></a>';
             } else {
               srt2 += '<a target="_blank" href="./bookList.html?id=' + data[i].id + '"><img src="' + filePath + picList[0] + '" alt="" ><div>' + data[i].object + '</div></a>';
             }
-            console.log(srt1);
+            // console.log(srt1);
             $('#picList1').html(srt1);
             $('#picList2').html(srt2);
 
@@ -1090,19 +1411,24 @@
         var that = this;
         var result = ajaxMethod('partyVideo', '');
         // console.log(result)
-        if (result.code == 0 && result.data != null) {
+        if (result.code == 0 && result.data.records.length>0) {
           //do something
-          // console.log('11111');
-          console.log(result.data);
-          console.log(result.data.records[0].id);
-          console.log($("#toVideo a"));
+          // // console.log('11111');
+          // console.log(result.data);
+          // console.log(result.data.records[0].id);
+          // console.log($("#toVideo a"));
           if (result.data.records.length > 0) {
-            // var srt='<a href="./video.html?id='+result.data.records[0].id+'" target="_blank"><img src="./images/celect.jpg" alt="" ></a>';
-            // document.getElementById("toVideo").innerHTML = srt;
-            // $("#toVideo").html(srt);
-            $("#toVideo a").attr('href', './video.html?id=' + result.data.records[0].id);
-            $("#toVideo img").attr('src', './images/timg.png');
+            console.log('444')
+            if(result.data.records[0].sourceType =='no'){
+              $("#toVideo a").attr('href', result.data.records[0].videoPath);
+            }else{
+              $("#toVideo a").attr('href', './video.html?id=' + result.data.records[0].id);
+            }
+            
+            // $("#toVideo img").attr('src', './images/tv_tu.jpg');
           }
+
+
         } else {
           //do something
         }
@@ -1110,7 +1436,7 @@
       }
 
 
-      $("#some-element").busyLoad("hide");
+      // $("#some-element").busyLoad("hide");
     });
   </script>
 </body>

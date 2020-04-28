@@ -7,25 +7,33 @@ var filePath='http://120.24.51.37/group1/' //测试版
 //请求方法
 function ajaxMethod(str,param,obj) {
     var link = urlLink(str);
-    var result = {};
-    $.ajax({
-        type: link.method,
-        url:host + link.url+param,
-        data:obj,
-        dataType:'json',
-        async:false,
-        cache:true,
-        success:function (data) {
-            result = data;
-            // showMessage("获取数据成功 !", 1);
-        },
-        error: function() {
-          console.log("Error");
-          showMessage("数据请求失败 , 请稍后再试 !", 0);
-
-        }
+        var result = {};
+        
+        // $.ajax.setRequestHeader('If-Modified-Since', '0');//清除缓存，根据第二篇文章新加的
+        // $.ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");//这段不能少，否则也不能正常发送数据
+       
+        jQuery.support.cors = true; 
+        $.ajax({
+            type: link.method,
+            url:host + link.url+param,
+            data:obj,
+            dataType:'json',
+            cache:false,
+            // crossDomain: true == !(document.all),   //添加这一行代码
+            async:false,
+            cache:true,
+            success:function (data) {
+                result = data;
+                // showMessage("获取数据成功 !", 1);
+            },
+            error: function() {
+              console.log("Error");
+              showMessage("数据请求失败 , 请稍后再试 !", 0);
+    
+            }
+      
+        });
   
-    });
     return result;
 
 }

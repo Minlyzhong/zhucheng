@@ -2,15 +2,15 @@
 *{box-sizing: border-box;}
 /*css 初始化 */
 html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
 }
 
 
 fieldset, img, input, button {
 	border: none;
-	padding: 0;
-	margin: 0;
+	padding: 0px;
+	margin: 0px;
 	outline-style: none;
 }
 
@@ -19,8 +19,8 @@ ul, ol {
 }
 
 input {
-	padding-top: 0;
-	padding-bottom: 0;
+	padding-top: 0px;
+	padding-bottom: 0px;
 	font-family: "SimSun", "宋体", serif;
 	box-sizing:border-box;
 	/* width:200px */
@@ -32,7 +32,7 @@ select, input {
 
 select, input, textarea {
 	font-size: 12px;
-	margin: 0;
+	margin: 0px;
 }
 textarea {
 	resize: none;
@@ -40,7 +40,7 @@ textarea {
 
 /*防止拖动*/
 img {
-	border: 0;
+	border: 0px;
 	vertical-align: middle;
 }
 
@@ -96,42 +96,45 @@ s, i, em {
 }
 
 .col-red {
-	color: #C81623 !important;
+	color: rgb(16, 68, 151) !important;
 }
 body {
 	color: #3C3C3C;
-	background-color: #F1F1F4;
+	/* background-color: #F1F1F4; */
+	background-color: #fff;
+	/* max-width: 1800px; */
+    min-width: 1000px;
 }
 
 /*公共类*/
 .w {
 	/*版心 提取 */
 	width: 1190px;
-	margin: 0 auto;
+	margin: 0px auto;
 }
 
 .fl {
-	float: left
+	float: left;
 }
 
 .fr {
-	float: right
+	float: right;
 }
 
 .al {
-	text-align: left
+	text-align: left;
 }
 
 .ac {
-	text-align: center
+	text-align: center;
 }
 
 .ar {
-	text-align: right
+	text-align: right;
 }
 
 .hide {
-	display: none
+	display: none;
 }
 
 footer{
@@ -142,7 +145,8 @@ footer{
     background-color: #ECECEC;
     clear: both;
     /* margin-top: 10px; */
-    border-top: 2px solid #D11518;
+    /* border-top: 2px solid #D11518; */
+    border-top: 2px solid rgb(16, 68, 151);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -232,7 +236,8 @@ div.ellipsis {
 
 /* 分页器样式 */
 .demo {
-	padding: 20px;
+	margin: 16px;
+	padding: 26px 20px;
 	margin-bottom: 20px;
 	background-color: #f7f7f7;
   }
@@ -296,4 +301,14 @@ div.ellipsis {
 	background-color: rgba(243, 29, 29, 0.8);
 	/* trans */
 }
+.noneRes{
+	height: 42px;
+	line-height: 54px;
+	font-size: 17px;
+  }
 
+
+#app{
+	/* max-width: 1500px; */
+    min-width: 1000px;
+}

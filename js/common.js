@@ -1,4 +1,82 @@
+if (!window.console || !console.firebug){
+  var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+
+  window.console = {};
+  for (var i = 0; i < names.length; ++i)
+      window.console[names[i]] = function() {}
+}
+
+// 兼容ie8
+if ( !Array.prototype.forEach ) {
+  Array.prototype.forEach = function forEach( callback, thisArg ) {
+    var T, k;
+    if ( this == null ) {
+      throw new TypeError( "this is null or not defined" );
+    }
+    var O = Object(this);
+    var len = O.length >>> 0; 
+    if ( typeof callback !== "function" ) {
+      throw new TypeError( callback + " is not a function" );
+    }
+    if ( arguments.length > 1 ) {
+      T = thisArg;
+    }
+    k = 0;
+    while( k < len ) {
+      var kValue;
+      if ( k in O ) {
+        kValue = O[ k ];
+        callback.call( T, kValue, k, O );
+      }
+      k++;
+    }
+  };
+}
+
 $(function () {
+  // 底部友情链接选择
+  $(".webs span").on('click', function () {
+    
+    var type = $(this).data('type');
+      $(".webs span").css('background', 'none');
+      $(this).css('background', '#FAF9F5');
+      $(".websites").css('display', 'none');
+      $(".site"+type).css('display', 'block');
+    
+  });
+
+  $("#search").on('click', function () {
+    // window.open('./search.html', "");
+    searchText();
+
+  });
+
+  $(window).keydown( function(e) {
+    var key = window.event?e.keyCode:e.which;
+    if(key == 13){
+        var myInput = document.getElementById('searchInput');  //获取到ID为name的input
+        if (myInput == document.activeElement) { 
+            searchText();
+            return false;
+        }
+    }
+});
+
+function searchText(){
+  var text = $('#searchInput').val().replace(/[, ]/g,'');
+
+  if(text){
+    var searchUrl = encodeURI("./search.html?searchText=" + text); //使用encodeURI编码
+    location.href = searchUrl;
+    // window.open(searchUrl, "");
+
+  }else{
+    showMessage("请输入关键字", 0);
+  }
+
+}
+
+
     // 获取背景图片
     getBackground();
 
@@ -6,27 +84,29 @@ $(function () {
 
     function getBackground() {
         var result = ajaxMethod('banner', 1);
-        // console.log(result)
         if (result.code == 0 && result.data != null) {
             //do something
-            // console.log('11111');
             if (result.data.length > 0) {
 
                 var imgUrl = filePath + result.data[0].bannerPath
                 $('body').css('backgroundImage', 'url(' + imgUrl + ')');
+            }else{
+              $('body').css('backgroundImage', 'url(images/banner.jpg)');
             }
 
         } else {
+          $('body').css('backgroundImage', 'url(images/banner.jpg)');
             //do something
         }
     }
 
-    // 获取首页顶部栏目
-    function getHome() {
+
+      // 获取首页顶部栏目
+      function getHome() {
         var that = this;
         var result = ajaxMethod('topSet', 80);
-        console.log('获取首页顶部栏目')
-        console.log(result)
+
+
         if (result.code == 0 && result.data != null) {
           //do something
           var data = result.data[0].children;
@@ -36,72 +116,49 @@ $(function () {
           var srt = '';
           for (var index = 0; index < data.length; index++) {
             var value = data[index];
-            // console.log(value.children)
-            if (value.children.length > 0) {
+            if(value.children.length == 0){
+                sigleData.push(value);
+              }
+            // if (value.children.length > 0) {
               var newData = new Object({
                 id: 0,
                 catalogName: '',
-                title1: '',
-                title2: '',
+                children:[],
               });
               newData.children = value.children;
-              newData.title1 = value.catalogName.substring(0, 2);
-              newData.title2 = value.catalogName.substring(2, 4);
+             
               newData.id = value.id;
               newData.catalogName = value.catalogName;
-             
+              // newData.parentId = value.parentId;
+
               totalData.push(newData);
-              // console.log(newData.children);
               var str2 = '';
 
               for (var ind = 0; ind < newData.children.length; ind++) {
                 var val = newData.children[ind];
-                // console.log(val)
-                var url = './news.html?id=' + val.id + '&pId=' + value.id;
-                if (val.catalogName == "党建视频") {
-                  url = './moreBook.html?type=1';
-                }
-                if (val.catalogName == "资料下载") {
-                  url = './news.html?id=0&pId=0&type=0';
-                }
-                if (val.catalogName == "党务回答") {
-                  url = './news.html?id=0&pId=0&type=1';
-                }
-                if (ind != 0 && ind != 3) {
-
-                  if (ind == 2) {
-                    str2 += '<span>' +
-                      '<span >|</span><a  href="' + url + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
-                      + '</span></br>'
-                  } else {
-                    str2 += '<span>' +
-                      '<span >|</span><a  href="' + url + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
-                      + '</span>'
-                  }
-                } else {
-
-                  str2 += '<span>' +
-                    '<a  href="' + url + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
-                    + '</span>'
-                }
+                    str2 += '<li>' +
+                      '<a  href="' + catalogUrl + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
+                      + '</li>'
               }
-              srt += '<div class="title-hold ">' +
-                '<div class="title-left">' +
-                '<div>' + newData.title1 + '</div>' +
-                '<div>' + newData.title2 + '</div>' +
-                '</div>' +
-                '<div class="title-right list' + index + ' " >' +
-                '<div >' + str2 + '</div></div></div>'
+              if(newData.children == 0){
+                srt += '<li><a  href="./news.html?id=' + newData.id + '&pId=' + newData.id+'" target="_blank">'+ newData.catalogName + '</a>'+
+                  '<ul >' + str2 + '</ul>'+
+                  '</li>' ;
+              }else{
+                srt += '<li><a  href="#" style="pointer-events:none;">' + newData.catalogName + '</a>'+
+                  '<ul >' + str2 + '</ul>'+
+                  '</li>' ;
+              }
+              
+               $('#contentTop').html(srt);
 
-            } else {
-              sigleData.push(value);
-            }
-
-            document.getElementById("contentTop").innerHTML = srt;
           }
 
+          // 获取多栏目内容
+          // getMoreSet(totalData);
 
-        
+          // 获取单栏目内容
+          // getsigleDataList(sigleData);
 
         } else {
           //do something
@@ -129,8 +186,6 @@ $(function () {
 
     // var now=year+'年'+getNow(month)+"月"+getNow(date)+"日 "+getNow(h)+':'+getNow(m)+":"+getNow(s);
     var now = year + '年' + getNow(month) + "月" + getNow(date) + "日";
-    console.log('now');
-    console.log(now);
     $('#nowTime').html(now);
 
 

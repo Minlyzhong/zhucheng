@@ -4,10 +4,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE8">
+  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE9">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+  <!-- <meta name="renderer" content="webkit|ie-comp|ie-stand"> -->
+
   <title>珠城先锋网</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/news.css">
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <!--[if IE 9]>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+
+<!--[if IE 8]>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
   <link rel="stylesheet" href="css/app.min.css">
   <script type="text/javascript" src="js/app.min.js"></script>
 
@@ -22,35 +38,42 @@
 <body id="some-element">
   <div id="app">
     <nav class="flex-style row">
-      <div class="flex-style row">
-        <span>欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
-        <div class="search" id="search">
-          <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
-          <button><i>搜索</i></button>
+      <div class="flex-style row fl" style="margin-left: 150px;">
+        <span class="fl">欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
+        <div class="search fr" >
+          <input class="fl" type="text" placeholder="请输入关键词搜索" name="" id="searchInput" value="" />
+          <button id="search"><i>搜索</i></button>
         </div>
       </div>
 
-      <div>
+      <div class="fr" style="margin-right: 150px;">
         <a href="javascript:setHome(this,window.location);" id="text">设为首页 |</a>
         <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"
           href="javascript:void(0);">加入收藏 </a>
+        <!-- <a href="./login.html" target="_blank">登录</a> -->
+
         <!-- <a href="#">意见反馈 |</a>
-        <a href="#">手机APP下载</a> -->
+      <a href="#">手机APP下载</a> -->
 
       </div>
 
     </nav>
+ <!-- 顶部栏目 -->
+    <section class="content-top row flex-cstyle" >
+      <div class="top">
+        
+         <ul id="contentTop">
+           </ul> 
+      </div>
+    </section>
 
     <div class="content clearfix">
-      <!-- 顶部栏目 -->
-      <section class="content-top row flex-cstyle" id="contentTop">
-      </section>
-
+     
       <section class="clearfix">
 
         <div class="flex-cstyle row shine-group">
           <div id="topName">先锋导读</div>
-          <div style="width: 90%; text-align: center;" id="topList">
+          <div style="width: 80%; text-align: center;" id="topList">
 
           </div>
         </div>
@@ -75,32 +98,41 @@
         </div>
         <aside style="width:30%; margin-top: 25px;">
           <div class="shine-set shine-left">
-            <div class="flex-cstyle row" style="padding: 15px 10px; background-color: #F5F5F5;">
-              <img src="./images/celect.jpg" alt="" style="height:100px;">
+            <div class="flex-cstyle row shine-leftIcon" style="padding: 15px 10px; background-color: #F5F5F5;">
+              <img src="./images/u5.jpg" alt="">
               <div class="shine-detail">
                 <h3>
                   北海先锋
                 </h3>
-                <button type="button">立即收听</button>
+                <a href="http://e.weibo.com/beihaizzb" target="_blank">
+                  <button type="button" >立即收听</button>
+                </a>
+                
               </div>
+
+
             </div>
             <div style="line-height: 23px; padding: 0px 10px;">
               #先锋新闻# 专稿 : 近年来 , 北海以"四个推手" 为抓手, 通过推动全覆盖, 规范化, 三帮带, 示范引领等多措并举, 有效促进该区非公企业党建工作由被动为主动的转变, 实现非公党建水平的整体提升.
             </div>
-            <img src="./images/celect.jpg" alt="" style="width:100%; height: 175px;padding: 0px 10px;">
+            <a href="http://weibo.com/beihaizzb?refer_flag=1005055014_&is_all=1#_rnd1470278615323http://weibo.com/p/100808ddd6e5a81db6a9771819aff1de6df551?k=先锋播报&from=501&_from_=huati_topic" target="_blank">
+              <img src="./images/u6.jpg" alt="" style="width:100%; height: 175px;padding: 0px 10px;">
+            </a>
+            
             <div class="flex-rstyle " style="height: 35px;color: #969696;line-height: 37px; padding: 0px 10px;">
               <span>3月25日 18:11 来着网页</span>
-              <div class="say"><img src="./images/say.png" alt="">(12565)</div>
+              <div class="say"><img src="./images/pinglun.jpg" alt="">(12565)</div>
             </div>
           </div>
 
           <div class="shine-bottom">
             <div class="flex-cstyle row shine-title" style="background-image: url(./images/video.png); ">
               <div style="font-weight: 400; font-size: 15px;">党建视频</div>
-              <span class="more">更多>></span>
+              <a href="./moreBook.html?type=1" class="more" target="_blank">更多>></a>
             </div>
-            <div class="mid-pic">
-              <img src="./images/timg.png" alt="">
+            <div class="mid-pic clearfix" id="toVideo">
+              <a href="" target="_blank"><img src="./images/tv_tu.jpg" alt=""></a>
+
             </div>
           </div>
         </aside>
@@ -111,46 +143,89 @@
         <!-- <p>当前第 <span id="demo2-text"></span> 页</p> -->
         <ul id="demo2" class="pagination"></ul>
       </div>
-
       <section class="clearfix">
         <div class="flex-cstyle row links">
-          <div>
+          <div class="fl">
             <span class="link-title">友情链接</span>
             <span style="color: #969696;font-size: 13px; ">Links</span>
           </div>
 
-          <div class="webs">
-            <span class="webs-selected">党建网站</span>
-            <span>综合网站</span>
-            <span>报刊网站</span>
+          <div class="webs fr">
+            <span class="" data-type="1" style="background:#FAF9F5;">党建网站</span>
+            <span  data-type="2">综合网站</span>
+            <span  data-type="3">报刊网站</span>
           </div>
         </div>
-        <ul class="flex-style row websites">
-          <li><a href="#">共产党员网</a></li>
-          <li><a href="#">中共中央组织部</a></li>
-          <li><a href="#">中国党建网</a></li>
-          <li><a href="#">中国共产党新闻网</a></li>
-          <li><a href="#">党史党建在线</a></li>
-          <li><a href="#">全国远程教育网</a></li>
-          <li><a href="#">北京组工</a></li>
-          <li><a href="#">新浪网</a></li>
+        <ul class=" websites site1">
+          <li><a href="http://www.12371.cn" target="_blank">共产党员网</a></li>
+        
+          <li><a href="http://cpc.people.com.cn/GB/64114/75347/" target="_blank">中共中央组织部</a></li>
+           
+          <li><a href="http://www.dangjiancn.com/" target="_blank">中国党建网</a></li>
+           
+          <li><a href="http://cpc.people.com.cn/" target="_blank">中国共产党新闻网</a></li>
+           
+          <li><a href="http://www.ccphistory.org.cn/" target="_blank">党史党建在线</a></li>
+           
+          <li><a href="http://www.dygbjy.gov.cn" target="_blank">全国远程教育网</a></li>
+           
+          <li><a href="http://www.bjdj.gov.cn/viewpubarticle.do?id=123393" target="_blank">北京组工</a></li>
+           
+          <li><a href="http://www.jszzb.gov.cn/" target="_blank">江苏党建</a></li>
         </ul>
+        <ul class=" websites site2" style="display: none;">
+          <li><a href="http://www.sohu.com/" target="_blank">搜狐网</a></li>
+        
+          <li><a href="http://www.sina.com.cn/" target="_blank">新浪网</a></li>
+            
+          <li><a href="http://www.china.com.cn/" target="_blank">中国网</a></li>
+            
+          <li><a href="http://www.people.com.cn/" target="_blank">人民网</a></li>
+            
+          <li><a href="http://www.xinhua.org/" target="_blank">新华网</a></li>
+            
+          <li><a href="http://www.china.com/zh_cn/" target="_blank">中华网</a></li>
+            
+          <li><a href="http://www.cntv.cn/" target="_blank">CCTV</a></li>
+
+          
+        </ul>
+        <ul class="websites site3" style="display: none;">
+          <li><a href="http://www.gxnews.com.cn/" target="_blank">广西新闻网</a></li>
+        
+          <li><a href="http://paper.people.com.cn/rmrb/html/2012-05/14/nbs.D110000renmrb_01.htm" target="_blank">人民日报</a></li>
+           
+          <li><a href="http://zjdaily.zjol.com.cn" target="_blank">浙江日报</a></li>
+           
+          <li><a href="http://epaper.cnnb.com.cn/rp/clt/newreader" target="_blank">宁波日报</a></li>
+           
+          <li><a href="http://www.chinadaily.com.cn/" target="_blank">中国日报</a></li>
+           
+          <li><a href="http://www.zuzhirenshi.com/dianzibao/index.htm" target="_blank">组织人事报</a></li>
+           
+          <li><a href="http://www.admaimai.com/newspaper/Detail10_1565.htm" target="_blank">光明日报</a></li>
+          
+        </ul>
+
+
       </section>
     </div>
 
-    <footer>
-      <div>
+    <footer style="color:rgb(60, 60, 60);text-align: center;">
+      <!-- <div>
         <a href="#">联系我们</a>|
         <a href="#">网站地图</a>|
         <a href="#">法律申明</a>|
         <a href="#">投诉信箱</a>|
         <a href="#">免责申明</a>
 
-      </div>
+      </div> -->
       <div>中共北海市委组织部主办</div>
       <div>地址 : 广西市合平路东二巷2号 邮编 : 53600</div>
-      <div>桂公网安备 450502020000014号</div>
-      <img src="./images/bottom.png" alt="">
+      <div><a href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" style="padding: 0px;">桂公网安备 450502020000014号</a>&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn" target="_blank" style="padding: 0px;">桂ICP备06006473号-1</a></div>
+      <a href="http://bszs.conac.cn/sitename?method=show&id=11231DF6641C21ECE053022819AC104A" target="_blank">
+        <img src="./images/u12.jpg" alt="">
+      </a>
     </footer>
   </div>
 
@@ -165,9 +240,9 @@
       //  type为1是党建视频
       var type = getUrlParam('type') || 0;
 
-      $("#search").on('click', function () {
-        window.open('./search.html', "");
-      });
+      // $("#search").on('click', function () {
+      //   window.open('./search.html', "");
+      // });
       var totalPage = 1;
       console.log(type)
       // $("#some-element").busyLoad("show", state);
@@ -175,7 +250,7 @@
         getVideoList();
         $('#topTitle').html('党建视频');
         $('#sedName').html('党建视频');
-        $('#topName').html('党建视频');
+        $('#topName').html('党员教育');
       } else {
         //  获取党建掠影
         getSetList();
@@ -206,12 +281,13 @@
         }
       })
 
+      // 获取党建掠影
       function getSetList(page) {
 
         var pageNo = page || 1;
         var data = {
           current: pageNo,
-          size: 20
+          size: 10
         }
         var result = ajaxMethod('filmFestival', '', data);
         console.log(result)
@@ -228,7 +304,7 @@
           var set = '';
           $('#setNewListDetail').html(set);
           list.forEach(function (value, index) {
-            console.log(value)
+            console.log(value);
             var picList = value.pics.split(',');
             var pic = filePath + picList[0];
             var srt = '<div class="main-new" >' +
@@ -253,7 +329,7 @@
         let that = this;
         var data = {
           current: pageNo,
-          size: 20
+          size: 10
         }
         var result = ajaxMethod('partyVideo', '', data);
         console.log(result)
@@ -271,14 +347,22 @@
           $('#setNewListDetail').html(set);
           list.forEach(function (value, index) {
             console.log(value)
-
-            var url = './video.html?id=' + value.id;
-            var srt = '<div class="main-new" >' +
+            if(value.sourceType !='no'){
+              var url = './video.html?id=' + value.id;
+             var srt = '<div class="main-new" >' +
               '<a target="_blank" href="' + url + '"><h3>' + value.title + '</h3></a>' +
               '<div class="flex-cstyle row main-content" >' +
 
               '<div class="shine-detail save">' + value.createdDate + '  </div></div></div>';
 
+            }else{
+              var srt = '<div class="main-new" >' +
+              '<a target="_blank" href="' + value.videoPath + '"><h3>' + value.title + '</h3></a>' +
+              '<div class="flex-cstyle row main-content" >' +
+
+              '<div class="shine-detail save">' + value.createdDate + '  </div></div></div>';
+            }
+            
             set += srt
           })
           // $("#some-element").busyLoad("hide");

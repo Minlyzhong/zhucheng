@@ -3,30 +3,32 @@ section {
 }
 
 nav {
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     line-height: 44px;
     height: 44px;
     background-color: rgba(255, 255, 255, 0.4);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66FFFFFF,endColorstr=#66FFFFFF); /*IE8支持*/
     font-size: 12px;
 }
 
 .search {
     height: 25px;
     /* width: 120px; */
-    margin-left: 10px;
+    margin-left: 22px;
     display: flex;
     border: 1px solid #ddd;
     margin-top: 10px;
-    width: 200px;
+    width: 230px;
 }
 
 .search input {
     float: left;
     flex: 4;
-    height: 25px;
+    height: 23px;
+    line-height: 23px;
     outline: none;
-    width: 200px;
+    width: 198px;
     /* border: 1px solid red; */
     box-sizing: border-box;
     padding-left: 10px;
@@ -56,11 +58,14 @@ nav {
 
 
 
-.content {
+.content{
     height: 100%;
     width: 85%;
+    /* max-width: 1291px; */
+    max-width: 1500px;
+    min-width: 1000px;
     background: #fff;
-    margin: 200px auto 0px;
+    margin: 0px auto 0px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 
@@ -69,12 +74,16 @@ nav {
 .content-top {
     width: 100%;
     background: rgb(16, 68, 151);
-    min-height: 80px;
+    min-height: 50px;
+    margin-top: 200px;
     color: #fff;
-    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    /* border-radius: 5px;
     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    -webkit-border-radius: 5px; */
     justify-content: space-around;
+    padding: 3px;
 
 }
 
@@ -117,25 +126,47 @@ nav {
 
 }
 
-.hot-new {
-    padding-top: 10px;
-    height: 80px;
-    border: 1px solid #ddd;
-    background-image: url(../images/hot.png);
-    background-repeat: no-repeat;
-    background-position: 1px 0px;
-    background-size: auto;
-    margin-top: 25px;
-    border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    box-shadow: inset 0px 0px 5px #96969673;
 
+
+.hot-new {
+    width: 100%;
+    padding: 10px 0px!important;
+    /* margin-top: 5px; */
+    z-index: 10;
+    background-image: url(../images/gonggao.jpg);
+    background-repeat: no-repeat;
+    background-position: 0px 21px;
+    background-size: 100% 93px;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/hot.png',  sizingMethod='scale');
 }
 
 .hot-new div {
     color: #494848;
     font-size: 18px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+.hot-new a {
+    padding-top: 23px;
+    padding-left: 108px;
+    height: 90px;
+    /* border: 1px solid #ddd; */
+    width: 100%;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    /* box-shadow: inset 0px 0px 5px #96969673; */
+    background-image: url(../images/hot.png);
+    background-repeat: no-repeat;
+    background-position: -1px 8px;
+    background-size: 88px;
+    
+
+
+
 }
 
 .hot-new span {
@@ -144,7 +175,7 @@ nav {
 }
 
 .new-content {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 10px;
     width: 100%;
     height: 550px;
@@ -154,24 +185,35 @@ nav {
     /* margin: 10px; */
     /* height: 315px; */
     background: #ddd;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     width: 100%;
     /* height: 425px; */
 
+}
+
+
+.hot-img a {
+    width: 100%;
+    max-height: 400px;
+    min-height: 350px;
+    /* padding: 10px; */
 }
 
 .hot-img img {
     width: 100%;
     max-height: 400px;
     min-height: 350px;
-    padding: 10px;
+    height: 100%;
 }
 
 .scan {
+    
     padding-top: 15px;
+    /* margin-right: 10px; */
+    margin-right: 14px;
     /* margin-top: 10px; */
     float: left;
-    width: 70%;
+    width: 66%;
     text-align: center;
     padding: 15px 50px;
     font-size: 13px;
@@ -186,40 +228,49 @@ nav {
     /* Firefox 3.6-15 */
     background: linear-gradient(#969696a3, #fff);
     /* 标准语法 */
+
+
+    
 }
 
 .scan img {
     margin-bottom: 5px;
-
+    width: 66px;
 }
 
 .call {
     float: right;
-    width: 35%;
+    width: 32%;
+    /* width: 35%; */
     justify-content: space-between;
     align-items: flex-end;
 
 
 }
 
+.call a {
+    width: 99%;
+}
+
 .call img {
     height: 55px;
     /* margin-bottom: 5px; */
-    width: 89%;
-    box-shadow: 2px 2px 2px #ddd;
+    width: 99%;
+    /* box-shadow: 2px 2px 2px #ddd; */
 }
 
 .content-left {
     border: 1px solid #ddd;
-    border-top: 2px solid #c81623;
+    border-top: 2px solid rgb(16, 68, 151);
 
 }
 
 .left-title {
     background-color: #EDEDED;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     padding: 0px 15px;
+    padding-top: 10px;
     height: 35px;
     font-size: 16px;
     box-shadow: 2px 2px 2px #ddd;
@@ -228,8 +279,16 @@ nav {
 }
 
 .left-title a {
+    /* box-sizing: border-box;  */
     font-size: 12px;
     color: #969696;
+}
+.left-choice{
+    
+    height: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+    
 }
 
 .left-choice span {
@@ -238,7 +297,7 @@ nav {
     padding: 7px 16px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    margin-top: 4px;
+    /* margin-top: 4px; */
     background-color: #fff;
     color: #3c3c3c;
 }
@@ -266,7 +325,7 @@ nav {
 }
 
 .left-middle div:nth-child(1) {
-    color: #c81623;
+    color: rgb(16, 68, 151);
     padding: 5px;
 }
 
@@ -290,7 +349,10 @@ nav {
     line-height: 33px;
     padding: 10px;
     /* margin-top: 5px; */
-    font-size: 13px;
+    font-size: 14px;
+}
+.content-min{
+    min-height: 200px;
 }
 
 .content-list li {
@@ -302,6 +364,11 @@ nav {
 
 }
 
+
+.content-list a{
+    padding-left: 5px;
+}
+
 .content-list li::before {
     content: "";
     display: inline-block;
@@ -309,6 +376,7 @@ nav {
     height: 5px;
     background-color: #DE001D;
     margin-right: 5px;
+    margin-bottom: 2px;
 
 }
 
@@ -322,8 +390,8 @@ nav {
 .shine-group {
     justify-content: space-between;
     height: 50px;
-    border-bottom: 4px solid #D11518;
-    padding: 0px 10px 0px 80px;
+    border-bottom: 4px solid rgb(16, 68, 151);
+    padding: 0px 10px 0px 90px;
     background-image: url(../images/shine.png);
     background-repeat: no-repeat;
     background-position: 2px 0px;
@@ -373,6 +441,8 @@ nav {
     background-repeat: no-repeat;
     background-position: 10px;
     background-size: 30px;
+
+    
     border-bottom: 1px solid #ddd;
 
 }
@@ -380,13 +450,16 @@ nav {
 .shine-title>div {
     padding-left: 50px;
     width: 50%;
-    border-bottom: 2px solid #D11518;
+    border-bottom: 2px solid rgb(16, 68, 151);
+    height: 36px;
+    
+    /* border-bottom: 2px solid #D11518; */
 }
 
 .shine-detail {
     padding-left: 10px;
-    line-height: 21px;
-    min-height: 116px;
+    line-height: 20px;
+    min-height: 66px;
     width: 90%;
 }
 
@@ -406,7 +479,7 @@ nav {
 
 .shine-detail a {
     color: #D11518;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .mid-pic {
@@ -423,18 +496,24 @@ nav {
 
 .shine-left {
     margin-left: 0px !important;
-    background-image: url(../images/vlog.png);
-    background-position: 270px 15px;
-    background-repeat: no-repeat;
-    background-size: 34px;
+    
     /* background-color: #F5F5F5; */
     border: 1px solid #ddd;
     width: 100%;
     /* padding: 0px 10px; */
 }
 
+.shine-leftIcon{
+    background-image: url(../images/gren-icon.jpg);
+    background-position: 305px 15px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+}
+
+
 
 .shine-left button {
+    margin-left: 5px;
     padding: 3px 10px 3px 26px;
     border: 1px solid #ddd;
     background: url(../images/plus.png) no-repeat;
@@ -476,7 +555,7 @@ nav {
     /* height: 175px; */
     display: block;
     margin: 7px auto;
-    height: 235px;
+    height: 200px;
     /* height: 250px; */
 }
 
@@ -506,15 +585,27 @@ nav {
     height: 44px;
 }
 
+.ask span{
+    display: block;
+}
+
 
 .horizontal {
     margin-top: 25px;
     margin-bottom: 20px;
+    width:100%;
     /* padding: 0px 15px; */
 }
 
-.horizontal img {
+
+.horizontal a {
     width: 49%;
+    height: 92px;
+}
+
+
+.horizontal img {
+    width: 100%;
     height: 92px;
 }
 
@@ -522,6 +613,8 @@ nav {
     /* justify-content: space-around; */
     justify-content: flex-start;
     height: 45%;
+    white-space:nowrap;
+    /* float: left; */
 
 }
 
@@ -536,6 +629,8 @@ nav {
 .book-list img {
     width: 100%;
     height: 100%;
+    max-height: 134px;
+    max-width: 128px;
     /* height: 148px;
     margin-top: 15px; */
 }
@@ -548,7 +643,7 @@ nav {
 }
 
 .shine-set3 {
-    width: 60%;
+    width: 58%;
     margin-left: 2%;
     padding-bottom: 15px;
     min-height: 330px;
@@ -556,7 +651,8 @@ nav {
 
 .book-list2 {
     justify-content: flex-start;
-    height: 50%;
+    height: 45%;
+    white-space:nowrap;
 
 }
 
@@ -565,12 +661,16 @@ nav {
     height: 90%;
     margin-top: 10px;
     margin-left: 14px;
+    /* float: left; */
+    float: right;
 
 }
 
 .book-list2 img {
     width: 100%;
     height: 100%;
+    max-height: 120px;
+    max-width: 230px;
     /* height: 148px;
     width: 180px;
     margin-top: 15px; */
@@ -587,6 +687,7 @@ nav {
     color: #fff;
     font-size: 13px;
     background-color: rgba(0, 0, 0, 0.5);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000,endColorstr=#7F000000); /*IE8支持*/
     text-align: center;
     width: 100%;
     height: 26px;
@@ -597,7 +698,7 @@ nav {
     height: 40px;
     background: #F4F4F4;
     border: 1px solid #ddd;
-    border-top: 2px solid #D11518;
+    border-top: 2px solid rgb(16, 68, 151);
     line-height: 40px;
     justify-content: space-between;
     padding-left: 10px;
@@ -605,7 +706,7 @@ nav {
 }
 
 .link-title {
-    background-color: #B90010;
+    background-color: rgb(16, 68, 151);
     padding: 3px 7px;
     color: #fff;
     border-radius: 3px;
@@ -615,6 +716,7 @@ nav {
 
 .webs span {
     padding: 10px 12px;
+    cursor: pointer;
 
 }
 
@@ -623,13 +725,21 @@ nav {
 }
 
 .websites {
-    justify-content: space-between;
-    height: 70px;
+    min-height: 70px;
     line-height: 50px;
     padding: 10px 10px 10px 10px;
-
-    border-bottom: 2px solid #D11518;
+    border-bottom: 2px solid rgb(16, 68, 151);
     margin-bottom: 50px;
+    width: 100%;
+    white-space:normal;
+    overflow: hidden;
+}
+
+.websites li{
+    float: left;
+    /* min-width: 150px; */
+    text-align: center;
+    padding-left: 3%;
 }
 
 footer a {
@@ -641,12 +751,83 @@ footer img {
 }
 
 #groupContent>a {
-    height: 50px;
-    line-height: 50px;
+    height: 38px;
+    line-height: 38px;
     font-size: 17px;
     display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #quest li {
     width: 90%;
+}
+
+.moreHeight{
+    height: 38px;
+    line-height: 25px;
+    padding-top: 4px!important;
+    /* box-sizing: border-box; */
+}
+
+.top{
+    min-width: 1000px;
+    margin: 0px auto;
+}
+.top ul{
+    /* 清除ul标签的默认样式 */
+    /* ie8居中要有固定的width */
+    width: 1000px;
+    /* width: 100%; */
+    
+	list-style-type: none;
+	margin: 0px auto;            
+	padding: 0px;
+	overflow: hidden;
+
+}
+.top li {    
+	float:left; /* 使li内容横向浮动，即横向排列  */
+	margin-right:50px;  
+}
+
+.top li a{
+   /* 设置链接内容显示的格式*/
+	display: block; /* 把链接显示为块元素可使整个链接区域可点击 */
+	color:white;
+	text-align: left;
+	padding: 14px 16px;
+	text-decoration: none; /* 去除下划线 */
+}
+.top li a:hover{
+	/* 鼠标选中时背景变为白色 */
+	background-color: #fff;
+	color: rgb(16, 68, 151);
+}
+.top ul li ul{
+	/* 设置二级菜单 */
+	width: auto;
+	background:rgb(16, 68, 151);
+	color: #fff!important;
+    margin-top: 1px;
+	position: absolute;
+	display: none; /* 默认隐藏二级菜单的内容 */
+    z-index: 10;
+    
+    box-shadow: inset 0px 0px 2px #96969673;
+
+}
+.top ul li ul li{
+	/* 二级菜单li内容的显示 */
+	margin-right:0;
+	float:none;
+	text-align: center;
+    z-index: 10;
+    padding-left: 0px;
+}
+.top ul li:hover ul{
+	/* 鼠标选中二级菜单内容时 */
+	display: block;
+	z-index: 10;
 }

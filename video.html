@@ -4,6 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE8">
+  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE9">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
   <title>珠城先锋网</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/news.css">
@@ -15,6 +20,15 @@
   </style>
 
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <!--[if IE 9]>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+
+<!--[if IE 8]>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
   <link rel="stylesheet" href="css/app.min.css">
   <script type="text/javascript" src="js/app.min.js"></script>
   <script type="text/javascript" src="js/config.js"></script>
@@ -28,30 +42,36 @@
 <body id="some-element">
   <div id="app">
     <nav class="flex-style row">
-      <div class="flex-style row">
-        <span>欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
-        <div class="search" id="search">
-          <input type="text" placeholder="请输入关键词搜索" name="" id="" value="" />
-          <button><i>搜索</i></button>
+      <div class="flex-style row fl" style="margin-left: 150px;">
+        <span class="fl">欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
+        <div class="search fr" >
+          <input class="fl" type="text" placeholder="请输入关键词搜索" name="" id="searchInput" value="" />
+          <button id="search"><i>搜索</i></button>
         </div>
       </div>
 
-      <div>
+      <div class="fr" style="margin-right: 150px;">
         <a href="javascript:setHome(this,window.location);" id="text">设为首页 |</a>
         <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"
           href="javascript:void(0);">加入收藏 </a>
+        <!-- <a href="./login.html" target="_blank">登录</a> -->
+
         <!-- <a href="#">意见反馈 |</a>
-        <a href="#">手机APP下载</a> -->
+      <a href="#">手机APP下载</a> -->
+
       </div>
+
     </nav>
+         <!-- 顶部栏目 -->
+         <section class="content-top row flex-cstyle" >
+          <div class="top">
+             <ul id="contentTop">
+               </ul> 
+          </div>
+        </section>
 
     <div class="content clearfix">
-      <!-- 顶部栏目 -->
-      <section class="content-top row flex-cstyle" id="contentTop">
-      </section>
-
       <section class="clearfix">
-
         <div class="flex-cstyle row shine-group">
           <div id="topName"></div>
           <div style="width: 80%;" id="topList">
@@ -85,46 +105,89 @@
       </section>
 
 
-
       <section class="clearfix">
         <div class="flex-cstyle row links">
-          <div>
+          <div class="fl">
             <span class="link-title">友情链接</span>
             <span style="color: #969696;font-size: 13px; ">Links</span>
           </div>
 
-          <div class="webs">
-            <span class="webs-selected">党建网站</span>
-            <span>综合网站</span>
-            <span>报刊网站</span>
+          <div class="webs fr">
+            <span class="" data-type="1" style="background:#FAF9F5;">党建网站</span>
+            <span  data-type="2">综合网站</span>
+            <span  data-type="3">报刊网站</span>
           </div>
         </div>
-        <ul class="flex-style row websites">
-          <li><a href="#">共产党员网</a></li>
-          <li><a href="#">中共中央组织部</a></li>
-          <li><a href="#">中国党建网</a></li>
-          <li><a href="#">中国共产党新闻网</a></li>
-          <li><a href="#">党史党建在线</a></li>
-          <li><a href="#">全国远程教育网</a></li>
-          <li><a href="#">北京组工</a></li>
-          <li><a href="#">新浪网</a></li>
+        <ul class=" websites site1">
+          <li><a href="http://www.12371.cn" target="_blank">共产党员网</a></li>
+        
+          <li><a href="http://cpc.people.com.cn/GB/64114/75347/" target="_blank">中共中央组织部</a></li>
+           
+          <li><a href="http://www.dangjiancn.com/" target="_blank">中国党建网</a></li>
+           
+          <li><a href="http://cpc.people.com.cn/" target="_blank">中国共产党新闻网</a></li>
+           
+          <li><a href="http://www.ccphistory.org.cn/" target="_blank">党史党建在线</a></li>
+           
+          <li><a href="http://www.dygbjy.gov.cn" target="_blank">全国远程教育网</a></li>
+           
+          <li><a href="http://www.bjdj.gov.cn/viewpubarticle.do?id=123393" target="_blank">北京组工</a></li>
+           
+          <li><a href="http://www.jszzb.gov.cn/" target="_blank">江苏党建</a></li>
         </ul>
+        <ul class=" websites site2" style="display: none;">
+          <li><a href="http://www.sohu.com/" target="_blank">搜狐网</a></li>
+        
+          <li><a href="http://www.sina.com.cn/" target="_blank">新浪网</a></li>
+            
+          <li><a href="http://www.china.com.cn/" target="_blank">中国网</a></li>
+            
+          <li><a href="http://www.people.com.cn/" target="_blank">人民网</a></li>
+            
+          <li><a href="http://www.xinhua.org/" target="_blank">新华网</a></li>
+            
+          <li><a href="http://www.china.com/zh_cn/" target="_blank">中华网</a></li>
+            
+          <li><a href="http://www.cntv.cn/" target="_blank">CCTV</a></li>
+
+          
+        </ul>
+        <ul class="websites site3" style="display: none;">
+          <li><a href="http://www.gxnews.com.cn/" target="_blank">广西新闻网</a></li>
+        
+          <li><a href="http://paper.people.com.cn/rmrb/html/2012-05/14/nbs.D110000renmrb_01.htm" target="_blank">人民日报</a></li>
+           
+          <li><a href="http://zjdaily.zjol.com.cn" target="_blank">浙江日报</a></li>
+           
+          <li><a href="http://epaper.cnnb.com.cn/rp/clt/newreader" target="_blank">宁波日报</a></li>
+           
+          <li><a href="http://www.chinadaily.com.cn/" target="_blank">中国日报</a></li>
+           
+          <li><a href="http://www.zuzhirenshi.com/dianzibao/index.htm" target="_blank">组织人事报</a></li>
+           
+          <li><a href="http://www.admaimai.com/newspaper/Detail10_1565.htm" target="_blank">光明日报</a></li>
+          
+        </ul>
+
+
       </section>
     </div>
 
-    <footer>
-      <div>
+    <footer style="color:rgb(60, 60, 60);text-align: center;">
+      <!-- <div>
         <a href="#">联系我们</a>|
         <a href="#">网站地图</a>|
         <a href="#">法律申明</a>|
         <a href="#">投诉信箱</a>|
         <a href="#">免责申明</a>
 
-      </div>
+      </div> -->
       <div>中共北海市委组织部主办</div>
       <div>地址 : 广西市合平路东二巷2号 邮编 : 53600</div>
-      <div>桂公网安备 450502020000014号</div>
-      <img src="./images/bottom.png" alt="">
+      <div><a href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" style="padding: 0px;">桂公网安备 450502020000014号</a>&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn" target="_blank" style="padding: 0px;">桂ICP备06006473号-1</a></div>
+      <a href="http://bszs.conac.cn/sitename?method=show&id=11231DF6641C21ECE053022819AC104A" target="_blank">
+        <img src="./images/u12.jpg" alt="">
+      </a>
     </footer>
 
   </div>
@@ -140,9 +203,9 @@
 
       var bookId = getUrlParam("id");
 
-      $("#search").on('click', function () {
-        window.open('./search.html', "");
-      });
+      // $("#search").on('click', function () {
+      //   window.open('./search.html', "");
+      // });
 
       // 获取影展详情
 

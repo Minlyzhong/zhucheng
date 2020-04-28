@@ -15,6 +15,11 @@ function urlLink(str){
             method:'get',
             url:'/site/banner/list/'
         },
+        //获取所有网站banner信息
+        bannerList:{
+            method:'get',
+            url:'/site/banner/allList'
+        },
         //通过ID获取新闻的详细内容
         newDetail:{
             method:'get',

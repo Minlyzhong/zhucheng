@@ -1,6 +1,5 @@
 $(function () {
 
-    getBanner();
     getDownload();
     getQuest();
 
@@ -19,71 +18,6 @@ $(function () {
 
     }
 
-
-    // 获取顶部banner
-    function getBanner() {
-
-        //参数 : 1, 背景图片, 2,头部大图, 3, 中间横图, 4,推荐专题左图, 5,推荐专题右图
-
-
-        var result = ajaxMethod('banner', 2);
-        // console.log(result)
-
-        if (result.code == 0 && result.data != null) {
-            //do something
-            if (result.data.length > 0) {
-                var imgUrl = filePath + result.data[0].bannerPath
-                $('.hot-img img').attr('src', imgUrl);
-            }
-
-
-
-        } else {
-            //do something
-        }
-
-        var result = ajaxMethod('banner', 3);
-        // console.log(result)
-
-        if (result.code == 0 && result.data != null) {
-            if (result.data.length > 0) {
-                var imgUrl = filePath + result.data[0].bannerPath
-                $('.mid-pic img').attr('src', imgUrl);
-            }
-
-
-
-
-        } else {
-            //do something
-        }
-
-        var result = ajaxMethod('banner', 4);
-        // console.log(result)
-
-        if (result.code == 0 && result.data != null) {
-            if (result.data.length > 0) {
-                var imgUrl = filePath + result.data[0].bannerPath
-                $('#special-left').attr('src', imgUrl);
-            }
-        } else {
-            //do something
-        }
-
-        var result = ajaxMethod('banner', 5);
-        // console.log(result)
-
-        if (result.code == 0 && result.data != null) {
-            if (result.data.length > 0) {
-                var imgUrl = filePath + result.data[0].bannerPath
-                $('#special-right').attr('src', imgUrl);
-            }
-        } else {
-            //do something
-        }
-
-
-    }
 
 
 

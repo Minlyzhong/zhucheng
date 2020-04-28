@@ -3,29 +3,31 @@ section{
     padding: 15px;
 }
 nav{
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     line-height: 44px;
     height: 44px;
     background-color:rgba(255, 255, 255,0.4);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66FFFFFF,endColorstr=#66FFFFFF); /*IE8支持*/
     font-size: 12px;
 }
 
 .search{
     height: 25px;
     /* width: 120px; */
-    margin-left: 10px;
+    margin-left: 22px;
     display: flex;
     border: 1px solid #ddd;
     margin-top: 10px;
-    width: 200px;
+    width: 230px;
 }
 .search input{
     float: left;
     flex: 4;
-    height: 25px;
+    height: 23px;
+    line-height: 23px;
     outline: none;
-    width: 200px;
+    width: 198px;
     /* border: 1px solid red; */
     box-sizing: border-box;
     padding-left: 10px;
@@ -55,8 +57,11 @@ nav{
 .content{
     height: 100%;
     width: 85%;
+    /* max-width: 1291px; */
+    max-width: 1500px;
+    min-width: 1000px;
     background: #fff;
-    margin: 200px auto 0px;
+    margin: 0px auto 0px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 
@@ -65,13 +70,15 @@ nav{
 .content-top{
     width: 100%;
     background: rgb(16, 68, 151);
-    min-height: 80px;
+    min-height: 50px;
+    margin-top: 200px;
     color: #fff;
-    border-radius: 5px;
+    /* border-radius: 5px;
     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    -webkit-border-radius: 5px; */
     justify-content: space-around;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    padding: 3px;
 }
 
 .title-left{
@@ -122,7 +129,8 @@ nav{
 .shine-group{
     justify-content: space-between;
     height: 50px;
-    border-bottom: 4px solid #D11518;
+    /* border-bottom: 4px solid #D11518; */
+    border-bottom: 4px solid rgb(16, 68, 151);
     padding: 0px 80px 0px 80px;
     background-image: url(../images/shine.png);
     background-repeat: no-repeat;
@@ -178,7 +186,9 @@ nav{
 .shine-title>div{
     padding-left: 50px;
     width: 50%;
-    border-bottom: 2px solid #D11518;
+    border-bottom: 2px solid rgb(16, 68, 151);
+    height:36px;
+    /* border-bottom: 2px solid #D11518; */
 }
 
 .shine-detail{
@@ -218,20 +228,25 @@ nav{
 }
 
 
-.shine-left{
-    margin-left: 0px!important;
-    background-image: url(../images/vlog.png);
-    background-position: 270px 15px;
-    background-repeat: no-repeat;
-    background-size: 34px;
+.shine-left {
+    margin-left: 0px !important;
+    
     /* background-color: #F5F5F5; */
     border: 1px solid #ddd;
     width: 100%;
     /* padding: 0px 10px; */
 }
 
+.shine-leftIcon{
+    background-image: url(../images/gren-icon.jpg);
+    background-position: 305px 15px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+}
+
 
 .shine-left button{
+    margin-left: 5px;
     padding: 3px 10px 3px 26px;
     border: 1px solid #ddd;
     background: url(../images/plus.png) no-repeat;
@@ -342,6 +357,37 @@ nav{
     padding-bottom: 15px;
 }
 
+.shine-set4{
+    width: 100%;
+    margin-left: 2%;
+    padding-bottom: 15px;
+}
+
+.shine-set4 img{
+    width: 160px;
+    height: 100px;
+    /* padding-right: 15px; */
+}
+
+
+.shine-set4 .new-tit{
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+    justify-content: space-between;
+    padding: 8px 0px;
+
+}
+
+.shine-set4 h3{
+    width:100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;/*超出3行部分显示省略号，去掉该属性 显示全部*/
+    -webkit-box-orient: vertical;
+}
+
 .book-list2{
     justify-content: space-around;
 
@@ -380,7 +426,7 @@ nav{
     height: 40px;
     background: #F4F4F4;
     border: 1px solid #ddd;
-    border-top: 2px solid #D11518;
+    border-top: 2px solid rgb(16, 68, 151);
     line-height: 40px;
     justify-content: space-between;
     padding-left: 10px;
@@ -388,7 +434,7 @@ nav{
 }
 
 .link-title{
-    background-color: #B90010;
+    background-color: rgb(16, 68, 151);
     padding: 3px 7px;
     color: #fff;
     border-radius: 3px;
@@ -398,6 +444,7 @@ nav{
 
 .webs span{
     padding: 10px 12px;
+    cursor: pointer;
     
 }
 
@@ -405,14 +452,22 @@ nav{
     background: #FAF9F5;
 }
 
-.websites{
-    justify-content: space-between;
-    height: 70px;
+.websites {
+    /* justify-content: space-between; */
+    min-height: 70px;
     line-height: 50px;
     padding: 10px 10px 10px 10px;
-    
-    border-bottom: 2px solid #D11518;
+    width: 100%;
+    border-bottom: 2px solid rgb(16, 68, 151);
     margin-bottom: 50px;
+    overflow: hidden;
+
+}
+
+.websites li{
+    float: left;
+    padding-left: 3%;
+    /* min-width: 100px; */
 }
 
 footer a{
@@ -435,13 +490,15 @@ footer img{
     padding: 15px 10px;
 }
 
+
 .main-new h3{
     font-size: 18px;
     color: #3c3c3c;
 }
 
 .main-content{
-    padding: 10px 0px;
+    padding-top: 15px;
+    /* padding-bottom: 5px; */
 }
 
 .content h1{
@@ -479,7 +536,7 @@ footer img{
 }
 
 .news img{
-    width: 600px;
+    max-width: 600px;
     max-height: 100%;
 }
 .max{
@@ -526,4 +583,80 @@ footer img{
     /* height: 600px; */
     margin-top: 10px;
 
+}
+
+.ql-align-center{
+    text-align: center!important;
+}
+
+.ql-align-right{
+    text-align: right!important;
+}
+
+.ql-align-left{
+    text-align: left!important;
+}
+
+.new-pic{
+    display: flex;
+    flex-direction: row;
+}
+
+.top{
+    min-width: 1000px;
+    margin: 0px auto;
+}
+.top ul{
+	/* 清除ul标签的默认样式 */
+	width: 100%;
+	list-style-type: none;
+	margin: 0px auto;            
+	padding: 0px;
+    overflow: hidden;
+    width: 1000px;
+
+}
+.top li {    
+	float:left; /* 使li内容横向浮动，即横向排列  */
+	margin-right:50px;  
+}
+
+.top li a{
+   /* 设置链接内容显示的格式*/
+	display: block; /* 把链接显示为块元素可使整个链接区域可点击 */
+	color:white;
+	text-align: left;
+	padding: 14px 16px;
+	text-decoration: none; /* 去除下划线 */
+}
+.top li a:hover{
+	/* 鼠标选中时背景变为白色 */
+	background-color: #fff;
+	color: rgb(16, 68, 151);
+}
+.top ul li ul{
+	/* 设置二级菜单 */
+	width: auto;
+	background:rgb(16, 68, 151);
+	color: #fff!important;
+    margin-top: 1px;
+	position: absolute;
+	display: none; /* 默认隐藏二级菜单的内容 */
+    z-index: 10;
+    
+    box-shadow: inset 0px 0px 2px #96969673;
+
+}
+.top ul li ul li{
+	/* 二级菜单li内容的显示 */
+	margin-right:0;
+	float:none;
+	text-align: center;
+    z-index: 10;
+    padding-left: 0px;
+}
+.top ul li:hover ul{
+	/* 鼠标选中二级菜单内容时 */
+	display: block;
+	z-index: 10;
 }
