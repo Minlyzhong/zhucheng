@@ -5,23 +5,21 @@ var filePath='http://120.24.51.37/group1/' //测试版
 // var filePath='http://120.24.51.37/group1/' //正式版
  
 //请求方法
-function ajaxMethod(str,param,obj) {
+function ajaxMethod(str,param,obj,caches) {
     var link = urlLink(str);
         var result = {};
-        
+        var isCaches = caches || false;
         // $.ajax.setRequestHeader('If-Modified-Since', '0');//清除缓存，根据第二篇文章新加的
         // $.ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");//这段不能少，否则也不能正常发送数据
-       
         jQuery.support.cors = true; 
         $.ajax({
             type: link.method,
             url:host + link.url+param,
             data:obj,
             dataType:'json',
-            cache:false,
+            cache:isCaches,
             // crossDomain: true == !(document.all),   //添加这一行代码
-            async:false,
-            cache:true,
+            async:false, //异步
             success:function (data) {
                 result = data;
                 // showMessage("获取数据成功 !", 1);
@@ -29,67 +27,18 @@ function ajaxMethod(str,param,obj) {
             error: function() {
               console.log("Error");
               showMessage("数据请求失败 , 请稍后再试 !", 0);
-    
             }
-      
         });
   
     return result;
-
 }
 
 // $("#some-element").busyLoad("show");
-// 加载中的样式
-var state={
-    
-    spinner: "circles", // pump, accordion, pulsar, cube, cubes, circle-line, circles, cube-grid
-    image: false,
-    fontawesome: false, // "fa fa-refresh fa-spin fa-2x fa-fw"
-    custom: false, // jQuery Object
-    color: "#43A9FF",
-    background: "rgba(0, 0, 0, 0.21)",
-    maxSize: "50px", // Integer/String only for spinners & images, not fontawesome & custom
-    minSize: "50px", // Integer/String only for spinners & images, not fontawesome & custom
-    text: '加载中',
-    textColor: false, // default is color
-    textMargin: ".5rem",
-    textPosition: "bottom", // left, right, top, bottom  
-    fontSize: "1rem",
-    fullScreen: false,
-    animation: false, // fade, slide
-    animationDuration: "fast", // String, Integer 
-    containerClass: "busy-load-container",
-    containerItemClass: "busy-load-container-item",
-    spinnerClass: "busy-load-spinner",
-    textClass: "busy-load-text"
-        
-}
-
-
 
     $(document).ajaxStart(function () {
         // console.log('网络请求开始')
         // $("#some-element").busyLoad("show",{
-        //     spinner: "circles", // pump, accordion, pulsar, cube, cubes, circle-line, circles, cube-grid
-        //     image: false,
-        //     fontawesome: false, // "fa fa-refresh fa-spin fa-2x fa-fw"
-        //     custom: false, // jQuery Object
-        //     color: "#43A9FF",
-        //     background: "rgba(0, 0, 0, 0.21)",
-        //     maxSize: "50px", // Integer/String only for spinners & images, not fontawesome & custom
-        //     minSize: "50px", // Integer/String only for spinners & images, not fontawesome & custom
-        //     text: '加载中',
-        //     textColor: false, // default is color
-        //     textMargin: ".5rem",
-        //     textPosition: "bottom", // left, right, top, bottom  
-        //     fontSize: "1rem",
-        //     fullScreen: false,
-        //     animation: false, // fade, slide
-        //     animationDuration: "fast", // String, Integer 
-        //     containerClass: "busy-load-container",
-        //     containerItemClass: "busy-load-container-item",
-        //     spinnerClass: "busy-load-spinner",
-        //     textClass: "busy-load-text"
+       
         // });
         
     }).ajaxStop(function () {

@@ -69,10 +69,14 @@ nav{
 
 .content-top{
     width: 100%;
-    background: rgb(16, 68, 151);
-    min-height: 50px;
+    background: #fff;
+    height: 60px;
+    
     margin-top: 200px;
-    color: #fff;
+    color: #000;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
     /* border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px; */
@@ -175,19 +179,21 @@ nav{
     font-size: 18px;
     padding: 7px 0px 0px 0px;
     font-weight: 600;
-    background-image: url(../images/dang.png);
-    background-repeat: no-repeat;
+    background-color: #F4F4F4;
+    /* background-image: url(../images/dang.png); */
+    /* background-repeat: no-repeat;
     background-position: 10px;
-    background-size: 30px;
+    background-size: 30px; */
     border-bottom: 1px solid #ddd;
 
 }
 
 .shine-title>div{
-    padding-left: 50px;
-    width: 50%;
-    border-bottom: 2px solid rgb(16, 68, 151);
-    height:36px;
+    padding: 0px 30px;
+    height: 36px;
+    border-bottom: 1px solid rgb(230, 0, 0);
+    height: 34px;
+    color: rgb(230, 0, 0);
     /* border-bottom: 2px solid #D11518; */
 }
 
@@ -196,6 +202,27 @@ nav{
     line-height: 21px;
     max-height: 116px;
     overflow: hidden;
+}
+.content-min{
+    margin: 10px;
+    border-top: 1px dashed #ccc;
+}
+
+.content-min li{
+    font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 95%;
+}
+.content-min li::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: #DE001D;
+    margin-right: 5px;
+    margin-bottom: 2px;
 }
 
 .shine-detail p{
@@ -209,8 +236,9 @@ nav{
     font-size: 14px;
 }
 
-.shine-detail h2{
-
+.shine-detail h3{
+    font-size: 17px;
+    margin: 10px 0px;
 }
 
 .shine-detail a{
@@ -371,13 +399,15 @@ nav{
 
 
 .shine-set4 .new-tit{
-    display: flex;
-    flex-direction: column;
     margin-left: 8px;
-    justify-content: space-between;
     padding: 8px 0px;
-
 }
+
+.shine-set4 .save{
+    padding-top: 13px;
+}
+
+
 
 .shine-set4 h3{
     width:100%;
@@ -426,7 +456,7 @@ nav{
     height: 40px;
     background: #F4F4F4;
     border: 1px solid #ddd;
-    border-top: 2px solid rgb(16, 68, 151);
+    border-top: 2px solid rgb(230, 0, 0);
     line-height: 40px;
     justify-content: space-between;
     padding-left: 10px;
@@ -434,7 +464,7 @@ nav{
 }
 
 .link-title{
-    background-color: rgb(16, 68, 151);
+    background-color: rgb(230, 0, 0);
     padding: 3px 7px;
     color: #fff;
     border-radius: 3px;
@@ -458,7 +488,7 @@ nav{
     line-height: 50px;
     padding: 10px 10px 10px 10px;
     width: 100%;
-    border-bottom: 2px solid rgb(16, 68, 151);
+    border-bottom: 2px solid rgb(230, 0, 0);
     margin-bottom: 50px;
     overflow: hidden;
 
@@ -487,7 +517,7 @@ footer img{
 
 .main-new{
     border-bottom: 1px solid #ddd;
-    padding: 15px 10px;
+    padding: 10px 10px;
 }
 
 
@@ -497,7 +527,7 @@ footer img{
 }
 
 .main-content{
-    padding-top: 15px;
+    /* padding-top: 15px; */
     /* padding-bottom: 5px; */
 }
 
@@ -608,55 +638,36 @@ footer img{
 }
 .top ul{
 	/* 清除ul标签的默认样式 */
-	width: 100%;
+    width: 100%;
+    max-width: 1500px;
+    min-width: 1300px;
 	list-style-type: none;
 	margin: 0px auto;            
 	padding: 0px;
     overflow: hidden;
-    width: 1000px;
+    /* width: 1000px; */
 
 }
 .top li {    
-	float:left; /* 使li内容横向浮动，即横向排列  */
-	margin-right:50px;  
+    float:left; /* 使li内容横向浮动，即横向排列  */
+    margin-top: 12px;
+	/* margin-right:50px;   */
 }
 
 .top li a{
    /* 设置链接内容显示的格式*/
 	display: block; /* 把链接显示为块元素可使整个链接区域可点击 */
-	color:white;
-	text-align: left;
-	padding: 14px 16px;
-	text-decoration: none; /* 去除下划线 */
+    text-align: center;
+    padding: 5px 17px;
+    font-size: 16px;
+    border-right: 1px solid #ddd;
+    text-decoration: none;
 }
-.top li a:hover{
-	/* 鼠标选中时背景变为白色 */
-	background-color: #fff;
-	color: rgb(16, 68, 151);
-}
-.top ul li ul{
-	/* 设置二级菜单 */
-	width: auto;
-	background:rgb(16, 68, 151);
-	color: #fff!important;
-    margin-top: 1px;
-	position: absolute;
-	display: none; /* 默认隐藏二级菜单的内容 */
-    z-index: 10;
-    
-    box-shadow: inset 0px 0px 2px #96969673;
 
+.top li:last-child a{
+    border-right: none;
 }
-.top ul li ul li{
-	/* 二级菜单li内容的显示 */
-	margin-right:0;
-	float:none;
-	text-align: center;
-    z-index: 10;
-    padding-left: 0px;
-}
-.top ul li:hover ul{
-	/* 鼠标选中二级菜单内容时 */
-	display: block;
-	z-index: 10;
+
+.pointer{
+    cursor: pointer;
 }

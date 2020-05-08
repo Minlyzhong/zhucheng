@@ -6,28 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE8">
-  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE9">
+  <meta http-equiv="X-UA-Compatible" content="edge" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+  <meta name="renderer" content="webkit">
   <title>珠城先锋网</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/news.css">
   <link rel="stylesheet" href="css/app.min.css">
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-  <!--[if IE 9]>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-<![endif]-->
-
-<!--[if IE 8]>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-<![endif]-->
-  <script type="text/javascript" src="js/app.min.js"></script>
-
-  <script type="text/javascript" src="js/config.js"></script>
-  <script type="text/javascript" src="js/api.js"></script>
-  <script type="text/javascript" src="js/common.js"></script>
 </head>
 <!-- Internet Explorer 已限制此网页运行脚本或ActiveX控件的解决方法 -->
 <!-- saved from url=(0014)about:internet -->
@@ -56,26 +41,23 @@
 
     </nav>
      <!-- 顶部栏目 -->
-     <section class="content-top row flex-cstyle" >
+     <!-- <section class="content-top row flex-cstyle" >
       <div class="top">
          <ul id="contentTop">
            </ul> 
       </div>
-    </section>
+    </section> -->
 
-    <div class="content clearfix">
+    <div class="content clearfix" style="margin-top: 200px;">
 
-      <section class="clearfix">
-        <div class="flex-cstyle row shine-group">
+      <section class="clearfix" >
+        <!-- <div class="flex-cstyle row shine-title" id="setNewList">
           <div id="topName"></div>
-          <div style="width: 80%;" id="topList">
-
-          </div>
-        </div>
-        <div class="bottom-line"></div>
+        </div> -->
+       
         <div class="sec-top">
           <a href="./index.html" target="_blank">首页</a>>
-          <a href="#" target="_blank" id="sedStep"></a>>
+          <a href="#" target="_blank" id="sedStep" class="noChild"></a><span class="noChild">></span>
           <span id="newsTitle">内容</span>
         </div>
 
@@ -87,9 +69,9 @@
           <!-- <span><a href="#" target="_blank" id="source">机构职能</a></span> -->
           <div style="float:right">
             <span>字体:</span>
-            <span class="" id="big">[大]</span>
-            <span class="" id="middle">[中]</span>
-            <span class="" id="small">[小]</span>
+            <span class="pointer" id="big">[大]</span>
+            <span class="pointer" id="middle">[中]</span>
+            <span class="pointer" id="small">[小]</span>
           </div>
         </div>
         <div class="news clearfix" id="newDetail">
@@ -176,7 +158,7 @@
 
       </div> -->
       <div>中共北海市委组织部主办</div>
-      <div>地址 : 广西市合平路东二巷2号 邮编 : 53600</div>
+      <div>地址 : 北海市中街街道和平路东2巷2号 邮编 : 536000</div>
       <div><a href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" style="padding: 0px;">桂公网安备 450502020000014号</a>&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn" target="_blank" style="padding: 0px;">桂ICP备06006473号-1</a></div>
       <a href="http://bszs.conac.cn/sitename?method=show&id=11231DF6641C21ECE053022819AC104A" target="_blank">
         <img src="./images/u12.jpg" alt="">
@@ -185,114 +167,25 @@
 
   </div>
 
-  <script>
-    $(function () {
-      //获取url中的参数  
-      function getUrlParam(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
-        var r = window.location.search.substr(1).match(reg);  //匹配目标参数   
-        if (r != null) return unescape(r[2]); return null; //返回参数值  
-      }
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <!--[if IE 9]>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
 
-      // $("#search").on('click', function () {
-      //   window.open('./search.html', "");
-      // });
-      var uId = getUrlParam("id");
-      var pId = getUrlParam("pId");
+<!--[if IE 8]>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+  <script type="text/javascript" src="js/app.min.js"></script>
 
-      //获取顶部栏 
-      getTopList();
-      // 获取新闻详情
-      getNewsDetail();
+  <script type="text/javascript" src="js/config.js"></script>
+  <script type="text/javascript" src="js/api.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script type="text/javascript" src="js/newDetail.js"></script>
 
-      function getTopList() {
-        var result = ajaxMethod('topSet', pId);
-        console.log(result)
 
-        if (result.code == 0 && result.data != null) {
-          //do something
-          var data = result.data[0];
-          console.log(data)
-          //  $('#topName').html(data.catalogName);
-          document.getElementById("topName").innerHTML = data.catalogName;
-          document.getElementById("sedStep").innerHTML = data.catalogName;
-
-          if(data.catalogName == '组工动态' || data.catalogName == '通知公告'){
-            $('#sedStep').attr('href', './news.html?id=' + data.id + '&pId=' + data.id);
-          }else{
-            $('#sedStep').attr('href', './news.html?id=' + data.id + '&pId=' + data.parentId);
-          }
-
-          
-
-          console.log(data.children);
-          var set = '';
-          data.children.forEach(function (value, index) {
-            console.log(value)
-            if (value.id == uId) {
-              document.getElementById("topTitle").innerHTML = value.catalogName;
-
-            }
-            if (index == 0) {
-              var srt = '<a href="./news.html?id=' + value.id + '+&pId=' + pId + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
-            } else {
-              var srt = '|<a href="./news.html?id=' + value.id + '&pId=' + pId + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a>';
-
-            }
-            set += srt;
-
-          })
-          console.log(set)
-          //  $('#topList').html(set);
-
-          document.getElementById("topList").innerHTML = set;
-
-        } else {
-          //do something
-        }
-      }
-      // 获取新闻详情
-      function getNewsDetail() {
-
-        let that = this;
-
-        var result = ajaxMethod('newDetail', uId);
-        console.log(result)
-
-        if (result.code == 0 && result.data != null) {
-          //do something
-          var data = result.data
-
-          document.getElementById("time").innerHTML = data.creatTs;
-          document.getElementById("source").innerHTML = data.newsfrom || '';
-          document.getElementById("detailTitle").innerHTML = data.title;
-          document.getElementById("newsTitle").innerHTML = data.title;
-          document.getElementById("newDetail").innerHTML = data.content;
-
-          console.log('判断')
-
-          console.log($('#newDetail p img').parents());
-          $('#newDetail p img').parents('p').addClass('tac');
-
-        } else {
-          //do something
-        }
-
-      }
-
-      $('#big').click(function () {
-        console.log('111')
-        $('#newDetail p, #newDetail p span').attr('class', 'big-font');
-      })
-      $('#middle').click(function () {
-        $('#newDetail p, #newDetail p span').attr('class', 'mid-font');
-      })
-      $('#small').click(function () {
-        $('#newDetail p, #newDetail p span').attr('class', 'small-font');
-      })
-
-    })
-  </script>
+  
 </body>
 
 </html>

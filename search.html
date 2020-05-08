@@ -6,22 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE8">
-  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE9">
+  <meta http-equiv="X-UA-Compatible" content="edge" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+  <meta name="renderer" content="webkit">
   <title>珠城先锋网</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/news.css">
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-  <!--[if IE 9]>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-<![endif]-->
-
-<!--[if IE 8]>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-<![endif]-->
+ 
   <link rel="stylesheet" href="css/app.min.css">
 
   <style>
@@ -66,15 +57,7 @@
       color: #8c8282;
     }
 
-    .search_box .search_icon {
-      float: left;
-      display: inline-block;
-      width: 45px;
-      height: 45px;
-      background: url("images/search.png") no-repeat center center;
-      background-size: 28px 28px;
-      margin-top: 3px;
-    }
+    
 
     /*搜索内容*/
     .search_content {
@@ -107,12 +90,7 @@
     }
   
   </style>
-  <script type="text/javascript" src="js/app.min.js"></script>
-
-  <script type="text/javascript" src="js/jq-paginator.js"></script>
-  <script type="text/javascript" src="js/config.js"></script>
-  <script type="text/javascript" src="js/api.js"></script>
-  <script type="text/javascript" src="js/common.js"></script>
+  
 </head>
 <!-- Internet Explorer 已限制此网页运行脚本或ActiveX控件的解决方法 -->
 <!-- saved from url=(0014)about:internet -->
@@ -151,17 +129,14 @@
       
       <section class="clearfix">
 
-        <div class="flex-cstyle row shine-group">
+        <div class="flex-cstyle row shine-title" id="setNewList">
           <div id="topName">内容搜索</div>
-          <div style="width: 80%; text-align: center;" id="topList">
-
-          </div>
-
         </div>
-        <div class="bottom-line"></div>
+       
         <div class="sec-top" id="step">
           <a href="./index.html" target="_blank">首页</a>>
-          <a href="#" target="_blank">内容搜索</a>
+          <span>已搜索关键字 : </span>
+          "<span id="keyWord" style="color: rgb(230, 0, 0);"></span>"
 
         </div>
 
@@ -273,7 +248,7 @@
 
       </div> -->
       <div>中共北海市委组织部主办</div>
-      <div>地址 : 广西市合平路东二巷2号 邮编 : 53600</div>
+      <div>地址 : 北海市中街街道和平路东2巷2号 邮编 : 536000</div>
       <div><a href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" style="padding: 0px;">桂公网安备 450502020000014号</a>&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn" target="_blank" style="padding: 0px;">桂ICP备06006473号-1</a></div>
       <a href="http://bszs.conac.cn/sitename?method=show&id=11231DF6641C21ECE053022819AC104A" target="_blank">
         <img src="./images/u12.jpg" alt="">
@@ -282,170 +257,24 @@
   </div>
 
 
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <!--[if IE 9]>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
 
+<!--[if IE 8]>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/app.min.js"></script>
 
-  <script>
-    $(function () {
-
-      var text = '';
-      var newText = '';
-      var flag = 0;
-      var pageNo = 1;
-
-      var searchUrl = window.location.href;
-      var searchData = searchUrl.split("="); //截取 url中的“=”,获得“=”后面的参数
-      var searchText = decodeURI(searchData[1]); //decodeURI解码
-      console.log('searchText');
-      console.log(searchText);
-      $("#searchInput").val(searchText);
-      flag = 1;
-      getSetList(1, searchText);
-      // $(".keyword1").val(searchText);
-
-      // var search_input = $(".search_box input"),
-      //   search_content = $(".search_content");
-      // $(search_input).on("keyup", function (e) {
-      //   if (e.repeat) {
-      //     return;
-      //   }
-      //   if (search_input.val() == '') {
-      //     // $(search_content).show();
-      //     return;
-      //   }
-
-      //   console.log(search_input.val().trim());
-      //   text = search_input.val().trim();
-      //   flag = 1;
-      //   getSetList(1, text);
-      //   //  模糊搜索文章
-      //   // getSetList();
-      // });
-
-
-
-
-
-
-
-      //  初始化分页
-      var totalPage = 1;
-
-
-
-
-      function getSetList(page, text) {
-        if(text == newText && page == pageNo){
-          return;
-        }
-        pageNo = page || 1;
-        var data = {
-          current: pageNo,
-          size: 10,
-          query: text,
-          catalogId: 80,
-        }
-        newText = text;
-        var result = ajaxMethod('searchNews', '', data);
-        console.log(result)
-
-        if (result.code == 0 && result.data != null) {
-          //do something
-          if (result.data.size > result.data.total) {
-            totalPage = 1;
-          } else {
-            totalPage = Math.ceil(result.data.total / result.data.size);
-            console.log(totalPage);
-          }
-
-          if(flag == 1){
-            console.log(flag)
-            console.log('初始化分页')
-            $("#demo2").jqPaginator({
-            totalPages: totalPage,
-            visiblePages: 10,
-            currentPage: 1,
-            first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
-            prev: '<li class="prev"><a href="javascript:void(0);">上一页<\/a><\/li>',
-            next: '<li class="next"><a href="javascript:void(0);">下一页<\/a><\/li>',
-            last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
-            page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
-            onPageChange: function (n,type) {
-              // $("#demo2-text").html(n);
-              console.log('type')
-              console.log(type)
-              
-              
-              flag == 0;
-
-              if(type != 'init'){
-                $('html,body').animate({ scrollTop: 250 }, 'slow');
-                getSetList(n,text);
-              }
-              // getSetList(n,text);
-              //  新闻列表
-              // getSetList(n,text);
-
-            }
-          })
-          }
-
-          
-          
-          var list = result.data.records;
-          var set = '';
-          $('#setNewListHold').html(set);
-          if(list.length == 0 && pageNo ==1){
-            $('#setNewListHold').html('没有搜索到您要查找的内容');
-            return;
-          }
-          list.forEach(function (value, index) {
-            //  console.log(value)
-            var srt = '<div class="main-new" >' +
-              '<a target="_blank" href="./newDetail.html?id=' + value.id + '&pId=' + value.catalogId + '"><h3>' + value.title + '</h3></a>' +
-              '<div class="flex-cstyle row main-content" >' +
-
-              '<div class="shine-detail save">' + value.creatTs + '  </div></div></div>';
-
-
-            set += srt
-
-          })
-          $('#setNewListHold').html(set);
-
-
-        } else {
-
-          $('#setNewListHold').html('没有搜索到您要查找的内容');
-          //do something
-        }
-      }
-      // console.log('totalPage');
-      // console.log(totalPage);
-      // $("#demo2").jqPaginator({
-      //   totalPages: totalPage,
-      //   visiblePages: 10,
-      //   currentPage: 1,
-      //   first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
-      //   prev: '<li class="prev"><a href="javascript:void(0);">上一页<\/a><\/li>',
-      //   next: '<li class="next"><a href="javascript:void(0);">下一页<\/a><\/li>',
-      //   last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
-      //   page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
-      //   onPageChange: function (n) {
-      //     // $("#demo2-text").html(n);
-      //     $('html,body').animate({ scrollTop: 250 }, 'slow');
-
-
-      //     //  新闻列表
-      //     getSetList(n,text);
-
-      //   }
-      // })
-
-
-
-    })
-
-  </script>
+  <script type="text/javascript" src="js/jq-paginator.js"></script>
+  <script type="text/javascript" src="js/config.js"></script>
+  <script type="text/javascript" src="js/api.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script type="text/javascript" src="js/search.js"></script>
+  
 </body>
 
 </html>
