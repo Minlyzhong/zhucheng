@@ -19,8 +19,11 @@ $(function () {
 
  //获取顶部栏 
  function getTopList() {
-    var result = ajaxMethod('topSet', pId);
-    console.log(result)
+   var obj={
+     params:pId
+   }
+
+  httpService.httpServer('topSet',obj).then(function(result){
     if (result.code == 0 && result.data != null) {
       //do something
       var data = result.data[0];
@@ -64,25 +67,35 @@ $(function () {
     } else {
       //do something
     }
+})
+    // var result = ajaxMethod('topSet', pId);
+
+  
 }
 
     // 获取新闻详情
     function getNewsDetail() {
-
-      var result = ajaxMethod('newDetail', uId);
-      if (result.code == 0 && result.data != null) {
-        //do something
-        var data = result.data
-
-        $("#time").html(data.creatTs);
-        $("#source").html(data.newsfrom || '');
-        $("#detailTitle").html(data.title);
-        $("#newsTitle").html(data.title);
-        $("#newDetail").html(data.content);
-        $('#newDetail p img').parents('p').addClass('tac');
-      } else {
-        //do something
+      var obj={
+        params:uId
       }
+
+      httpService.httpServer('newDetail',obj).then(function(result){
+        if (result.code == 0 && result.data != null) {
+          //do something
+          var data = result.data
+  
+          $("#time").html(data.creatTs);
+          $("#source").html(data.newsfrom || '');
+          $("#detailTitle").html(data.title);
+          $("#newsTitle").html(data.title);
+          $("#newDetail").html(data.content);
+          $('#newDetail p img').parents('p').addClass('tac');
+        } else {
+          //do something
+        }
+    })
+      // var result = ajaxMethod('newDetail', uId);
+     
     }
 
     $('#big').click(function () {

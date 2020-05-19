@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="edge" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
   <meta name="renderer" content="webkit">
-  <title>珠城先锋网</title>
+  <title>北海先锋网</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/idangerous.swiper.css">
   <link rel="stylesheet" href="css/home.css">
@@ -20,7 +20,7 @@
   <div id="app " style="width: 100%; height: 100%;">
     <nav class="flex-style row">
       <div class="flex-style row fl" style="margin-left: 150px;">
-        <span class="fl">欢迎光临珠城先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
+        <span class="fl">欢迎光临北海先锋网, 今天是<span id="nowTime">2020年03月23日</span></span>
         <div class="search fr" >
           <input class="fl" type="text" placeholder="请输入关键词搜索" name="" id="searchInput" value="" />
           <button id="search"><i>搜索</i></button>
@@ -34,13 +34,20 @@
       </div>
     </nav>
 
+    <section class="content-top row flex-cstyle" >
+      <div class="top">
+         <ul id="contentTop">
+           </ul> 
+      </div>
+    </section>
     <div class="content clearfix" id="">
-      <section class="content-top row flex-cstyle" >
-        <div class="top">
-           <ul id="contentTop">
-             </ul> 
+      
+      <div class="mid-pic swiper-container container3">
+        <div class="swiper-wrapper longImg2">
+          <img class="swiper-slide" src="./images/u20.jpg" alt="" style="pointer-events:none;">
         </div>
-      </section>
+        <div class="pagination" id="swiperPage3" style="text-align: end;left: -43px;"></div>
+      </div>
 
       <section class="hot-new">
         <a href="#" class="hot-content" target="_blank" id="hotLink">
@@ -81,9 +88,9 @@
       </section>
 
       <section class="clearfix">
-        <div class="flex-cstyle row shine-group">
+        <div class="clearfix shine-group">
           <div id="firstSet" class="group-title fl"></div>
-          <ul id="firstSetList" class="">
+          <ul id="firstSetList" class="fl setList">
           </ul>
           <a target="_blank" href="#" class="fr listMore" id="firstSetListArr">进入 >></a>
         </div>
@@ -91,9 +98,9 @@
           <ul class="shine-content news-set" id="first-set">
           </ul>
         </div>
-        <aside style="width:30%; margin-top: 25px;">
+        <aside style="width:30%; margin-top: 15px;">
           <div class="shine-set shine-left">
-            <div class="flex-cstyle row shine-leftIcon" style="padding: 15px 10px; background-color: #F5F5F5;">
+            <div class="flex-cstyle row shine-leftIcon" style="padding: 8px 10px; background-color: #F5F5F5;">
               <img src="./images/u5.jpg" alt="" class="fl">
               <div class="fr" style="width:59%">
                 <h3>
@@ -125,10 +132,10 @@
         </div>
       </section>
 
-      <section class="clearfix">
-        <div class="flex-cstyle row shine-group">
+      <section class="clearfix" style="height:492px;">
+        <div class="clearfix shine-group">
           <div id="sedSet" class="fl group-title"></div>
-          <ul id="sedSetList" class="fr">
+          <ul id="sedSetList" class="fl setList">
           </ul>
           <a target="_blank" href="#" class="fr listMore" id="sedSetListArr">进入 >></a>
         </div>
@@ -139,20 +146,18 @@
         
         <aside style="width:32%; margin-top: 25px;">
           <div style="padding-left: 4%;">
-            <a href="http://www.bhgbzx.gov.cn/" target="_blank">
+            <!-- <a href="http://www.bhgbzx.gov.cn/" target="_blank">
               <img src="./images/bhn_baner01.jpg" alt="" style="width:96%; height: 170px;">
-            </a>
-            <a href="http://www.bhlgbgz.gov.cn/" target="_blank">
-              <img src="./images/bhn_baner02.jpg" alt="" style="width:96%; margin-top: 15px;">
-            </a>
+            </a> -->
+            
           </div>
         </aside>
       </section>
 
-      <section class="clearfix" style="height:330px;">
-        <div class="flex-cstyle row shine-group">
+      <section class="clearfix" style="height:485px;">
+        <div class=" shine-group">
           <div id="thiSet" class="fl group-title"></div>
-          <ul id="thiSetList" class="fr">
+          <ul id="thiSetList" class="fl setList">
           </ul>
           <a target="_blank" href="#" class="fr listMore" id="thiSetListArr">进入 >></a>
         </div>
@@ -163,14 +168,62 @@
        
         <aside style="width:32%; margin-top: 25px;">
           <div style="padding-left: 4%;">
-            <a href="http://bhzg.beihai.gov.cn/room/" target="_blank"><img src="./images/u10.jpg" alt="" style="width:96%; height: 140px;"></a>
-            <a href="http://bh.gx12380.gov.cn/" target="_blank"><img src="./images/u11.jpg" alt="" style="width:96%; margin-top: 12px;height: 75px;"></a>
+            
+            <!-- <a href="http://bh.gx12380.gov.cn/" target="_blank"><img src="./images/u11.jpg" alt="" style="width:96%; margin-top: 12px;height: 75px;"></a> -->
             
           </div>
         </aside>
       </section>
 
-      <section class="clearfix">
+      <section class="clearfix" style="height:350px;">
+        <div class=" shine-group">
+          <div id="fineSet" class="fl group-title"></div>
+          <ul id="fineSetList" class="fl setList">
+          </ul>
+          <a target="_blank" href="#" class="fr listMore" id="fineSetListArr">进入 >></a>
+        </div>
+        <div class="section" style="width:67%">
+          <ul class="shine-content news-set" id="fine-set">
+          </ul>
+        </div>
+       
+        <aside style="width:32%; margin-top: 25px;">
+          <div style="padding-left: 4%;">
+            <a href="http://www.bhlgbgz.gov.cn/" target="_blank">
+              <img src="./images/bhn_baner02.jpg" alt="" style="width:96%; ">
+            </a>
+            <a href="http://bh.gx12380.gov.cn/" target="_blank"><img src="./images/u11.jpg" alt="" style="width:96%; margin-top: 12px;height: 100px;"></a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="clearfix" style="height:400px; padding-top: 0px;">
+        <div class=" shine-group">
+          <div id="sixSet" class="fl group-title"></div>
+          <ul id="sixSetList" class="fl setList">
+          </ul>
+          <a target="_blank" href="#" class="fr listMore" id="sixSetListArr">进入 >></a>
+        </div>
+        <div class="section" style="width:67%">
+          <ul class="shine-content news-set" id="six-set">
+          </ul>
+        </div>
+       
+        <aside style="width:32%; margin-top: 25px;">
+          <div style="padding-left: 4%;">
+            <a href="http://bhzg.beihai.gov.cn/room/" target="_blank"><img src="./images/u10.jpg" alt="" style="width:96%; height: 140px;"></a>
+
+            <a href="http://www.bhgbzx.gov.cn/" target="_blank">
+              <img src="./images/bhn_baner01.jpg" alt="" style="width:96%; height: 170px; margin-top: 10px;">
+            </a>
+            
+          </div>
+        </aside>
+      </section>
+
+ 
+
+      <section class="clearfix" style="padding:15px 15px 0px;">
         <div class="flex-cstyle row shine-group fl ">
           <div class="group-title">推荐专题</div>
         </div>
@@ -180,7 +233,7 @@
         </div>
         <div class="flex-cstyle row shine-group fl" >
           <div class="group-title fl">先锋导读</div>
-          <ul id="fourSetList" class="fl" style="width: 60%;">
+          <ul id="fourSetList" class="fl" style="width: 89%;">
             <li class="mouse active-hover" data-type="1" data-index="0" >杂志阅读</li>
           </ul>
         </div>
@@ -189,7 +242,7 @@
             </ul>
         </div>
 
-        <aside style="width:32%; margin-top: 25px;" class="fr">
+        <aside style="width:32%; margin-top: 20px;" class="fr">
           <div style="padding-left: 4%;">
             <ul class="bottom-download">
               <li data-index="0" class="active-down">北海先锋微信</li>

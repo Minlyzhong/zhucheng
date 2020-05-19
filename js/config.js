@@ -1,11 +1,12 @@
-var host='http://120.24.51.37:9010/admin' //测试版
-var filePath='http://120.24.51.37/group1/' //测试版
+// var host='http://120.24.51.37:9010/admin' //测试版
+// var filePath='http://120.24.51.37/group1/' //测试版
 
-// var host='http://120.24.51.37:9010/admin/' //正式版
-// var filePath='http://120.24.51.37/group1/' //正式版
- 
+var host='http://36.133.32.21:8020/admin' //正式版
+var filePath='http://36.133.32.21:8020/group1/' //正式版
+
 //请求方法
 function ajaxMethod(str,param,obj,caches) {
+    console.log(caches)
     var link = urlLink(str);
         var result = {};
         var isCaches = caches || false;
@@ -17,9 +18,9 @@ function ajaxMethod(str,param,obj,caches) {
             url:host + link.url+param,
             data:obj,
             dataType:'json',
-            cache:isCaches,
+            cache:false,
             // crossDomain: true == !(document.all),   //添加这一行代码
-            async:false, //异步
+            async:isCaches, //是否异步
             success:function (data) {
                 result = data;
                 // showMessage("获取数据成功 !", 1);
@@ -32,6 +33,39 @@ function ajaxMethod(str,param,obj,caches) {
   
     return result;
 }
+
+// 声明一个全局Http请求
+window.httpService = {
+    //通过访问来源，设置不同的服务器
+    /**
+     * [httpServer 请求服务]
+     * @param  {[type]} url    [url请求链接]
+     * @param  {[type]} params [参数]
+     * @param  {[type]} types  [请求方式，默认为post]
+     * @return {[type]}        [返回的结果]
+     */
+    httpServer: function(url, obj) {
+        var deffer = $.Deferred();
+        var params = obj.params || '';
+        $.ajax({
+            url: host + urlLink(url).url+params, // 请求接口
+            data: obj.data||'',
+            type: obj.types || 'GET',
+            cache: true,
+            async: obj.async || true,
+            success: function(data) {
+                deffer.resolve(data);
+            },
+            error: function(data) {
+                deffer.reject(data);
+                console.log(data);
+                showMessage("数据请求失败 , 请稍后再试 !", 0);
+            }
+        });
+        return deffer.promise();
+    }
+};
+
 
 // $("#some-element").busyLoad("show");
 

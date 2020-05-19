@@ -24,39 +24,44 @@ $(function () {
 
     //获取顶部栏 
     function getTopList() {
-      var result = ajaxMethod('topSet', 80);
-      console.log(result)
-      if (result.code == 0 && result.data != null) {
-        //do something
-        var data = result.data[0];
-        console.log(data)
-        //  $('#topName').html(data.catalogName);
-        var set = '<li><a href="index.html"  target="_blank" >首页</a></li>';
-        if (data.children.length > 0) {
-          data.children.forEach(function (value, index) {
-            console.log(value)
-         
-            if(value.catalogUrl){
-              var url = value.catalogUrl;
-            }else{
-              var url = './newsSed.html?id=' + value.id + '&pId=' + 80;
-            }
-            if (index == 0) {
-              var srt = '<li><a href="' + url + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a></li>';
-            } else {
-              var srt = '<li><a href="' + url + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a></li>';
-            }
-            set += srt;
-          })
-          console.log(set)
-        } else {
-          $("#topTitle").html(data.catalogName);
-        }
-        $("#contentTop").html(set);
-
-      } else {
-        //do something
+      // var result = ajaxMethod('topSet', 80);
+      var obj={
+        params:80
       }
+      httpService.httpServer('topSet',obj).then(function(result){
+        if (result.code == 0 && result.data != null) {
+          //do something
+          var data = result.data[0];
+          console.log(data)
+          //  $('#topName').html(data.catalogName);
+          var set = '<li><a href="index.html"  target="_blank" >首页</a></li>';
+          if (data.children.length > 0) {
+            data.children.forEach(function (value, index) {
+              console.log(value)
+           
+              if(value.catalogUrl){
+                var url = value.catalogUrl;
+              }else{
+                var url = './newsSed.html?id=' + value.id + '&pId=' + 80;
+              }
+              if (index == 0) {
+                var srt = '<li><a href="' + url + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a></li>';
+              } else {
+                var srt = '<li><a href="' + url + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a></li>';
+              }
+              set += srt;
+            })
+            console.log(set)
+          } else {
+            $("#topTitle").html(data.catalogName);
+          }
+          $("#contentTop").html(set);
+  
+        } else {
+          //do something
+        }
+    })
+     
   }
 
 
@@ -72,6 +77,7 @@ $(function () {
         catalogId: 80,
       }
       newText = text;
+      
       var result = ajaxMethod('searchNews', '', data);
       console.log(result)
 

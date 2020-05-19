@@ -24,7 +24,11 @@ $(function () {
 
     //获取顶部栏 
     function getTopList() {
-        var result = ajaxMethod('topSet', uId);
+      var obj={
+        params:uId
+      }
+
+      httpService.httpServer('topSet',obj).then(function(result){
         console.log(result)
         if (result.code == 0 && result.data != null) {
           //do something
@@ -35,7 +39,7 @@ $(function () {
           var set = '<li><a href="index.html"  target="_blank" >首页</a></li>';
           if (data.children.length > 0) {
             data.children.forEach(function (value, index) {
-              console.log(value)
+              // console.log(value)
            
               if(value.catalogUrl){
                 var url = value.catalogUrl;
@@ -59,86 +63,127 @@ $(function () {
         } else {
           //do something
         }
+    })
+        // var result = ajaxMethod('topSet', uId);
     }
 
 
 
      // 获取多栏目内容
      function getMoreSet(data) {
-      console.log(data);
-      console.log(data.length);
-      // for (var i = 0; i < data.length; i++) {
+      
         getChildNews(data, data.length, 'first');
-      // }
     }
  
-
+    var totelList ='';
      //获取中部新闻list
      function getChildNews(data, count, list) {
-      var str='';
-      for (var i = 0; i < count; i++) {
-        // console.log($("#fTitle-" + i + list + " a"))
-        console.log(data[i].id) 
-        var str1='';
-        var set = '';
-        var result = getNews(data[i].id)
-        for (var index = 0; index < result.length; index++) {
-          if (index == 0) {
-              str1= '<div class="shine-detail" id="fNews-' + i + list +'">'+
-              '<a href="./newDetail.html?id=' + result[index].id + '&pId=' + data[i].id+'" target="_blank" style="color:#494848">'+
-                '<h3>'+result[index].title+'</h3>'+
-             '</a>'+
-              '<a href="./newDetail.html?id=' + result[index].id + '&pId=' + data[i].id+'" target="_blank">[详情]</a>'+
-            '</div>'
-          
-          } else {
-            var url = './newDetail.html?id=' + result[index].id + '&pId=' + data[i].id
-            set += '<li ><a target="_blank" href="' + url + '">' + result[index].title + '</a></li>';
-          }          
-         
-        }
-        if(data[i].catalogUrl){
-          var tUrl= data[i].catalogUrl
-        }else{
-          var tUrl= './news.html?id='+data[i].id+'&pId='+uId;
-        }
-          
-        
-          str += 
-          '<li class="shine-set1" style="display:block">'+
-          '<div class=" shine-title" id="setNewList">'+
-            '<div id="topTitle" class="fl">'+data[i].catalogName+'</div>'+
-            '<a class="fr more" href="'+tUrl+'" target="_blank">更多>></a></div>'+
-          '<div class="" style="padding: 5px 10px;">'+str1+
-          '</div>'+
-          '<ul class="content-list content-min" style="line-height: 38px;">'+set+'</ul>'+
-        '</li>';
-        
-      }
-        $('#'+list+'-set').html(str);
-    }
+      // $('#'+list+'-set').html('');
+      new Promise(resolve=>{
 
-// 获取新闻列表
-function getNews(id) {
-  var that = this;
-  var data = {
-    catalogId: id,
-    size:10
-  }
-  var result = ajaxMethod('newList', '', data);
-  // console.log(result)
-  if (result.code == 0 && result.data != null) {
-    //do something
-    return result.data.records;
-  } else {
-    //do something
-  }
-}
-
-     
-
+            getData(0,data.length)
+            function getData(i,length){
+                // let d = data[i];
+                console.log(data[i].id) 
+                var sId = data[i].id;
+                var item = data[i];
+                var str1='';
+                var set = '';
+                var str='';
+                 var data1={
+                    catalogId: item.id,
+                    size:10
+                  }
+                  
+                $.ajax({
+                  type: 'GET',
+                  url:host + urlLink('newList').url,
+                  data:data1,
+                  dataType:'json',
+                  cache:false,
+                  async:true, //是否异步
+                  success:function (result1) {
+                      if (result1.code == 0 && result1.data != null) {
+                        var result = result1.data.records;
+                        for (var index = 0; index < result.length; index++) {
+                          if (index == 0) {
+                              str1= '<div class="shine-detail" id="fNews-' + i + list +'">'+
+                              '<a href="./newDetail.html?id=' + result[index].id + '&pId=' + sId+'" target="_blank" style="color:#494848">'+
+                                '<h3>'+result[index].title+'</h3>'+
+                             '</a>'+
+                              '<a href="./newDetail.html?id=' + result[index].id + '&pId=' + sId+'" target="_blank">[详情]</a>'+
+                            '</div>'
+                          
+                          } else {
+                            var url = './newDetail.html?id=' + result[index].id + '&pId=' + sId
+                            set += '<li ><a target="_blank" href="' + url + '">' + result[index].title + '</a></li>';
+                          }          
+                         
+                        }
+                        if(item.catalogUrl){
+                          var tUrl= item.catalogUrl
+                        }else{
+                          var tUrl= './news.html?id='+sId+'&pId='+uId;
+                        }
+                        
+                          str = 
+                          '<li class="shine-set1" style="display:block">'+
+                          '<div class=" shine-title" id="setNewList">'+
+                            '<div id="topTitle" class="fl">'+item.catalogName+'</div>'+
+                            '<a class="fr more" href="'+tUrl+'" target="_blank">更多>></a></div>'+
+                          '<div class="" style="padding: 5px 10px;">'+str1+
+                          '</div>'+
+                          '<ul class="content-list content-min" style="line-height: 38px;">'+set+'</ul>'+
+                        '</li>';
+            
+                      } else {
+                      }
+                      console.log('里')
+  
+                    console.log(str);
+                    console.log(i);
+                    $('#'+list+'-set').append(str);
+                    //改变循环结束的位置,为请求完成时
+                    if(++i<length){
+                        getData(i,length)
+                    }
+                  },
+                  error: function() {
+                    console.log("Error");
+                    showMessage("数据请求失败 , 请稍后再试 !", 0);
+                  }
+              });
+                // $.get("getById?id="+d,function(data){
+                    
+                //     console.log(i)
+                //     //改变循环结束的位置,为请求完成时
+                //     if(++i<length){
+                //         getData(i,length)
+                //     }
+                // })
+             
+            }
+            
+           
+            // getGoodsList(0,count.length);
+            // function getGoodsList(i,length) {
+              
     
+            // }
 
+          
+          // }(j));
+         
+        
+        // }
+        // console.log('外')
+        // console.log(str)
+        resolve();
+        
+      }).then(res=>{
+          console.log(res)
+      })
+    }
 
   })
 
