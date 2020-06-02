@@ -84,7 +84,11 @@ $(function () {
             if(data.id == 80){
                   $(".noChild").css('display','none');
                   if (data.children.length > 0) {
-                      data.children.forEach(function (value, index) {
+                    // 需要登录的data
+                    var needLoginData = loginRoad(data.children);
+                    console.log('needLoginData')
+                    console.log(needLoginData)
+                    needLoginData.forEach(function (value, index) {
                         console.log(value)
                         if (value.id == uId) {
                           $("#topTitle").html(value.catalogName);
@@ -113,9 +117,11 @@ $(function () {
               }else{
                 $("#sedStep").attr('href','./newsSed.html?id=' + data.id + '&pId=' + data.id);
               }
-              
-              if (data.children.length > 0) {
-                data.children.forEach(function (value, index) {
+              var needLoginData = loginRoad(data.children);
+                    console.log('needLoginData')
+              if (needLoginData.length > 0) {
+
+                needLoginData.forEach(function (value, index) {
                   console.log(value.id)
                   console.log(uId)
                   if (value.id == uId) {
@@ -123,27 +129,35 @@ $(function () {
                     $("#topTitle").html(value.catalogName);
                     $("#thiStep").html(value.catalogName);
                     console.log(index+1);
-                    sonIndex = index+1;
-                    
+                    sonIndex = index+1;    
                   }
                   if(value.catalogUrl){
                     var url = value.catalogUrl;
                   }else{
                     var url = './news.html?id=' + value.id + '&pId=' + pId;
                   }
-                 
-                    var srt = '<li><a href="' + url + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a></li>';
-    
+                    var srt = '<li><a class="sedList" href="' + url + '" data-id="' + value.id + '" target="_blank" >' + value.catalogName + '</a></li>';
                   set += srt;
                 })
                 console.log(set)
               } else {
                 $("#topTitle").html(data.catalogName);
+          //       $(".sedList").on("click",
+          //       function(e) {
+          //         var i = $(this).data("id");
+          //         console.log('i');
+          //         console.log(i);
+          //         // 登录后才能看
+          //         // if(false){
+          //         // showMessage("登录账户后才可查看相关内容", 0);
+          //         // // a禁止跳转
+
+          //         // return false;
+          //         // }
+
+					// });
               }
-  
-            }
-            
-            
+            }  
           
             $("#contentTop").html(set);
             $("#contentTop li:eq("+sonIndex+") a").css('color','rgb(230, 0, 0)')
@@ -153,6 +167,20 @@ $(function () {
           }
       })
        
+    }
+
+    function loginRoad(data){
+      // console.log('过滤')
+      var sonData = data;
+      var newList =[];
+      for(var i=0; i<sonData.length; i++){
+        console.log(sonData[i])
+        console.log(sonData[i].catalogUrl == 'login')
+        if(sonData[i].catalogUrl != 'login'){
+          newList.push(sonData[i]);
+        }
+      }
+      return newList;
     }
 
     function getSetList(page) {
@@ -191,16 +219,14 @@ $(function () {
                 '<a target="_blank" href="./newDetail.html?id=' + value.id + '&pId=' + uId + '"><img  class="max" src="'+pic+'" alt="">'+
                 '<div class="new-tit"><h3>' + value.title + '</h3></a>' +
                 // '<div class="flex-cstyle row main-content" >' +
-  
                 '<div class="shine-detail save">' + value.creatTs + '</div></div></div>'
-  
-              // '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
+              
             } else {
               var srt = '<div class="main-new" >' +
                 '<a target="_blank" href="./newDetail.html?id=' + value.id + '&pId=' + uId + '"><h3>' + value.title + '</h3></a>' +
                 '<div class="flex-cstyle row main-content" >' +
                 '<div class="shine-detail save">' + value.creatTs + '  </div></div></div>';
-              // '<div class="shine-detail save">'+cont+'<a target="_blank" href="./newDetail.html?id='+value.id+'&pId='+pId+'">[详情]</a>  </div></div></div>';
+              
             }
             set += srt;
   

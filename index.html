@@ -28,8 +28,8 @@
       </div>
 
       <div class="fr" style="margin-right: 150px;">
-        <a href="javascript:setHome(this,window.location);" id="text">设为首页 |</a>
-        <a href="#" id="setFavorite" onclick="AddFavorite(window.location,document.title)"
+        <a  href="javascript:void(0)" onclick="SetHome(window.location)" id="text">设为首页 |</a>
+        <a id="setFavorite" onclick="AddFavorite(window.location,document.title)"
           href="javascript:void(0);">加入收藏 </a>
       </div>
     </nav>
@@ -94,11 +94,11 @@
           </ul>
           <a target="_blank" href="#" class="fr listMore" id="firstSetListArr">进入 >></a>
         </div>
-        <div class="section" style="width:67%">
+        <div class="section" style="width:67%;height: 430px;">
           <ul class="shine-content news-set" id="first-set">
           </ul>
         </div>
-        <aside style="width:30%; margin-top: 15px;">
+        <aside style="width:30%; margin-top: 12px;height: 417px;">
           <div class="shine-set shine-left">
             <div class="flex-cstyle row shine-leftIcon" style="padding: 8px 10px; background-color: #F5F5F5;">
               <img src="./images/u5.jpg" alt="" class="fl">
@@ -111,7 +111,7 @@
                 </a>
               </div>
             </div>
-            <div style="line-height: 23px; padding: 0px 10px;">
+            <div style="line-height: 23px; padding: 0px 10px;" class="fourLine">
               #先锋新闻# 专稿 : 近年来 , 北海以"四个推手" 为抓手, 通过推动全覆盖, 规范化, 三帮带, 示范引领等多措并举, 有效促进该区非公企业党建工作由被动为主动的转变, 实现非公党建水平的整体提升.
             </div>
             <a href="http://weibo.com/beihaizzb?refer_flag=1005055014_&is_all=1#_rnd1470278615323http://weibo.com/p/100808ddd6e5a81db6a9771819aff1de6df551?k=先锋播报&from=501&_from_=huati_topic" target="_blank">
@@ -132,30 +132,38 @@
         </div>
       </section>
 
-      <section class="clearfix" style="height:492px;">
-        <div class="clearfix shine-group">
-          <div id="sedSet" class="fl group-title"></div>
-          <ul id="sedSetList" class="fl setList">
-          </ul>
-          <a target="_blank" href="#" class="fr listMore" id="sedSetListArr">进入 >></a>
+      <section class="clearfix" style="height:492px; ">
+        <div style="width:50%; float: left;">
+          <div class="clearfix shine-group4">
+            <div id="sedSet" class="fl group-title"></div>
+            <ul id="sedSetList" class="fl setList">
+            </ul>
+            <a target="_blank" href="#" class="fr listMore" id="sedSetListArr">进入 >></a>
+          </div>
+          <div class="section" style="width:100%;padding-left: 5px;
+        ">
+            <ul class="shine-content news-set" id="sed-set">
+            </ul>
+          </div>
         </div>
-        <div class="section" style="width:67%">
-          <ul class="shine-content news-set" id="sed-set">
-          </ul>
+
+        <div style="width:50%;float: left;">
+          <div class=" shine-group4">
+            <div id="thiSet" class="fl group-title"></div>
+            <ul id="thiSetList" class="fl setList">
+            </ul>
+            <a target="_blank" href="#" class="fr listMore" id="thiSetListArr">进入 >></a>
+          </div>
+          <div class="section" style="width:100%">
+            <ul class="shine-content news-set" id="thi-set">
+            </ul>
+          </div>
         </div>
         
-        <aside style="width:32%; margin-top: 25px;">
-          <div style="padding-left: 4%;">
-            <!-- <a href="http://www.bhgbzx.gov.cn/" target="_blank">
-              <img src="./images/bhn_baner01.jpg" alt="" style="width:96%; height: 170px;">
-            </a> -->
-            
-          </div>
-        </aside>
       </section>
 
-      <section class="clearfix" style="height:485px;">
-        <div class=" shine-group">
+      <!-- <section class="clearfix" style="height:485px;width:50%;">
+        <div class=" shine-group4">
           <div id="thiSet" class="fl group-title"></div>
           <ul id="thiSetList" class="fl setList">
           </ul>
@@ -166,14 +174,8 @@
           </ul>
         </div>
        
-        <aside style="width:32%; margin-top: 25px;">
-          <div style="padding-left: 4%;">
-            
-            <!-- <a href="http://bh.gx12380.gov.cn/" target="_blank"><img src="./images/u11.jpg" alt="" style="width:96%; margin-top: 12px;height: 75px;"></a> -->
-            
-          </div>
-        </aside>
-      </section>
+        
+      </section> -->
 
       <section class="clearfix" style="height:350px;">
         <div class=" shine-group">
@@ -182,17 +184,17 @@
           </ul>
           <a target="_blank" href="#" class="fr listMore" id="fineSetListArr">进入 >></a>
         </div>
-        <div class="section" style="width:67%">
+        <div class="section" style="width:67%;height: 282px;">
           <ul class="shine-content news-set" id="fine-set">
           </ul>
         </div>
        
-        <aside style="width:32%; margin-top: 25px;">
+        <aside style="width:32%; padding-top: 16px;height: 270px;">
           <div style="padding-left: 4%;">
             <a href="http://www.bhlgbgz.gov.cn/" target="_blank">
-              <img src="./images/bhn_baner02.jpg" alt="" style="width:96%; ">
+              <img src="./images/bhn_baner02.jpg" alt="" style="width:96%; height: 140px;">
             </a>
-            <a href="http://bh.gx12380.gov.cn/" target="_blank"><img src="./images/u11.jpg" alt="" style="width:96%; margin-top: 12px;height: 100px;"></a>
+            <a href="http://bh.gx12380.gov.cn/" target="_blank"><img src="./images/u11.jpg" alt="" style="width:96%; margin-top: 12px;height: 100px; margin-bottom: 10px;"></a>
           </div>
         </aside>
       </section>
@@ -209,7 +211,7 @@
           </ul>
         </div>
        
-        <aside style="width:32%; margin-top: 25px;">
+        <aside style="width:32%; margin-top: 22px;">
           <div style="padding-left: 4%;">
             <a href="http://bhzg.beihai.gov.cn/room/" target="_blank"><img src="./images/u10.jpg" alt="" style="width:96%; height: 140px;"></a>
 

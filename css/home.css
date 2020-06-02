@@ -260,7 +260,7 @@ nav {
 	display:inline-block
 }
 .choice {
-	line-height:43px!important
+	line-height:44px!important
 }
 .choice li {
 	border-bottom:1px dashed #ddd
@@ -311,6 +311,18 @@ nav {
 	color:#969696;
 	padding-top:11px
 }
+
+.shine-group4 {
+	justify-content:space-between;
+	height:51px;
+	padding:0 10px 0 0;
+	line-height:50px;
+	width:100%;
+	background:#f4f4f4;
+    border-bottom:1px solid #ccc;
+    float: left;
+    /* min-width: 1050px; */
+}
 .shine-group {
 	justify-content:space-between;
 	height:51px;
@@ -322,18 +334,18 @@ nav {
     float: left;
     min-width: 1050px;
 }
-.shine-group .group-title {
+.shine-group .group-title, .shine-group4 .group-title{
 	font-size:18px;
 	padding:0 15px;
 	color:#e60000;
 	border-bottom:2px solid #e60000
 }
-.shine-group span,.shine-group a {
+.shine-group span,.shine-group a, .shine-group4 span,.shine-group4 a {
 	font-size:15px;
 	font-weight:bold;
 	padding:0 17px
 }
-.shine-group li {
+.shine-group li, .shine-group4 li{
 	float:left;
 	font-size:14px;
 	font-weight:bold;
@@ -388,6 +400,16 @@ nav {
 	display:box;
 	font-size:13px;
 	height:45px
+}
+
+.fourLine{
+	overflow:hidden;
+	-webkit-line-clamp:4;
+	line-clamp:4;
+	-webkit-box-orient:vertical;
+	box-orient:vertical;
+	display:-webkit-box;
+	display:box;
 }
 .shine-detail a {
 	color:#d11518;

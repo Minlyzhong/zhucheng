@@ -10,6 +10,8 @@ $(function() {
 			var data = result.data[0].children;
 			// 有二级栏目的数组
 			var totalData = [];
+
+			var needLoginData = [];
 			// 没有二级栏目的数组
 			var sigleData = [];
 			var srt = "";
@@ -33,6 +35,9 @@ $(function() {
 				if(newData.children.length>0){
 					totalData.push(newData);
 				}
+
+			
+
 				
 				var str2 = "";
 				var pic = "images/nav3.png";
@@ -47,31 +52,50 @@ $(function() {
 				}
 				for (var ind = 0; ind < newData.children.length; ind++) {
 					var val = newData.children[ind];
-					if (val.catalogUrl) {
+					var needLog = false;
+					if (val.catalogUrl && val.catalogUrl.indexOf(".html") != -1) {
 						var sUrl = val.catalogUrl;
 					} else {
+						if(val.catalogUrl){
+							needLog = true;
+						}
 						// var sUrl = "./news.html?id=" + val.id + "&pId=" + val.id;
 						var sUrl = './news.html?id=' + val.id + '&pId=' + val.parentId;
 					}
+						// 二级栏目列表
 						str2 += '<li>' +
-						  '<a  href="' + sUrl + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
+						  '<a class="sedList" data-log="'+needLog+'"  href="' + sUrl + '" data-id="' + val.id + '" target="_blank">' + val.catalogName + ' </a> '
 						  + '</li>';
 		
 				  }
-				if(newData.children == 0){
-					// srt += '<li><a  href="./news.html?id=' + newData.id + '&pId=' + newData.id+'" target="_blank">'+ newData.catalogName + '</a>'+
-					//   '<ul >' + str2 + '</ul>'+
-					//   '</li>' ;
-
+				  console.log('newData.children == 0')
+				  console.log(newData.children)
+				if(newData.children.length == 0){
 					  srt += '<li><a class="first-' + index + '"  href="' + url + '" target="_blank"><img src="' + pic + '" alt=""><div>' + newData.catalogName + "</div></a>";
 				  }else{
-					// srt += '<li><a  href="#" style="pointer-events:none;">' + newData.catalogName + '</a>'+
-					//   '<ul >' + str2 + '</ul>'+
-					//   '</li>' ;
 					  srt += '<li><a class="first-' + index + '"  href="' + url + '" target="_blank"><img src="' + pic + '" alt=""><div>' + newData.catalogName + '</div></a><ul >' + str2 + '</ul>'+
 					    '</li>' ;
 				  }
 				$("#contentTop").html(srt)
+
+				// $('.sedList').on
+				$(".sedList").on("click",
+					function(e) {
+						var needLogin = $(this).data("log");
+						console.log('needLogin');
+						console.log(needLogin);
+						// 登录后才能看
+						if(needLogin){
+						showMessage("需要登录账户后才可查看相关内容", 0);
+						// a禁止跳转
+
+						return false;
+						
+						}
+						
+
+
+					});
 			}
 			$("#firstSetListArr").attr("href", totalData[0].url);
 			$("#sedSetListArr").attr("href", totalData[1].url);
@@ -81,6 +105,8 @@ $(function() {
 			console.log('totalData')
 			console.log(totalData)
 			getSigleDataList(sigleData);
+			// 刷选需要登录的栏目
+			// 登录后用totalData, 
 			getMoreSet(totalData)
 		} else {}
 	}
@@ -139,15 +165,40 @@ $(function() {
 					})
 				} else {}
 			})
-			
 		}
 	}
+	function loginRoad(data){
+		// console.log('过滤需要登录的栏目')
+		// console.log(data);
+		// console.log(data.children);
+		var sonData = data.children;
+		var newList =[];
+		for(var i=0; i<sonData.length; i++){
+			console.log(sonData[i])
+			console.log(sonData[i].catalogUrl == 'login')
+			if(sonData[i].catalogUrl != 'login'){
+				newList.push(sonData[i]);
+			}
+		}
+		data.children = newList
+		// console.log(newList)
+
+		return data;
+		
+	}
 	function getMoreSet(data) {
-		getFistNew(data[0], 0, data[0].id);
-		getFistNew(data[1], 1, data[1].id);
-		getFistNew(data[2], 2, data[2].id)
-		getFistNew(data[3], 3, data[3].id)
-		getFistNew(data[4], 4, data[4].id)
+		
+		// 过滤需要登录的栏目
+		var data1 = loginRoad(data[0]);
+		var data2 = loginRoad(data[1]);
+		var data3 = loginRoad(data[2]);
+		var data4 = loginRoad(data[3]);
+		var data5 = loginRoad(data[4]);
+		getFistNew(data1, 0, data[0].id);
+		getFistNew(data2, 1, data[1].id);
+		getFistNew(data3, 2, data[2].id);
+		getFistNew(data4, 3, data[3].id);
+		getFistNew(data5, 4, data[4].id);
 	}
 	function getFistNew(data, index, pId) {
 			switch (index) {
@@ -198,8 +249,20 @@ $(function() {
 		var set = "";
 		for (var index = 0; index < data.length; index++) {
 			var value = data[index];
-			var srt = '<li class="mouse" data-type="' + list + '" data-index="' + index + '" data-id="' + value.id + '">' + value.catalogName + "</li>";
-			set += srt;
+			if(value.catalogUrl && value.catalogUrl.indexOf(".html") != -1 || !value.catalogUrl){
+				// 没有需要登录的二级栏目
+				if(list == 'sed' || list == 'thi'){
+					if(index < 3){
+						var srt = '<li class="mouse" data-type="' + list + '" data-index="' + index + '" data-id="' + value.id + '">' + value.catalogName + "</li>";
+						set += srt;
+					}
+				}else{
+					var srt = '<li class="mouse" data-type="' + list + '" data-index="' + index + '" data-id="' + value.id + '">' + value.catalogName + "</li>";
+					set += srt;
+				}
+			}
+			
+			
 		}
 		return set
 	}
@@ -234,6 +297,7 @@ $(function() {
 				},
 			}
 		}
+
        
         httpService.httpServer('newList',obj).then(function(data1){
             var result = data1.data.records;
@@ -246,7 +310,7 @@ $(function() {
                 }
             }
             if (result.length > 0) {
-                str += '<div class="flex-cstyle row" style="padding: 5px 10px;">' + str1 + "</div>" + '<ul class="content-list content-min" style="line-height: 38px;">' + set + "</ul>"
+                str += '<div class="flex-cstyle row" style="padding: 5px 10px;">' + str1 + "</div>" + '<ul class="content-list content-min" style="line-height: 39px;">' + set + "</ul>"
             } else {
                 str += '<div class="flex-cstyle row" style="padding: 5px 10px;">' + "暂无相关内容" + "</div>"
             }
